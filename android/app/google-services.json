@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "155589309189",
+    "project_id": "synctime-4929c",
+    "storage_bucket": "synctime-4929c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155589309189:android:da45b08ba112dabecbbd6c",
+        "android_client_info": {
+          "package_name": "com.hilberttechnology.synctime"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2Epdmh1xYn1PWftFTM_PRxVdprXtLj6I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:155589309189:android:3f5a1e927a9bf5f0cbbd6c",
+        "android_client_info": {
+          "package_name": "com.mycompany.proto2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2Epdmh1xYn1PWftFTM_PRxVdprXtLj6I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
