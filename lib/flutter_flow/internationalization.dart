@@ -163,7 +163,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
     'codzigqz': {
-      'en': '학사정보',
+      'en': '학사정보aa',
       'ja': '',
     },
     'kqqw2w58': {

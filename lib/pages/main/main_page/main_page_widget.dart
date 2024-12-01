@@ -274,7 +274,7 @@ class _MainPageWidgetState extends State<MainPageWidget> {
                                 ),
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    'codzigqz' /* 학사정보 */,
+                                    'codzigqz' /* 학사정보aa */,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
