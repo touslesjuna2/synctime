@@ -266,7 +266,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => LoginmainWidget(
                 code: params.getParam(
                   'code',
-                  ParamType.int,
+                  ParamType.String,
                 ),
               ),
             ),

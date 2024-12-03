@@ -19,7 +19,7 @@ class LoginmainWidget extends StatefulWidget {
     this.code,
   });
 
-  final int? code;
+  final String? code;
 
   @override
   State<LoginmainWidget> createState() => _LoginmainWidgetState();
@@ -40,7 +40,7 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('LOGINMAIN_PAGE_Loginmain_ON_INIT_STATE');
       Function() navigate = () {};
-      if (widget.code != null) {
+      if (widget.code != null && widget.code != '') {
         logFirebaseEvent('Loginmain_backend_call');
         _model.googlecode = await AuthGroup.googleTokenCall.call(
           code: widget.code,
@@ -135,7 +135,7 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
                     ),
                     Text(
                       FFLocalizations.of(context).getText(
-                        'u5w90d4w' /* Sync1 */,
+                        'u5w90d4w' /* Sync2 */,
                       ),
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).displaySmall.override(

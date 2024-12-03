@@ -1125,7 +1125,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Loginmain
   {
     'u5w90d4w': {
-      'en': 'Sync1',
+      'en': 'Sync2',
       'ja': '',
     },
     'rif7vlcc': {
@@ -1282,15 +1282,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'vthdxhez': {
       'en': '시험 꿀팁',
-      'ja': '',
-    },
-    'idjwgydu': {
-      'en': 'Title',
-      'ja': '',
-    },
-    'v6yc6g2b': {
-      'en':
-          'What is going on? Today I was going to school and saw something floating ...',
       'ja': '',
     },
     'bizahudi': {

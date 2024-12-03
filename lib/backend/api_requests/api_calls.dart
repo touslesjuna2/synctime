@@ -264,7 +264,7 @@ class RegisterCall {
 
 class GoogleTokenCall {
   Future<ApiCallResponse> call({
-    int? code,
+    String? code = '',
   }) async {
     final baseUrl = AuthGroup.getBaseUrl();
 

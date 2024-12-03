@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '/backend/schema/structs/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FFAppState extends ChangeNotifier {
@@ -232,6 +233,42 @@ class FFAppState extends ChangeNotifier {
 
   void insertAtIndexInFiltereduniversities(int index, String value) {
     filtereduniversities.insert(index, value);
+  }
+
+  List<GetRecentPostsFromBoardidAndUnividStruct> _PPViewBoardRecentPosts = [];
+  List<GetRecentPostsFromBoardidAndUnividStruct> get PPViewBoardRecentPosts =>
+      _PPViewBoardRecentPosts;
+  set PPViewBoardRecentPosts(
+      List<GetRecentPostsFromBoardidAndUnividStruct> value) {
+    _PPViewBoardRecentPosts = value;
+  }
+
+  void addToPPViewBoardRecentPosts(
+      GetRecentPostsFromBoardidAndUnividStruct value) {
+    PPViewBoardRecentPosts.add(value);
+  }
+
+  void removeFromPPViewBoardRecentPosts(
+      GetRecentPostsFromBoardidAndUnividStruct value) {
+    PPViewBoardRecentPosts.remove(value);
+  }
+
+  void removeAtIndexFromPPViewBoardRecentPosts(int index) {
+    PPViewBoardRecentPosts.removeAt(index);
+  }
+
+  void updatePPViewBoardRecentPostsAtIndex(
+    int index,
+    GetRecentPostsFromBoardidAndUnividStruct Function(
+            GetRecentPostsFromBoardidAndUnividStruct)
+        updateFn,
+  ) {
+    PPViewBoardRecentPosts[index] = updateFn(_PPViewBoardRecentPosts[index]);
+  }
+
+  void insertAtIndexInPPViewBoardRecentPosts(
+      int index, GetRecentPostsFromBoardidAndUnividStruct value) {
+    PPViewBoardRecentPosts.insert(index, value);
   }
 }
 
