@@ -85,28 +85,6 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
             },
           );
         }
-      } else {
-        logFirebaseEvent('Loginmain_alert_dialog');
-        await showDialog(
-          context: context,
-          builder: (dialogContext) {
-            return Dialog(
-              elevation: 0,
-              insetPadding: EdgeInsets.zero,
-              backgroundColor: Colors.transparent,
-              alignment: const AlignmentDirectional(0.0, 0.0)
-                  .resolve(Directionality.of(context)),
-              child: WebViewAware(
-                child: GestureDetector(
-                  onTap: () => FocusScope.of(dialogContext).unfocus(),
-                  child: const AlertGeneralCMPWidget(
-                    alertmessage: '1',
-                  ),
-                ),
-              ),
-            );
-          },
-        );
       }
 
       navigate();
