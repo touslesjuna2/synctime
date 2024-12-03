@@ -1125,7 +1125,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Loginmain
   {
     'u5w90d4w': {
-      'en': 'Sync',
+      'en': 'Sync1',
       'ja': '',
     },
     'rif7vlcc': {
