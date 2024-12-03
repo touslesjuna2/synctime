@@ -21,12 +21,12 @@ class AuthGroup {
   static MeChangePasswordCall meChangePasswordCall = MeChangePasswordCall();
   static RegisterCheckUsernameCall registerCheckUsernameCall =
       RegisterCheckUsernameCall();
-  static RegisterUnivsCall registerUnivsCall = RegisterUnivsCall();
+  static UnivsCall univsCall = UnivsCall();
   static RegisterCheckLoginIDCall registerCheckLoginIDCall =
       RegisterCheckLoginIDCall();
   static VerifyLoginIDCall verifyLoginIDCall = VerifyLoginIDCall();
   static RegisterCall registerCall = RegisterCall();
-  static GoogleLoginCall googleLoginCall = GoogleLoginCall();
+  static GoogleTokenCall googleTokenCall = GoogleTokenCall();
   static TokenCall tokenCall = TokenCall();
   static LogoutCall logoutCall = LogoutCall();
 }
@@ -114,13 +114,13 @@ class RegisterCheckUsernameCall {
       ));
 }
 
-class RegisterUnivsCall {
+class UnivsCall {
   Future<ApiCallResponse> call() async {
     final baseUrl = AuthGroup.getBaseUrl();
 
     return ApiManager.instance.makeApiCall(
-      callName: 'Register Univs',
-      apiUrl: '${baseUrl}register/univs',
+      callName: 'Univs',
+      apiUrl: '${baseUrl}univs',
       callType: ApiCallType.GET,
       headers: {
         'Content-Type': 'application/json',
@@ -262,18 +262,22 @@ class RegisterCall {
   }
 }
 
-class GoogleLoginCall {
-  Future<ApiCallResponse> call() async {
+class GoogleTokenCall {
+  Future<ApiCallResponse> call({
+    int? code,
+  }) async {
     final baseUrl = AuthGroup.getBaseUrl();
 
     return ApiManager.instance.makeApiCall(
-      callName: 'Google Login',
-      apiUrl: '${baseUrl}google/login',
+      callName: 'Google Token',
+      apiUrl: '${baseUrl}google/token?code=$code',
       callType: ApiCallType.GET,
       headers: {
-        'Content-Type': 'application/json',
+        'accept': 'application/json',
       },
-      params: {},
+      params: {
+        'code': code,
+      },
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -282,6 +286,19 @@ class GoogleLoginCall {
       alwaysAllowBody: false,
     );
   }
+
+  dynamic accesstoken(dynamic response) => getJsonField(
+        response,
+        r'''$.access_token''',
+      );
+  dynamic refreshtoken(dynamic response) => getJsonField(
+        response,
+        r'''$.refresh_token''',
+      );
+  dynamic tokentype(dynamic response) => getJsonField(
+        response,
+        r'''$.token_type''',
+      );
 }
 
 class TokenCall {
@@ -448,14 +465,51 @@ class MeCall {
 
 /// End Users Group Code
 
-class ExampleProductsCall {
-  static Future<ApiCallResponse> call() async {
+/// Start Auth Register School Group Code
+
+class AuthRegisterSchoolGroup {
+  static String getBaseUrl({
+    String? accessToken = '',
+  }) =>
+      'http://ec2-18-191-211-86.us-east-2.compute.amazonaws.com/auth/register-school/';
+  static Map<String, String> headers = {
+    'accept': 'application/json',
+    'Authorization': 'Bearer [access_token]',
+    'Content-Type': 'application/json',
+  };
+  static CheckSchoolEmailCall checkSchoolEmailCall = CheckSchoolEmailCall();
+  static RequestSchoolEmailVerificationCall requestSchoolEmailVerificationCall =
+      RequestSchoolEmailVerificationCall();
+  static VerifySchoolEmailCall verifySchoolEmailCall = VerifySchoolEmailCall();
+}
+
+class CheckSchoolEmailCall {
+  Future<ApiCallResponse> call({
+    String? email = '',
+    int? univId,
+    String? accessToken = '',
+  }) async {
+    final baseUrl = AuthRegisterSchoolGroup.getBaseUrl(
+      accessToken: accessToken,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "email": "${escapeStringForJson(email)}",
+  "univ_id": $univId
+}''';
     return ApiManager.instance.makeApiCall(
-      callName: 'ExampleProducts',
-      apiUrl: 'https://dummyjson.com/products',
-      callType: ApiCallType.GET,
-      headers: {},
+      callName: 'Check School Email',
+      apiUrl: '${baseUrl}check/school-email',
+      callType: ApiCallType.POST,
+      headers: {
+        'accept': 'application/json',
+        'Authorization': 'Bearer $accessToken',
+        'Content-Type': 'application/json',
+      },
       params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
@@ -464,31 +518,89 @@ class ExampleProductsCall {
       alwaysAllowBody: false,
     );
   }
-
-  static List? image(dynamic response) => getJsonField(
-        response,
-        r'''$.products[:].images''',
-        true,
-      ) as List?;
-  static List<int>? price(dynamic response) => (getJsonField(
-        response,
-        r'''$.products[:].price''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<int>(x))
-          .withoutNulls
-          .toList();
-  static List<String>? title(dynamic response) => (getJsonField(
-        response,
-        r'''$.products[:].title''',
-        true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
 }
+
+class RequestSchoolEmailVerificationCall {
+  Future<ApiCallResponse> call({
+    String? email = '',
+    int? univId,
+    String? accessToken = '',
+  }) async {
+    final baseUrl = AuthRegisterSchoolGroup.getBaseUrl(
+      accessToken: accessToken,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "email": "${escapeStringForJson(email)}",
+  "univ_id": $univId
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Request School Email Verification',
+      apiUrl: '${baseUrl}request-school-email-verification',
+      callType: ApiCallType.POST,
+      headers: {
+        'accept': 'application/json',
+        'Authorization': 'Bearer $accessToken',
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class VerifySchoolEmailCall {
+  Future<ApiCallResponse> call({
+    String? email = '',
+    int? univId,
+    String? verificationCode = '',
+    String? accessToken = '',
+  }) async {
+    final baseUrl = AuthRegisterSchoolGroup.getBaseUrl(
+      accessToken: accessToken,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "email": {
+    "email": "${escapeStringForJson(email)}",
+    "univ_id": $univId
+  },
+  "verification_code": {
+    "verification_code": "${escapeStringForJson(verificationCode)}"
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Verify School Email',
+      apiUrl: '${baseUrl}verify-school-email',
+      callType: ApiCallType.POST,
+      headers: {
+        'accept': 'application/json',
+        'Authorization': 'Bearer $accessToken',
+        'Content-Type': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+/// End Auth Register School Group Code
 
 class ApiPagingParams {
   int nextPageNumber = 0;

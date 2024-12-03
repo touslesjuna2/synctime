@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 class LoginmainModel extends FlutterFlowModel<LoginmainWidget> {
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Backend Call - API (Google Token)] action in Loginmain widget.
+  ApiCallResponse? googlecode;
   // State field(s) for ID widget.
   FocusNode? idFocusNode;
   TextEditingController? idTextController;

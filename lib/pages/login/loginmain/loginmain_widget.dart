@@ -5,12 +5,19 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'loginmain_model.dart';
 export 'loginmain_model.dart';
 
 class LoginmainWidget extends StatefulWidget {
-  const LoginmainWidget({super.key});
+  const LoginmainWidget({
+    super.key,
+    this.code,
+  });
+
+  final int? code;
 
   @override
   State<LoginmainWidget> createState() => _LoginmainWidgetState();
@@ -27,6 +34,38 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
     _model = createModel(context, () => LoginmainModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Loginmain'});
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('LOGINMAIN_PAGE_Loginmain_ON_INIT_STATE');
+      Function() navigate = () {};
+      if (widget.code != null) {
+        logFirebaseEvent('Loginmain_backend_call');
+        _model.googlecode = await AuthGroup.googleTokenCall.call(
+          code: widget.code,
+        );
+
+        if ((_model.googlecode?.succeeded ?? true)) {
+          logFirebaseEvent('Loginmain_auth');
+          GoRouter.of(context).prepareAuthEvent();
+          await authManager.signIn(
+            authenticationToken: AuthGroup.googleTokenCall
+                .accesstoken(
+                  (_model.googlecode?.jsonBody ?? ''),
+                )
+                .toString(),
+            refreshToken: AuthGroup.googleTokenCall
+                .refreshtoken(
+                  (_model.googlecode?.jsonBody ?? ''),
+                )
+                .toString(),
+          );
+          navigate = () => context.goNamedAuth('MainPage', context.mounted);
+        }
+      }
+
+      navigate();
+    });
+
     _model.idTextController ??= TextEditingController();
     _model.idFocusNode ??= FocusNode();
 
@@ -45,6 +84,8 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -107,46 +148,6 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
                       ),
                       icon: const FaIcon(
                         FontAwesomeIcons.google,
-                        size: 20.0,
-                      ),
-                      options: FFButtonOptions(
-                        width: double.infinity,
-                        height: 44.0,
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        textStyle: FlutterFlowTheme.of(context)
-                            .titleSmall
-                            .override(
-                              fontFamily: 'Plus Jakarta Sans',
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              letterSpacing: 0.0,
-                            ),
-                        elevation: 0.0,
-                        borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).alternate,
-                          width: 2.0,
-                        ),
-                        borderRadius: BorderRadius.circular(12.0),
-                        hoverColor:
-                            FlutterFlowTheme.of(context).primaryBackground,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
-                    child: FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
-                      },
-                      text: FFLocalizations.of(context).getText(
-                        'gxe7eudb' /* Continue with Apple */,
-                      ),
-                      icon: const FaIcon(
-                        FontAwesomeIcons.apple,
                         size: 20.0,
                       ),
                       options: FFButtonOptions(
@@ -434,9 +435,19 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
 
                           shouldSetState = true;
                           if ((_model.token?.succeeded ?? true)) {
+                            logFirebaseEvent('Button_update_app_state');
+                            FFAppState().accesstoken =
+                                AuthGroup.tokenCall.access(
+                              (_model.token?.jsonBody ?? ''),
+                            )!;
+                            FFAppState().refreshtoken =
+                                AuthGroup.tokenCall.refresh(
+                              (_model.token?.jsonBody ?? ''),
+                            )!;
+                            safeSetState(() {});
                             logFirebaseEvent('Button_backend_call');
                             _model.userme = await UsersGroup.meCall.call(
-                              accessToken: currentAuthenticationToken,
+                              accessToken: FFAppState().accesstoken,
                             );
 
                             shouldSetState = true;
@@ -448,6 +459,31 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
                               FFAppState().loginid = UserMeStruct.maybeFromMap(
                                       (_model.userme?.jsonBody ?? ''))!
                                   .loginId;
+                              FFAppState().fullname = UserMeStruct.maybeFromMap(
+                                      (_model.userme?.jsonBody ?? ''))!
+                                  .fullName;
+                              FFAppState().univid = UserMeStruct.maybeFromMap(
+                                      (_model.userme?.jsonBody ?? ''))!
+                                  .univId;
+                              FFAppState().schoolemail =
+                                  UserMeStruct.maybeFromMap(
+                                          (_model.userme?.jsonBody ?? ''))!
+                                      .schoolEmail
+                                      .toString();
+                              FFAppState().academicstatus =
+                                  UserMeStruct.maybeFromMap(
+                                          (_model.userme?.jsonBody ?? ''))!
+                                      .academicStatus;
+                              FFAppState().studentid =
+                                  UserMeStruct.maybeFromMap(
+                                          (_model.userme?.jsonBody ?? ''))!
+                                      .studentId;
+                              FFAppState().major = UserMeStruct.maybeFromMap(
+                                      (_model.userme?.jsonBody ?? ''))!
+                                  .studentId;
+                              FFAppState().password = UserMeStruct.maybeFromMap(
+                                      (_model.userme?.jsonBody ?? ''))!
+                                  .password;
                               safeSetState(() {});
                             } else {
                               if (shouldSetState) safeSetState(() {});

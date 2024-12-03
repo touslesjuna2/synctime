@@ -64,22 +64,57 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          height: MediaQuery.sizeOf(context).height * 0.08,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
+                        SafeArea(
+                          child: Container(
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            height: MediaQuery.sizeOf(context).height * 0.08,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
                           ),
                         ),
                         if (_model.checkboxValue ?? true)
                           Container(
                             width: MediaQuery.sizeOf(context).width * 1.0,
-                            height: 100.0,
+                            height: MediaQuery.sizeOf(context).height * 0.11,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).secondary,
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: Align(
+                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              child: Container(
+                                width: MediaQuery.sizeOf(context).width * 0.86,
+                                height:
+                                    MediaQuery.sizeOf(context).height * 0.11,
+                                decoration: BoxDecoration(
+                                  color: const Color(0x7539D2C0),
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'z496wr85' /* 질문 글을 작성하면 게시판 상단에 일정 기간 동안 노출... */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Plus Jakarta Sans',
+                                          color: const Color(0xFF279083),
+                                          fontSize: 12.0,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
+                        Divider(
+                          thickness: 2.0,
+                          color: FlutterFlowTheme.of(context).alternate,
+                        ),
                         Container(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           height: MediaQuery.sizeOf(context).height * 0.07,
@@ -110,10 +145,10 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                           .labelMedium
                                           .override(
                                             fontFamily: 'Outfit',
+                                            color: const Color(0x80606A85),
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
-                                            fontStyle: FontStyle.italic,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: const BorderSide(
@@ -157,11 +192,11 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Plus Jakarta Sans',
-                                          color: const Color(0xFF6B728D),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
-                                          fontStyle: FontStyle.italic,
                                         ),
                                     cursorColor: FlutterFlowTheme.of(context)
                                         .primaryText,
@@ -215,10 +250,10 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                           .labelMedium
                                           .override(
                                             fontFamily: 'Outfit',
+                                            color: const Color(0x80606A85),
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
-                                            fontStyle: FontStyle.italic,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: const BorderSide(
@@ -263,11 +298,10 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                         .override(
                                           fontFamily: 'Plus Jakarta Sans',
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          fontSize: 16.0,
+                                              .primaryText,
+                                          fontSize: 14.0,
                                           letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle: FontStyle.italic,
+                                          fontWeight: FontWeight.w500,
                                         ),
                                     maxLines: 200,
                                     minLines: 1,
@@ -450,19 +484,69 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                   ),
                 ),
               ),
-              Container(
-                width: MediaQuery.sizeOf(context).width * 1.0,
-                height: MediaQuery.sizeOf(context).height * 0.08,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        width: MediaQuery.sizeOf(context).width * 0.15,
+              SafeArea(
+                child: Container(
+                  width: MediaQuery.sizeOf(context).width * 1.0,
+                  height: MediaQuery.sizeOf(context).height * 0.08,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          width: MediaQuery.sizeOf(context).width * 0.15,
+                          height: 100.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          child: FlutterFlowIconButton(
+                            borderRadius: 8.0,
+                            buttonSize: 40.0,
+                            fillColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            icon: const Icon(
+                              Icons.clear_rounded,
+                              color: Colors.black,
+                              size: 30.0,
+                            ),
+                            onPressed: () {
+                              print('IconButton pressed ...');
+                            },
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: MediaQuery.sizeOf(context).width * 0.6,
+                        height: 100.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                        ),
+                        alignment: const AlignmentDirectional(-1.0, 0.0),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              5.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              'kqnnc1k2' /* Write Post */,
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontSize: 16.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: MediaQuery.sizeOf(context).width * 0.2,
                         height: 100.0,
                         decoration: BoxDecoration(
                           color:
@@ -473,58 +557,18 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                           buttonSize: 40.0,
                           fillColor:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          icon: const Icon(
-                            Icons.clear_rounded,
-                            color: Colors.black,
-                            size: 30.0,
+                          icon: const FaIcon(
+                            FontAwesomeIcons.pen,
+                            color: Color(0xBD000000),
+                            size: 20.0,
                           ),
                           onPressed: () {
                             print('IconButton pressed ...');
                           },
                         ),
                       ),
-                    ),
-                    Container(
-                      width: MediaQuery.sizeOf(context).width * 0.6,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                      ),
-                      alignment: const AlignmentDirectional(-1.0, 0.0),
-                      child: Text(
-                        FFLocalizations.of(context).getText(
-                          'kqnnc1k2' /* Write Post */,
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Plus Jakarta Sans',
-                              fontSize: 16.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                      ),
-                    ),
-                    Container(
-                      width: MediaQuery.sizeOf(context).width * 0.2,
-                      height: 100.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                      ),
-                      child: FlutterFlowIconButton(
-                        borderRadius: 8.0,
-                        buttonSize: 40.0,
-                        fillColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        icon: const FaIcon(
-                          FontAwesomeIcons.pen,
-                          color: Colors.black,
-                          size: 20.0,
-                        ),
-                        onPressed: () {
-                          print('IconButton pressed ...');
-                        },
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               Align(

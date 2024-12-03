@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FFAppState extends ChangeNotifier {
   static FFAppState _instance = FFAppState._internal();
@@ -13,12 +14,22 @@ class FFAppState extends ChangeNotifier {
     _instance = FFAppState._internal();
   }
 
-  Future initializePersistedState() async {}
+  Future initializePersistedState() async {
+    prefs = await SharedPreferences.getInstance();
+    _safeInit(() {
+      _accesstoken = prefs.getString('ff_accesstoken') ?? _accesstoken;
+    });
+    _safeInit(() {
+      _refreshtoken = prefs.getString('ff_refreshtoken') ?? _refreshtoken;
+    });
+  }
 
   void update(VoidCallback callback) {
     callback();
     notifyListeners();
   }
+
+  late SharedPreferences prefs;
 
   String _newPasswordInput = '';
   String get newPasswordInput => _newPasswordInput;
@@ -103,4 +114,135 @@ class FFAppState extends ChangeNotifier {
   set password(String value) {
     _password = value;
   }
+
+  String _accesstoken = '';
+  String get accesstoken => _accesstoken;
+  set accesstoken(String value) {
+    _accesstoken = value;
+    prefs.setString('ff_accesstoken', value);
+  }
+
+  String _refreshtoken = '';
+  String get refreshtoken => _refreshtoken;
+  set refreshtoken(String value) {
+    _refreshtoken = value;
+    prefs.setString('ff_refreshtoken', value);
+  }
+
+  List<String> _uniqueContries = [];
+  List<String> get uniqueContries => _uniqueContries;
+  set uniqueContries(List<String> value) {
+    _uniqueContries = value;
+  }
+
+  void addToUniqueContries(String value) {
+    uniqueContries.add(value);
+  }
+
+  void removeFromUniqueContries(String value) {
+    uniqueContries.remove(value);
+  }
+
+  void removeAtIndexFromUniqueContries(int index) {
+    uniqueContries.removeAt(index);
+  }
+
+  void updateUniqueContriesAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    uniqueContries[index] = updateFn(_uniqueContries[index]);
+  }
+
+  void insertAtIndexInUniqueContries(int index, String value) {
+    uniqueContries.insert(index, value);
+  }
+
+  String _selectedCountry = '';
+  String get selectedCountry => _selectedCountry;
+  set selectedCountry(String value) {
+    _selectedCountry = value;
+  }
+
+  String _selectedUniversity = '';
+  String get selectedUniversity => _selectedUniversity;
+  set selectedUniversity(String value) {
+    _selectedUniversity = value;
+  }
+
+  int _selectedUniversityID = 0;
+  int get selectedUniversityID => _selectedUniversityID;
+  set selectedUniversityID(int value) {
+    _selectedUniversityID = value;
+  }
+
+  List<String> _allcountries = [];
+  List<String> get allcountries => _allcountries;
+  set allcountries(List<String> value) {
+    _allcountries = value;
+  }
+
+  void addToAllcountries(String value) {
+    allcountries.add(value);
+  }
+
+  void removeFromAllcountries(String value) {
+    allcountries.remove(value);
+  }
+
+  void removeAtIndexFromAllcountries(int index) {
+    allcountries.removeAt(index);
+  }
+
+  void updateAllcountriesAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    allcountries[index] = updateFn(_allcountries[index]);
+  }
+
+  void insertAtIndexInAllcountries(int index, String value) {
+    allcountries.insert(index, value);
+  }
+
+  List<String> _filtereduniversities = [];
+  List<String> get filtereduniversities => _filtereduniversities;
+  set filtereduniversities(List<String> value) {
+    _filtereduniversities = value;
+  }
+
+  void addToFiltereduniversities(String value) {
+    filtereduniversities.add(value);
+  }
+
+  void removeFromFiltereduniversities(String value) {
+    filtereduniversities.remove(value);
+  }
+
+  void removeAtIndexFromFiltereduniversities(int index) {
+    filtereduniversities.removeAt(index);
+  }
+
+  void updateFiltereduniversitiesAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    filtereduniversities[index] = updateFn(_filtereduniversities[index]);
+  }
+
+  void insertAtIndexInFiltereduniversities(int index, String value) {
+    filtereduniversities.insert(index, value);
+  }
+}
+
+void _safeInit(Function() initializeField) {
+  try {
+    initializeField();
+  } catch (_) {}
+}
+
+Future _safeInitAsync(Function() initializeField) async {
+  try {
+    await initializeField();
+  } catch (_) {}
 }

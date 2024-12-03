@@ -349,7 +349,7 @@ class _AProfileWidgetState extends State<AProfileWidget>
                                     'A_PROFILE_PAGE_NEXT_BTN_ON_TAP');
                                 logFirebaseEvent('Button_navigate_to');
 
-                                context.pushNamed('e2_Verification_Progress');
+                                context.pushNamed('c2_Verification_Progress');
                               },
                               text: FFLocalizations.of(context).getText(
                                 '9nwxj8jp' /* next */,

@@ -82,233 +82,241 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/',
           builder: (context, _) =>
               appStateNotifier.loggedIn ? const NavBarPage() : const LoginmainWidget(),
+          routes: [
+            FFRoute(
+              name: 'MainPage',
+              path: 'mainPage',
+              requireAuth: true,
+              builder: (context, params) => params.isEmpty
+                  ? const NavBarPage(initialPage: 'MainPage')
+                  : const MainPageWidget(),
+            ),
+            FFRoute(
+              name: 'Timeblock',
+              path: 'Timeblock',
+              builder: (context, params) => params.isEmpty
+                  ? const NavBarPage(initialPage: 'Timeblock')
+                  : const TimeblockWidget(),
+            ),
+            FFRoute(
+              name: 'BoardList',
+              path: 'Board',
+              builder: (context, params) => params.isEmpty
+                  ? const NavBarPage(initialPage: 'BoardList')
+                  : const BoardListWidget(),
+            ),
+            FFRoute(
+              name: 'Settings',
+              path: 'settings',
+              builder: (context, params) => params.isEmpty
+                  ? const NavBarPage(initialPage: 'Settings')
+                  : const SettingsWidget(),
+            ),
+            FFRoute(
+              name: 'Webviewex',
+              path: 'webviewex',
+              builder: (context, params) => const WebviewexWidget(),
+            ),
+            FFRoute(
+              name: 'ChangePassword',
+              path: 'changePassword',
+              requireAuth: true,
+              builder: (context, params) => const ChangePasswordWidget(),
+            ),
+            FFRoute(
+              name: 'ChangeEmail',
+              path: 'change',
+              requireAuth: true,
+              builder: (context, params) => const ChangeEmailWidget(),
+            ),
+            FFRoute(
+              name: 'ChangeNickname',
+              path: 'ChangeNickname',
+              requireAuth: true,
+              builder: (context, params) => const ChangeNicknameWidget(),
+            ),
+            FFRoute(
+              name: 'Change_Profile_Image',
+              path: 'ChangeProfileImage',
+              builder: (context, params) => const ChangeProfileImageWidget(),
+            ),
+            FFRoute(
+              name: 'Department_settings',
+              path: 'Departmentsettings',
+              builder: (context, params) => const DepartmentSettingsWidget(),
+            ),
+            FFRoute(
+              name: 'Restriction_history',
+              path: 'ChangeProfileImageCopy',
+              builder: (context, params) => const RestrictionHistoryWidget(),
+            ),
+            FFRoute(
+              name: 'Keywords_of_Interset',
+              path: 'KeywordsofInterset',
+              builder: (context, params) => const KeywordsOfIntersetWidget(),
+            ),
+            FFRoute(
+              name: 'Community_Rules',
+              path: 'CommunityRules',
+              builder: (context, params) => const CommunityRulesWidget(),
+            ),
+            FFRoute(
+              name: 'Timeblock_list',
+              path: 'timeblockList',
+              builder: (context, params) => const TimeblockListWidget(),
+            ),
+            FFRoute(
+              name: 'a_Select_School',
+              path: 'aSelectSchool',
+              builder: (context, params) => const ASelectSchoolWidget(),
+            ),
+            FFRoute(
+              name: 'a_Verification_select',
+              path: 'aVerificationSelect',
+              builder: (context, params) => const AVerificationSelectWidget(),
+            ),
+            FFRoute(
+              name: 'a_Forgot_Password',
+              path: 'aForgotPassword',
+              builder: (context, params) => const AForgotPasswordWidget(),
+            ),
+            FFRoute(
+              name: 'b_Make_New_Password',
+              path: 'bMakeNewPassword',
+              builder: (context, params) => const BMakeNewPasswordWidget(),
+            ),
+            FFRoute(
+              name: 'c_complete',
+              path: 'cComplete',
+              builder: (context, params) => const CCompleteWidget(),
+            ),
+            FFRoute(
+              name: 'b1_Email_school',
+              path: 'b1EmailSchool',
+              builder: (context, params) => const B1EmailSchoolWidget(),
+            ),
+            FFRoute(
+              name: 'b2_Certificate',
+              path: 'b2Certificate',
+              builder: (context, params) => const B2CertificateWidget(),
+            ),
+            FFRoute(
+              name: 'c1_Verification_complete',
+              path: 'c1VerificationComplete',
+              builder: (context, params) => const C1VerificationCompleteWidget(),
+            ),
+            FFRoute(
+              name: 'c2_Verification_Progress',
+              path: 'c2VerificationProgress',
+              builder: (context, params) => const C2VerificationProgressWidget(),
+            ),
+            FFRoute(
+              name: 'Notification_Settings',
+              path: 'NotificationSettings',
+              builder: (context, params) => const NotificationSettingsWidget(),
+            ),
+            FFRoute(
+              name: 'Passcode_lock',
+              path: 'Passcode_lock',
+              builder: (context, params) => const PasscodeLockWidget(),
+            ),
+            FFRoute(
+              name: 'Notice',
+              path: 'Notice',
+              builder: (context, params) => const NoticeWidget(),
+            ),
+            FFRoute(
+              name: 'FAQ',
+              path: 'FAQ',
+              builder: (context, params) => const FaqWidget(),
+            ),
+            FFRoute(
+              name: 'Terms_of_sevice',
+              path: 'Terms_of_sevice',
+              builder: (context, params) => const TermsOfSeviceWidget(),
+            ),
+            FFRoute(
+              name: 'Privacy_policy',
+              path: 'Privacy_policy',
+              builder: (context, params) => const PrivacyPolicyWidget(),
+            ),
+            FFRoute(
+              name: 'Youth_protection_policy',
+              path: 'Youth_protection_policy',
+              builder: (context, params) => const YouthProtectionPolicyWidget(),
+            ),
+            FFRoute(
+              name: 'Agreement_settings',
+              path: 'Agreement_settings',
+              builder: (context, params) => const AgreementSettingsWidget(),
+            ),
+            FFRoute(
+              name: 'Delete_account',
+              path: 'Delete_account',
+              builder: (context, params) => const DeleteAccountWidget(),
+            ),
+            FFRoute(
+              name: 'Enable_passcode',
+              path: 'Enable_passcode',
+              builder: (context, params) => const EnablePasscodeWidget(),
+            ),
+            FFRoute(
+              name: 'Loginmain',
+              path: 'loginmain/:code',
+              builder: (context, params) => LoginmainWidget(
+                code: params.getParam(
+                  'code',
+                  ParamType.int,
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'f_Verification_inquiry',
+              path: 'fVerificationInquiry',
+              builder: (context, params) => const FVerificationInquiryWidget(),
+            ),
+            FFRoute(
+              name: 'Loginmain_Email',
+              path: 'loginmainEmail',
+              builder: (context, params) => const LoginmainEmailWidget(),
+            ),
+            FFRoute(
+              name: 'a_profile',
+              path: 'aProfile',
+              builder: (context, params) => const AProfileWidget(),
+            ),
+            FFRoute(
+              name: 'ViewBoard',
+              path: 'viewBoard',
+              builder: (context, params) => const ViewBoardWidget(),
+            ),
+            FFRoute(
+              name: 'CreatePost',
+              path: 'createPost',
+              builder: (context, params) => const CreatePostWidget(),
+            ),
+            FFRoute(
+              name: 'CreateBoard',
+              path: 'createBoard',
+              builder: (context, params) => const CreateBoardWidget(),
+            ),
+            FFRoute(
+              name: 'ViewPost',
+              path: 'viewPost',
+              builder: (context, params) => const ViewPostWidget(),
+            ),
+            FFRoute(
+              name: 'SearchPost',
+              path: 'searchPost',
+              builder: (context, params) => const SearchPostWidget(),
+            ),
+            FFRoute(
+              name: 'SearchBoard',
+              path: 'searchBoard',
+              builder: (context, params) => const SearchBoardWidget(),
+            )
+          ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
-        FFRoute(
-          name: 'MainPage',
-          path: '/mainPage',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'MainPage')
-              : const MainPageWidget(),
-        ),
-        FFRoute(
-          name: 'Timeblock',
-          path: '/Timeblock',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'Timeblock')
-              : const TimeblockWidget(),
-        ),
-        FFRoute(
-          name: 'BoardList',
-          path: '/Board',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'BoardList')
-              : const BoardListWidget(),
-        ),
-        FFRoute(
-          name: 'Settings',
-          path: '/settings',
-          builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'Settings')
-              : const SettingsWidget(),
-        ),
-        FFRoute(
-          name: 'Webviewex',
-          path: '/webviewex',
-          builder: (context, params) => const WebviewexWidget(),
-        ),
-        FFRoute(
-          name: 'ChangePassword',
-          path: '/changePassword',
-          requireAuth: true,
-          builder: (context, params) => const ChangePasswordWidget(),
-        ),
-        FFRoute(
-          name: 'ChangeEmail',
-          path: '/change',
-          requireAuth: true,
-          builder: (context, params) => const ChangeEmailWidget(),
-        ),
-        FFRoute(
-          name: 'ChangeNickname',
-          path: '/ChangeNickname',
-          requireAuth: true,
-          builder: (context, params) => const ChangeNicknameWidget(),
-        ),
-        FFRoute(
-          name: 'Change_Profile_Image',
-          path: '/ChangeProfileImage',
-          builder: (context, params) => const ChangeProfileImageWidget(),
-        ),
-        FFRoute(
-          name: 'Department_settings',
-          path: '/Departmentsettings',
-          builder: (context, params) => const DepartmentSettingsWidget(),
-        ),
-        FFRoute(
-          name: 'Restriction_history',
-          path: '/ChangeProfileImageCopy',
-          builder: (context, params) => const RestrictionHistoryWidget(),
-        ),
-        FFRoute(
-          name: 'Keywords_of_Interset',
-          path: '/KeywordsofInterset',
-          builder: (context, params) => const KeywordsOfIntersetWidget(),
-        ),
-        FFRoute(
-          name: 'Community_Rules',
-          path: '/CommunityRules',
-          builder: (context, params) => const CommunityRulesWidget(),
-        ),
-        FFRoute(
-          name: 'Timeblock_list',
-          path: '/timeblockList',
-          builder: (context, params) => const TimeblockListWidget(),
-        ),
-        FFRoute(
-          name: 'a_Select_School',
-          path: '/aSelectSchool',
-          builder: (context, params) => const ASelectSchoolWidget(),
-        ),
-        FFRoute(
-          name: 'c_Verification_select',
-          path: '/cVerificationSelect',
-          builder: (context, params) => const CVerificationSelectWidget(),
-        ),
-        FFRoute(
-          name: 'a_Forgot_Password',
-          path: '/aForgotPassword',
-          builder: (context, params) => const AForgotPasswordWidget(),
-        ),
-        FFRoute(
-          name: 'b_Make_New_Password',
-          path: '/bMakeNewPassword',
-          builder: (context, params) => const BMakeNewPasswordWidget(),
-        ),
-        FFRoute(
-          name: 'c_complete',
-          path: '/cComplete',
-          builder: (context, params) => const CCompleteWidget(),
-        ),
-        FFRoute(
-          name: 'd1_Email_school',
-          path: '/d1EmailSchool',
-          builder: (context, params) => const D1EmailSchoolWidget(),
-        ),
-        FFRoute(
-          name: 'd2_Certificate',
-          path: '/d2Certificate',
-          builder: (context, params) => const D2CertificateWidget(),
-        ),
-        FFRoute(
-          name: 'e1_Verification_complete',
-          path: '/e1VerificationComplete',
-          builder: (context, params) => const E1VerificationCompleteWidget(),
-        ),
-        FFRoute(
-          name: 'e2_Verification_Progress',
-          path: '/e2VerificationProgress',
-          builder: (context, params) => const E2VerificationProgressWidget(),
-        ),
-        FFRoute(
-          name: 'Notification_Settings',
-          path: '/NotificationSettings',
-          builder: (context, params) => const NotificationSettingsWidget(),
-        ),
-        FFRoute(
-          name: 'Passcode_lock',
-          path: '/Passcode_lock',
-          builder: (context, params) => const PasscodeLockWidget(),
-        ),
-        FFRoute(
-          name: 'Notice',
-          path: '/Notice',
-          builder: (context, params) => const NoticeWidget(),
-        ),
-        FFRoute(
-          name: 'FAQ',
-          path: '/FAQ',
-          builder: (context, params) => const FaqWidget(),
-        ),
-        FFRoute(
-          name: 'Terms_of_sevice',
-          path: '/Terms_of_sevice',
-          builder: (context, params) => const TermsOfSeviceWidget(),
-        ),
-        FFRoute(
-          name: 'Privacy_policy',
-          path: '/Privacy_policy',
-          builder: (context, params) => const PrivacyPolicyWidget(),
-        ),
-        FFRoute(
-          name: 'Youth_protection_policy',
-          path: '/Youth_protection_policy',
-          builder: (context, params) => const YouthProtectionPolicyWidget(),
-        ),
-        FFRoute(
-          name: 'Agreement_settings',
-          path: '/Agreement_settings',
-          builder: (context, params) => const AgreementSettingsWidget(),
-        ),
-        FFRoute(
-          name: 'Delete_account',
-          path: '/Delete_account',
-          builder: (context, params) => const DeleteAccountWidget(),
-        ),
-        FFRoute(
-          name: 'Enable_passcode',
-          path: '/Enable_passcode',
-          builder: (context, params) => const EnablePasscodeWidget(),
-        ),
-        FFRoute(
-          name: 'Test',
-          path: '/test',
-          builder: (context, params) => const TestWidget(),
-        ),
-        FFRoute(
-          name: 'Loginmain',
-          path: '/loginmain',
-          builder: (context, params) => const LoginmainWidget(),
-        ),
-        FFRoute(
-          name: 'f_Verification_inquiry',
-          path: '/fVerificationInquiry',
-          builder: (context, params) => const FVerificationInquiryWidget(),
-        ),
-        FFRoute(
-          name: 'Loginmain_Email',
-          path: '/loginmainEmail',
-          builder: (context, params) => const LoginmainEmailWidget(),
-        ),
-        FFRoute(
-          name: 'a_profile',
-          path: '/aProfile',
-          builder: (context, params) => const AProfileWidget(),
-        ),
-        FFRoute(
-          name: 'ViewBoard',
-          path: '/viewBoard',
-          builder: (context, params) => const ViewBoardWidget(),
-        ),
-        FFRoute(
-          name: 'CreatePost',
-          path: '/createPost',
-          builder: (context, params) => const CreatePostWidget(),
-        ),
-        FFRoute(
-          name: 'CreateBoard',
-          path: '/createBoard',
-          builder: (context, params) => const CreateBoardWidget(),
-        ),
-        FFRoute(
-          name: 'ViewPost',
-          path: '/viewPost',
-          builder: (context, params) => const ViewPostWidget(),
-        ),
-        FFRoute(
-          name: 'SearchBoard',
-          path: '/searchBoard',
-          builder: (context, params) => const SearchBoardWidget(),
-        )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
 
@@ -478,7 +486,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/loginmain';
+            return '/loginmain/:code';
           }
           return null;
         },

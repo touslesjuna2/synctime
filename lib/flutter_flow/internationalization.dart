@@ -163,7 +163,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
     'codzigqz': {
-      'en': '학사정보aa',
+      'en': '학사정보',
       'ja': '',
     },
     'kqqw2w58': {
@@ -182,8 +182,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'More >',
       'ja': '',
     },
-    'gslw2iya': {
-      'en': 'Category Name',
+    'xg44j698': {
+      'en': 'BoardName',
       'ja': '',
     },
     'c5nz18n3': {
@@ -297,6 +297,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'bcpeimrb': {
       'en': 'Settings',
+      'ja': '',
+    },
+    'e6orf60s': {
+      'en': '비상로그아웃(개발)',
       'ja': '',
     },
     'izqbjtol': {
@@ -715,7 +719,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
     '63g3p75a': {
-      'en': 'Start',
+      'en': 'Next',
       'ja': '',
     },
     'ktioq65d': {
@@ -723,7 +727,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
   },
-  // c_Verification_select
+  // a_Verification_select
   {
     'goj4fg1q': {
       'en': '인증 절차를 진행함.',
@@ -824,8 +828,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
   },
-  // d1_Email_school
+  // b1_Email_school
   {
+    '09flglxp': {
+      'en': 'Back',
+      'ja': '',
+    },
     '11v1gnlc': {
       'en': '인증 절차를 진행함.',
       'ja': '',
@@ -858,16 +866,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Next',
       'ja': '',
     },
-    'r3xmzfks': {
-      'en': '임시 학교 번호 표',
-      'ja': '',
-    },
     '9hry9tbl': {
       'en': 'Home',
       'ja': '',
     },
   },
-  // d2_Certificate
+  // b2_Certificate
   {
     'ckplg8ao': {
       'en': '인증 절차를 진행함.',
@@ -899,7 +903,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
   },
-  // e1_Verification_complete
+  // c1_Verification_complete
   {
     'jmac7vl8': {
       'en': 'Verified!',
@@ -918,7 +922,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
   },
-  // e2_Verification_Progress
+  // c2_Verification_Progress
   {
     '5uhwe437': {
       'en': 'Verifing...',
@@ -1118,17 +1122,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
   },
-  // Test
-  {
-    '0rp7cukg': {
-      'en': 'Page Title',
-      'ja': '',
-    },
-    '8nymkjce': {
-      'en': 'Home',
-      'ja': '',
-    },
-  },
   // Loginmain
   {
     'u5w90d4w': {
@@ -1141,10 +1134,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '1utnquo1': {
       'en': 'Continue with Google',
-      'ja': '',
-    },
-    'gxe7eudb': {
-      'en': 'Continue with Apple',
       'ja': '',
     },
     'stny9e1i': {
@@ -1331,6 +1320,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // CreatePost
   {
+    'z496wr85': {
+      'en':
+          '질문 글을 작성하면 게시판 상단에 일정 기간 동안 노출되며, 더욱 빠르게 답변을 얻을 수 있게 됩니다. 또한, 다른 학우들이 정성껏 작성한 답변을 유지하기 위해, 댓글이 달린 이후에는 글을 수정 및 삭제 할 수 없습니다.',
+      'ja': '',
+    },
     'ldm7bek6': {
       'en': '',
       'ja': '',
@@ -1378,8 +1372,52 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // CreateBoard
   {
-    'z14zqgsq': {
-      'en': 'Page Title',
+    '3i4clmfe': {
+      'en': '',
+      'ja': '',
+    },
+    'a2z4mcqt': {
+      'en': 'Name',
+      'ja': '',
+    },
+    'kcme65s9': {
+      'en': 'Description',
+      'ja': '',
+    },
+    'sw90v4su': {
+      'en': 'Allow Anonym',
+      'ja': '',
+    },
+    'mlz29lau': {
+      'en': 'Required Tags ',
+      'ja': '',
+    },
+    'brxd7ei3': {
+      'en': 'Add tag',
+      'ja': '',
+    },
+    '8vd8lxhi': {
+      'en': 'Free',
+      'ja': '',
+    },
+    '02djap6l': {
+      'en': 'Buy',
+      'ja': '',
+    },
+    'b38d2jrh': {
+      'en': 'Sell',
+      'ja': '',
+    },
+    'n0l2450e': {
+      'en': 'Anything you can tag',
+      'ja': '',
+    },
+    'eqhl2fh6': {
+      'en': 'Create new board',
+      'ja': '',
+    },
+    '1q9uz5tl': {
+      'en': '연세대 신촌캠',
       'ja': '',
     },
     'vpsjjjom': {
@@ -1389,14 +1427,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ViewPost
   {
-    'fw1a8c3c': {
-      'en': '익명',
-      'ja': '',
-    },
-    'x57zdhwa': {
-      'en': '24/11/30 02:55',
-      'ja': '',
-    },
     '50c4wzd5': {
       'en': 'Board Name',
       'ja': '',
@@ -1405,12 +1435,39 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '연세대 신촌캠',
       'ja': '',
     },
-    'hwn3yjqd': {
-      'en': '',
+    'fw1a8c3c': {
+      'en': '익명',
       'ja': '',
     },
-    '15kbri7q': {
-      'en': 'Write Comment',
+    'x57zdhwa': {
+      'en': '24/11/30 02:55',
+      'ja': '',
+    },
+    'uenlyg0o': {
+      'en': '미국 캘리포니아 설탭',
+      'ja': '',
+    },
+    'ofrr5tgx': {
+      'en':
+          '캘리포니아로 교환 가신 분들 중에 설탭 계속 하시는 분들 계신가요? vpn으로 접속해야하는지 1년동안도 가능한지 궁금합니다..',
+      'ja': '',
+    },
+    'xgq723u1': {
+      'en':
+          '이 게시글은 게시판 관리자에 의해 공지로 등록된 글이에요. 공지는 총 5개까지 등록될 수 있으며, 새로운 공지가 등록되면 기존 공지 중 가장 오래된 것부터 해제됩니다.',
+      'ja': '',
+    },
+    'ywfhdkmu': {
+      'en':
+          '이 글은 댓글이 달린 이후에는 수정 및 삭제가 불가능하므로, 작성하신 댓글이 삭제될 우려가 없어요. 보다 많은 학우들에게 도움이 될 수 있도록 정성이 담긴 답변을 부탁드려요.',
+      'ja': '',
+    },
+    '9jkj0nu6': {
+      'en': 'Like',
+      'ja': '',
+    },
+    'he8ro3q4': {
+      'en': 'Write comment',
       'ja': '',
     },
     '76uxa93q': {
@@ -1418,9 +1475,76 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
   },
+  // SearchPost
+  {
+    'o4w3uj1d': {
+      'en': 'Search posts by hashtags. #exam ',
+      'ja': '',
+    },
+    'w70ibiyy': {
+      'en': '최근 검색어',
+      'ja': '',
+    },
+    'v5zk6m58': {
+      'en': '전체 삭제',
+      'ja': '',
+    },
+    'vfvr68pc': {
+      'en': '맛집게시판관리자',
+      'ja': '',
+    },
+    'mogxdlnm': {
+      'en': '게시판 기능',
+      'ja': '',
+    },
+    'ry0x0qgi': {
+      'en': '게시판',
+      'ja': '',
+    },
+    '1b43bw44': {
+      'en': 'Board Name',
+      'ja': '',
+    },
+    'o0bfe71k': {
+      'en': '연세대 신촌캠',
+      'ja': '',
+    },
+    'hapnbywv': {
+      'en': 'Home',
+      'ja': '',
+    },
+  },
   // SearchBoard
   {
-    'hapnbywv': {
+    'b1ud8hld': {
+      'en': 'Board name ',
+      'ja': '',
+    },
+    '00i7zgwl': {
+      'en': '유학생 정보 게시판',
+      'ja': '',
+    },
+    'cm03o93l': {
+      'en': '비자 발급 등 한국 대학을 다니는 유학생들이 밟아야 하는 절차에 대한 정보를 공유합니다.',
+      'ja': '',
+    },
+    'mtblf94j': {
+      'en': 'Try to search other boards',
+      'ja': '',
+    },
+    'pgybo6jn': {
+      'en': 'Make new board',
+      'ja': '',
+    },
+    '3qo1g9di': {
+      'en': 'Search Board',
+      'ja': '',
+    },
+    'g6a13q9z': {
+      'en': '연세대 신촌캠',
+      'ja': '',
+    },
+    'et32wqx3': {
       'en': 'Home',
       'ja': '',
     },
@@ -1552,32 +1676,47 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
   },
-  // SchoolPlease_CMP
+  // NoAuth_CMP
   {
-    'kffcz3sk': {
-      'en': 'School Login Please^^',
+    'njng85i0': {
+      'en': '학교 인증 하시오',
       'ja': '',
     },
-    'auuvsuv8': {
-      'en': '학교사람만 사용가능',
+    'rhqowkxb': {
+      'en': '하면 보여줌',
       'ja': '',
     },
-    'o2vnzoci': {
-      'en': 'Verify!',
+    'thvb7olb': {
+      'en': 'Verify',
       'ja': '',
     },
   },
-  // CommentsCountComponent
+  // CommentReplyContainer
   {
-    '2p8mvqnh': {
-      'en': '3',
+    'r5fy9fe7': {
+      'en': 'Sarah Johnson',
       'ja': '',
     },
-  },
-  // LikesCountComponent
-  {
-    'g3w78wog': {
-      'en': '11',
+    'ny7aa9g5': {
+      'en': '2 hours ago',
+      'ja': '',
+    },
+    'd8qdcsnp': {
+      'en':
+          'This is such an insightful post! I particularly appreciate how you broke down the complex topic into digestible pieces. It really helped me understand the concept better.',
+      'ja': '',
+    },
+    'wh6pbajt': {
+      'en': 'Mike Chen',
+      'ja': '',
+    },
+    'tu4gfume': {
+      'en': '1 hour ago',
+      'ja': '',
+    },
+    '1gg94xiu': {
+      'en':
+          'Totally agree with you Sarah! The examples provided were especially helpful.',
       'ja': '',
     },
   },

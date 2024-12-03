@@ -61,9 +61,8 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
               ),
               onPressed: () async {
                 logFirebaseEvent('DELETE_ACCOUNT_arrow_back_ICN_ON_TAP');
-                logFirebaseEvent('IconButton_navigate_to');
-
-                context.pushNamed('Settings');
+                logFirebaseEvent('IconButton_navigate_back');
+                context.safePop();
               },
             ),
           ),
@@ -286,8 +285,9 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                       onPressed: () async {
                         logFirebaseEvent(
                             'DELETE_ACCOUNT_DELETE_ACCOUNT_BTN_ON_TAP');
-                        logFirebaseEvent('Button_navigate_back');
-                        context.safePop();
+                        logFirebaseEvent('Button_navigate_to');
+
+                        context.pushNamed('Loginmain');
                       },
                       text: FFLocalizations.of(context).getText(
                         'qniouyph' /* Delete account */,

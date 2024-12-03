@@ -130,10 +130,8 @@ class _TimeblockWidgetState extends State<TimeblockWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: ListView(
-            padding: EdgeInsets.zero,
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
             children: [
               Align(
                 alignment: const AlignmentDirectional(0.0, -1.0),
@@ -210,7 +208,7 @@ class _TimeblockWidgetState extends State<TimeblockWidget> {
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                 child: Container(
-                  width: 100.0,
+                  width: MediaQuery.sizeOf(context).width * 0.9,
                   height: 424.0,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
