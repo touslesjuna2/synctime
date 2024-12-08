@@ -206,7 +206,7 @@ class _C1VerificationCompleteWidgetState
                                         'C1_VERIFICATION_COMPLETE_NEXT_BTN_ON_TAP');
                                     logFirebaseEvent('Button_navigate_to');
 
-                                    context.pushNamed('Loginmain');
+                                    context.pushNamed('a_profile');
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     'wz8alxlp' /* next */,

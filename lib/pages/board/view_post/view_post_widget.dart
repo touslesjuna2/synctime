@@ -1,6 +1,6 @@
 import '/components/ads_banner_widget.dart';
 import '/components/anonym_check_box_row_widget.dart';
-import '/components/comment_reply_container_widget.dart';
+import '/components/comment_and_reply_container_widget.dart';
 import '/components/comments_count_row_component_widget.dart';
 import '/components/empty_widget.dart';
 import '/components/likes_count_row_component_widget.dart';
@@ -10,6 +10,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'view_post_model.dart';
 export 'view_post_model.dart';
 
@@ -30,7 +31,7 @@ class _ViewPostWidgetState extends State<ViewPostWidget> {
     super.initState();
     _model = createModel(context, () => ViewPostModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'ViewPost'});
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'viewPost'});
     _model.subscribeSwitchValue = false;
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
@@ -47,6 +48,8 @@ class _ViewPostWidgetState extends State<ViewPostWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -873,17 +876,42 @@ class _ViewPostWidgetState extends State<ViewPostWidget> {
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
                                 ),
-                                child: ListView(
-                                  padding: EdgeInsets.zero,
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  children: [
-                                    wrapWithModel(
-                                      model: _model.commentReplyContainerModel,
-                                      updateCallback: () => safeSetState(() {}),
-                                      child: const CommentReplyContainerWidget(),
-                                    ),
-                                  ],
+                                child: Builder(
+                                  builder: (context) {
+                                    final commentsInListView = FFAppState()
+                                        .ppReadPostDetails
+                                        .comments
+                                        .toList();
+
+                                    return ListView.builder(
+                                      padding: EdgeInsets.zero,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: commentsInListView.length,
+                                      itemBuilder:
+                                          (context, commentsInListViewIndex) {
+                                        final commentsInListViewItem =
+                                            commentsInListView[
+                                                commentsInListViewIndex];
+                                        return wrapWithModel(
+                                          model: _model
+                                              .commentAndReplyContainerModels
+                                              .getModel(
+                                            commentsInListViewItem.id
+                                                .toString(),
+                                            commentsInListViewIndex,
+                                          ),
+                                          updateCallback: () =>
+                                              safeSetState(() {}),
+                                          child: CommentAndReplyContainerWidget(
+                                            key: Key(
+                                              'Keynmi_${commentsInListViewItem.id.toString()}',
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
                                 ),
                               ),
                             ),

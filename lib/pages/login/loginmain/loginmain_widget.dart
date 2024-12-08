@@ -4,11 +4,9 @@ import '/components/alert_general_c_m_p/alert_general_c_m_p_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'loginmain_model.dart';
 export 'loginmain_model.dart';
@@ -42,22 +40,22 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
       Function() navigate = () {};
       if (widget.code != null && widget.code != '') {
         logFirebaseEvent('Loginmain_backend_call');
-        _model.googlecode = await AuthGroup.googleTokenCall.call(
+        _model.tokentoken = await AuthGroup.googleTokenCall.call(
           code: widget.code,
         );
 
-        if ((_model.googlecode?.succeeded ?? true)) {
+        if ((_model.tokentoken?.succeeded ?? true)) {
           logFirebaseEvent('Loginmain_auth');
           GoRouter.of(context).prepareAuthEvent();
           await authManager.signIn(
             authenticationToken: AuthGroup.googleTokenCall
                 .accesstoken(
-                  (_model.googlecode?.jsonBody ?? ''),
+                  (_model.tokentoken?.jsonBody ?? ''),
                 )
                 .toString(),
             refreshToken: AuthGroup.googleTokenCall
                 .refreshtoken(
-                  (_model.googlecode?.jsonBody ?? ''),
+                  (_model.tokentoken?.jsonBody ?? ''),
                 )
                 .toString(),
           );
@@ -108,8 +106,6 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Builder(
       builder: (context) => GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -135,7 +131,7 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
                     ),
                     Text(
                       FFLocalizations.of(context).getText(
-                        'u5w90d4w' /* Sync2 */,
+                        'u5w90d4w' /* Sync5 */,
                       ),
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).displaySmall.override(
@@ -464,64 +460,6 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
 
                             shouldSetState = true;
                             if ((_model.token?.succeeded ?? true)) {
-                              logFirebaseEvent('Button_update_app_state');
-                              FFAppState().accesstoken =
-                                  AuthGroup.tokenCall.access(
-                                (_model.token?.jsonBody ?? ''),
-                              )!;
-                              FFAppState().refreshtoken =
-                                  AuthGroup.tokenCall.refresh(
-                                (_model.token?.jsonBody ?? ''),
-                              )!;
-                              safeSetState(() {});
-                              logFirebaseEvent('Button_backend_call');
-                              _model.userme = await UsersGroup.meCall.call(
-                                accessToken: FFAppState().accesstoken,
-                              );
-
-                              shouldSetState = true;
-                              if ((_model.userme?.succeeded ?? true)) {
-                                logFirebaseEvent('Button_update_app_state');
-                                FFAppState().id = UserMeStruct.maybeFromMap(
-                                        (_model.userme?.jsonBody ?? ''))!
-                                    .id;
-                                FFAppState().loginid =
-                                    UserMeStruct.maybeFromMap(
-                                            (_model.userme?.jsonBody ?? ''))!
-                                        .loginId;
-                                FFAppState().fullname =
-                                    UserMeStruct.maybeFromMap(
-                                            (_model.userme?.jsonBody ?? ''))!
-                                        .fullName;
-                                FFAppState().univid = UserMeStruct.maybeFromMap(
-                                        (_model.userme?.jsonBody ?? ''))!
-                                    .univId;
-                                FFAppState().schoolemail =
-                                    UserMeStruct.maybeFromMap(
-                                            (_model.userme?.jsonBody ?? ''))!
-                                        .schoolEmail
-                                        .toString();
-                                FFAppState().academicstatus =
-                                    UserMeStruct.maybeFromMap(
-                                            (_model.userme?.jsonBody ?? ''))!
-                                        .academicStatus;
-                                FFAppState().studentid =
-                                    UserMeStruct.maybeFromMap(
-                                            (_model.userme?.jsonBody ?? ''))!
-                                        .studentId;
-                                FFAppState().major = UserMeStruct.maybeFromMap(
-                                        (_model.userme?.jsonBody ?? ''))!
-                                    .studentId;
-                                FFAppState().password =
-                                    UserMeStruct.maybeFromMap(
-                                            (_model.userme?.jsonBody ?? ''))!
-                                        .password;
-                                safeSetState(() {});
-                              } else {
-                                if (shouldSetState) safeSetState(() {});
-                                return;
-                              }
-
                               logFirebaseEvent('Button_auth');
                               GoRouter.of(context).prepareAuthEvent();
                               await authManager.signIn(

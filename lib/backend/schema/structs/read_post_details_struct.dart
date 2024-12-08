@@ -4,12 +4,11 @@
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
-  GetRecentPostsFromBoardidAndUnividStruct({
+class ReadPostDetailsStruct extends BaseStruct {
+  ReadPostDetailsStruct({
     int? id,
     int? univId,
     int? boardId,
-    UserBoardProfileStruct? userBoardProfile,
     String? title,
     String? content,
     bool? anonym,
@@ -17,7 +16,6 @@ class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
     bool? qna,
     int? createdAt,
     int? updatedAt,
-    List<MediaStruct>? media,
     bool? idBlinded,
     int? likeCount,
     int? dislikeCount,
@@ -25,10 +23,15 @@ class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
     int? commentCount,
     String? sentiment,
     int? hottedAt,
+    bool? isCreator,
+    int? myLikeStatus,
+    bool? isScraped,
+    List<CommentsStruct>? comments,
+    List<MediaStruct>? media,
+    UserBoardProfileStruct? userBoardProfile,
   })  : _id = id,
         _univId = univId,
         _boardId = boardId,
-        _userBoardProfile = userBoardProfile,
         _title = title,
         _content = content,
         _anonym = anonym,
@@ -36,14 +39,19 @@ class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
         _qna = qna,
         _createdAt = createdAt,
         _updatedAt = updatedAt,
-        _media = media,
         _idBlinded = idBlinded,
         _likeCount = likeCount,
         _dislikeCount = dislikeCount,
         _scrapCount = scrapCount,
         _commentCount = commentCount,
         _sentiment = sentiment,
-        _hottedAt = hottedAt;
+        _hottedAt = hottedAt,
+        _isCreator = isCreator,
+        _myLikeStatus = myLikeStatus,
+        _isScraped = isScraped,
+        _comments = comments,
+        _media = media,
+        _userBoardProfile = userBoardProfile;
 
   // "id" field.
   int? _id;
@@ -71,18 +79,6 @@ class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
   void incrementBoardId(int amount) => boardId = boardId + amount;
 
   bool hasBoardId() => _boardId != null;
-
-  // "user_board_profile" field.
-  UserBoardProfileStruct? _userBoardProfile;
-  UserBoardProfileStruct get userBoardProfile =>
-      _userBoardProfile ?? UserBoardProfileStruct();
-  set userBoardProfile(UserBoardProfileStruct? val) => _userBoardProfile = val;
-
-  void updateUserBoardProfile(Function(UserBoardProfileStruct) updateFn) {
-    updateFn(_userBoardProfile ??= UserBoardProfileStruct());
-  }
-
-  bool hasUserBoardProfile() => _userBoardProfile != null;
 
   // "title" field.
   String? _title;
@@ -140,17 +136,6 @@ class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
   void incrementUpdatedAt(int amount) => updatedAt = updatedAt + amount;
 
   bool hasUpdatedAt() => _updatedAt != null;
-
-  // "media" field.
-  List<MediaStruct>? _media;
-  List<MediaStruct> get media => _media ?? const [];
-  set media(List<MediaStruct>? val) => _media = val;
-
-  void updateMedia(Function(List<MediaStruct>) updateFn) {
-    updateFn(_media ??= []);
-  }
-
-  bool hasMedia() => _media != null;
 
   // "id_blinded" field.
   bool? _idBlinded;
@@ -213,14 +198,69 @@ class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
 
   bool hasHottedAt() => _hottedAt != null;
 
-  static GetRecentPostsFromBoardidAndUnividStruct fromMap(
-          Map<String, dynamic> data) =>
-      GetRecentPostsFromBoardidAndUnividStruct(
+  // "is_creator" field.
+  bool? _isCreator;
+  bool get isCreator => _isCreator ?? false;
+  set isCreator(bool? val) => _isCreator = val;
+
+  bool hasIsCreator() => _isCreator != null;
+
+  // "my_like_status" field.
+  int? _myLikeStatus;
+  int get myLikeStatus => _myLikeStatus ?? 0;
+  set myLikeStatus(int? val) => _myLikeStatus = val;
+
+  void incrementMyLikeStatus(int amount) =>
+      myLikeStatus = myLikeStatus + amount;
+
+  bool hasMyLikeStatus() => _myLikeStatus != null;
+
+  // "is_scraped" field.
+  bool? _isScraped;
+  bool get isScraped => _isScraped ?? false;
+  set isScraped(bool? val) => _isScraped = val;
+
+  bool hasIsScraped() => _isScraped != null;
+
+  // "comments" field.
+  List<CommentsStruct>? _comments;
+  List<CommentsStruct> get comments => _comments ?? const [];
+  set comments(List<CommentsStruct>? val) => _comments = val;
+
+  void updateComments(Function(List<CommentsStruct>) updateFn) {
+    updateFn(_comments ??= []);
+  }
+
+  bool hasComments() => _comments != null;
+
+  // "media" field.
+  List<MediaStruct>? _media;
+  List<MediaStruct> get media => _media ?? const [];
+  set media(List<MediaStruct>? val) => _media = val;
+
+  void updateMedia(Function(List<MediaStruct>) updateFn) {
+    updateFn(_media ??= []);
+  }
+
+  bool hasMedia() => _media != null;
+
+  // "user_board_profile" field.
+  UserBoardProfileStruct? _userBoardProfile;
+  UserBoardProfileStruct get userBoardProfile =>
+      _userBoardProfile ?? UserBoardProfileStruct();
+  set userBoardProfile(UserBoardProfileStruct? val) => _userBoardProfile = val;
+
+  void updateUserBoardProfile(Function(UserBoardProfileStruct) updateFn) {
+    updateFn(_userBoardProfile ??= UserBoardProfileStruct());
+  }
+
+  bool hasUserBoardProfile() => _userBoardProfile != null;
+
+  static ReadPostDetailsStruct fromMap(Map<String, dynamic> data) =>
+      ReadPostDetailsStruct(
         id: castToType<int>(data['id']),
         univId: castToType<int>(data['univ_id']),
         boardId: castToType<int>(data['board_id']),
-        userBoardProfile:
-            UserBoardProfileStruct.maybeFromMap(data['user_board_profile']),
         title: data['title'] as String?,
         content: data['content'] as String?,
         anonym: data['anonym'] as bool?,
@@ -231,10 +271,6 @@ class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
         qna: data['qna'] as bool?,
         createdAt: castToType<int>(data['created_at']),
         updatedAt: castToType<int>(data['updated_at']),
-        media: getStructList(
-          data['media'],
-          MediaStruct.fromMap,
-        ),
         idBlinded: data['id_blinded'] as bool?,
         likeCount: castToType<int>(data['like_count']),
         dislikeCount: castToType<int>(data['dislike_count']),
@@ -242,19 +278,29 @@ class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
         commentCount: castToType<int>(data['comment_count']),
         sentiment: data['sentiment'] as String?,
         hottedAt: castToType<int>(data['hotted_at']),
+        isCreator: data['is_creator'] as bool?,
+        myLikeStatus: castToType<int>(data['my_like_status']),
+        isScraped: data['is_scraped'] as bool?,
+        comments: getStructList(
+          data['comments'],
+          CommentsStruct.fromMap,
+        ),
+        media: getStructList(
+          data['media'],
+          MediaStruct.fromMap,
+        ),
+        userBoardProfile:
+            UserBoardProfileStruct.maybeFromMap(data['user_board_profile']),
       );
 
-  static GetRecentPostsFromBoardidAndUnividStruct? maybeFromMap(dynamic data) =>
-      data is Map
-          ? GetRecentPostsFromBoardidAndUnividStruct.fromMap(
-              data.cast<String, dynamic>())
-          : null;
+  static ReadPostDetailsStruct? maybeFromMap(dynamic data) => data is Map
+      ? ReadPostDetailsStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'id': _id,
         'univ_id': _univId,
         'board_id': _boardId,
-        'user_board_profile': _userBoardProfile?.toMap(),
         'title': _title,
         'content': _content,
         'anonym': _anonym,
@@ -262,7 +308,6 @@ class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
         'qna': _qna,
         'created_at': _createdAt,
         'updated_at': _updatedAt,
-        'media': _media?.map((e) => e.toMap()).toList(),
         'id_blinded': _idBlinded,
         'like_count': _likeCount,
         'dislike_count': _dislikeCount,
@@ -270,6 +315,12 @@ class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
         'comment_count': _commentCount,
         'sentiment': _sentiment,
         'hotted_at': _hottedAt,
+        'is_creator': _isCreator,
+        'my_like_status': _myLikeStatus,
+        'is_scraped': _isScraped,
+        'comments': _comments?.map((e) => e.toMap()).toList(),
+        'media': _media?.map((e) => e.toMap()).toList(),
+        'user_board_profile': _userBoardProfile?.toMap(),
       }.withoutNulls;
 
   @override
@@ -285,10 +336,6 @@ class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
         'board_id': serializeParam(
           _boardId,
           ParamType.int,
-        ),
-        'user_board_profile': serializeParam(
-          _userBoardProfile,
-          ParamType.DataStruct,
         ),
         'title': serializeParam(
           _title,
@@ -319,11 +366,6 @@ class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
           _updatedAt,
           ParamType.int,
         ),
-        'media': serializeParam(
-          _media,
-          ParamType.DataStruct,
-          isList: true,
-        ),
         'id_blinded': serializeParam(
           _idBlinded,
           ParamType.bool,
@@ -352,11 +394,36 @@ class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
           _hottedAt,
           ParamType.int,
         ),
+        'is_creator': serializeParam(
+          _isCreator,
+          ParamType.bool,
+        ),
+        'my_like_status': serializeParam(
+          _myLikeStatus,
+          ParamType.int,
+        ),
+        'is_scraped': serializeParam(
+          _isScraped,
+          ParamType.bool,
+        ),
+        'comments': serializeParam(
+          _comments,
+          ParamType.DataStruct,
+          isList: true,
+        ),
+        'media': serializeParam(
+          _media,
+          ParamType.DataStruct,
+          isList: true,
+        ),
+        'user_board_profile': serializeParam(
+          _userBoardProfile,
+          ParamType.DataStruct,
+        ),
       }.withoutNulls;
 
-  static GetRecentPostsFromBoardidAndUnividStruct fromSerializableMap(
-          Map<String, dynamic> data) =>
-      GetRecentPostsFromBoardidAndUnividStruct(
+  static ReadPostDetailsStruct fromSerializableMap(Map<String, dynamic> data) =>
+      ReadPostDetailsStruct(
         id: deserializeParam(
           data['id'],
           ParamType.int,
@@ -371,12 +438,6 @@ class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
           data['board_id'],
           ParamType.int,
           false,
-        ),
-        userBoardProfile: deserializeStructParam(
-          data['user_board_profile'],
-          ParamType.DataStruct,
-          false,
-          structBuilder: UserBoardProfileStruct.fromSerializableMap,
         ),
         title: deserializeParam(
           data['title'],
@@ -414,12 +475,6 @@ class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
-        media: deserializeStructParam<MediaStruct>(
-          data['media'],
-          ParamType.DataStruct,
-          true,
-          structBuilder: MediaStruct.fromSerializableMap,
-        ),
         idBlinded: deserializeParam(
           data['id_blinded'],
           ParamType.bool,
@@ -455,19 +510,51 @@ class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
+        isCreator: deserializeParam(
+          data['is_creator'],
+          ParamType.bool,
+          false,
+        ),
+        myLikeStatus: deserializeParam(
+          data['my_like_status'],
+          ParamType.int,
+          false,
+        ),
+        isScraped: deserializeParam(
+          data['is_scraped'],
+          ParamType.bool,
+          false,
+        ),
+        comments: deserializeStructParam<CommentsStruct>(
+          data['comments'],
+          ParamType.DataStruct,
+          true,
+          structBuilder: CommentsStruct.fromSerializableMap,
+        ),
+        media: deserializeStructParam<MediaStruct>(
+          data['media'],
+          ParamType.DataStruct,
+          true,
+          structBuilder: MediaStruct.fromSerializableMap,
+        ),
+        userBoardProfile: deserializeStructParam(
+          data['user_board_profile'],
+          ParamType.DataStruct,
+          false,
+          structBuilder: UserBoardProfileStruct.fromSerializableMap,
+        ),
       );
 
   @override
-  String toString() => 'GetRecentPostsFromBoardidAndUnividStruct(${toMap()})';
+  String toString() => 'ReadPostDetailsStruct(${toMap()})';
 
   @override
   bool operator ==(Object other) {
     const listEquality = ListEquality();
-    return other is GetRecentPostsFromBoardidAndUnividStruct &&
+    return other is ReadPostDetailsStruct &&
         id == other.id &&
         univId == other.univId &&
         boardId == other.boardId &&
-        userBoardProfile == other.userBoardProfile &&
         title == other.title &&
         content == other.content &&
         anonym == other.anonym &&
@@ -475,14 +562,19 @@ class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
         qna == other.qna &&
         createdAt == other.createdAt &&
         updatedAt == other.updatedAt &&
-        listEquality.equals(media, other.media) &&
         idBlinded == other.idBlinded &&
         likeCount == other.likeCount &&
         dislikeCount == other.dislikeCount &&
         scrapCount == other.scrapCount &&
         commentCount == other.commentCount &&
         sentiment == other.sentiment &&
-        hottedAt == other.hottedAt;
+        hottedAt == other.hottedAt &&
+        isCreator == other.isCreator &&
+        myLikeStatus == other.myLikeStatus &&
+        isScraped == other.isScraped &&
+        listEquality.equals(comments, other.comments) &&
+        listEquality.equals(media, other.media) &&
+        userBoardProfile == other.userBoardProfile;
   }
 
   @override
@@ -490,7 +582,6 @@ class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
         id,
         univId,
         boardId,
-        userBoardProfile,
         title,
         content,
         anonym,
@@ -498,23 +589,26 @@ class GetRecentPostsFromBoardidAndUnividStruct extends BaseStruct {
         qna,
         createdAt,
         updatedAt,
-        media,
         idBlinded,
         likeCount,
         dislikeCount,
         scrapCount,
         commentCount,
         sentiment,
-        hottedAt
+        hottedAt,
+        isCreator,
+        myLikeStatus,
+        isScraped,
+        comments,
+        media,
+        userBoardProfile
       ]);
 }
 
-GetRecentPostsFromBoardidAndUnividStruct
-    createGetRecentPostsFromBoardidAndUnividStruct({
+ReadPostDetailsStruct createReadPostDetailsStruct({
   int? id,
   int? univId,
   int? boardId,
-  UserBoardProfileStruct? userBoardProfile,
   String? title,
   String? content,
   bool? anonym,
@@ -528,23 +622,30 @@ GetRecentPostsFromBoardidAndUnividStruct
   int? commentCount,
   String? sentiment,
   int? hottedAt,
+  bool? isCreator,
+  int? myLikeStatus,
+  bool? isScraped,
+  UserBoardProfileStruct? userBoardProfile,
 }) =>
-        GetRecentPostsFromBoardidAndUnividStruct(
-          id: id,
-          univId: univId,
-          boardId: boardId,
-          userBoardProfile: userBoardProfile ?? UserBoardProfileStruct(),
-          title: title,
-          content: content,
-          anonym: anonym,
-          qna: qna,
-          createdAt: createdAt,
-          updatedAt: updatedAt,
-          idBlinded: idBlinded,
-          likeCount: likeCount,
-          dislikeCount: dislikeCount,
-          scrapCount: scrapCount,
-          commentCount: commentCount,
-          sentiment: sentiment,
-          hottedAt: hottedAt,
-        );
+    ReadPostDetailsStruct(
+      id: id,
+      univId: univId,
+      boardId: boardId,
+      title: title,
+      content: content,
+      anonym: anonym,
+      qna: qna,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
+      idBlinded: idBlinded,
+      likeCount: likeCount,
+      dislikeCount: dislikeCount,
+      scrapCount: scrapCount,
+      commentCount: commentCount,
+      sentiment: sentiment,
+      hottedAt: hottedAt,
+      isCreator: isCreator,
+      myLikeStatus: myLikeStatus,
+      isScraped: isScraped,
+      userBoardProfile: userBoardProfile ?? UserBoardProfileStruct(),
+    );

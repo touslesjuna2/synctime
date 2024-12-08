@@ -1,3 +1,5 @@
+import '/auth/custom_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -30,8 +32,11 @@ class _AProfileWidgetState extends State<AProfileWidget>
     _model = createModel(context, () => AProfileModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'a_profile'});
-    _model.usernameTextController ??= TextEditingController();
-    _model.usernameFocusNode ??= FocusNode();
+    _model.usernameTextController1 ??= TextEditingController();
+    _model.usernameFocusNode1 ??= FocusNode();
+
+    _model.usernameTextController2 ??= TextEditingController();
+    _model.usernameFocusNode2 ??= FocusNode();
 
     _model.majorTextController ??= TextEditingController();
     _model.majorFocusNode ??= FocusNode();
@@ -155,15 +160,15 @@ class _AProfileWidgetState extends State<AProfileWidget>
                             child: SizedBox(
                               width: double.infinity,
                               child: TextFormField(
-                                controller: _model.usernameTextController,
-                                focusNode: _model.usernameFocusNode,
+                                controller: _model.usernameTextController1,
+                                focusNode: _model.usernameFocusNode1,
                                 autofocus: true,
                                 autofillHints: const [AutofillHints.email],
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelText:
                                       FFLocalizations.of(context).getText(
-                                    'v839gynv' /* Username */,
+                                    'v839gynv' /* full name */,
                                   ),
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelLarge
@@ -215,7 +220,78 @@ class _AProfileWidgetState extends State<AProfileWidget>
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primary,
                                 validator: _model
-                                    .usernameTextControllerValidator
+                                    .usernameTextController1Validator
+                                    .asValidator(context),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 10.0, 16.0),
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: TextFormField(
+                                controller: _model.usernameTextController2,
+                                focusNode: _model.usernameFocusNode2,
+                                autofocus: true,
+                                autofillHints: const [AutofillHints.email],
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  labelText:
+                                      FFLocalizations.of(context).getText(
+                                    'qybnbry3' /* student id */,
+                                  ),
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .labelLarge
+                                      .override(
+                                        fontFamily: 'Outfit',
+                                        letterSpacing: 0.0,
+                                      ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                  filled: true,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      fontFamily: 'Plus Jakarta Sans',
+                                      letterSpacing: 0.0,
+                                    ),
+                                keyboardType: TextInputType.emailAddress,
+                                cursorColor:
+                                    FlutterFlowTheme.of(context).primary,
+                                validator: _model
+                                    .usernameTextController2Validator
                                     .asValidator(context),
                               ),
                             ),
@@ -298,13 +374,7 @@ class _AProfileWidgetState extends State<AProfileWidget>
                                   FormFieldController<String>(null),
                               options: [
                                 FFLocalizations.of(context).getText(
-                                  'v0wbh573' /* Option 1 */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'en6651tl' /* Option 2 */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  '4efb84th' /* Option 3 */,
+                                  'v0wbh573' /* Enrolled */,
                                 )
                               ],
                               onChanged: (val) => safeSetState(
@@ -347,9 +417,24 @@ class _AProfileWidgetState extends State<AProfileWidget>
                               onPressed: () async {
                                 logFirebaseEvent(
                                     'A_PROFILE_PAGE_NEXT_BTN_ON_TAP');
-                                logFirebaseEvent('Button_navigate_to');
+                                logFirebaseEvent('Button_backend_call');
+                                _model.profile =
+                                    await UsersGroup.meUPDATECall.call(
+                                  fullName: _model.usernameTextController1.text,
+                                  studentId:
+                                      _model.usernameTextController1.text,
+                                  academicStatus: _model.dropDownValue,
+                                  major: _model.majorTextController.text,
+                                  accessToken: currentAuthenticationToken,
+                                );
 
-                                context.pushNamed('c2_Verification_Progress');
+                                if ((_model.profile?.succeeded ?? true)) {
+                                  logFirebaseEvent('Button_navigate_to');
+
+                                  context.pushNamed('MainPage');
+                                }
+
+                                safeSetState(() {});
                               },
                               text: FFLocalizations.of(context).getText(
                                 '9nwxj8jp' /* next */,

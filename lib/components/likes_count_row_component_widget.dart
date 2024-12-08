@@ -6,7 +6,12 @@ import 'likes_count_row_component_model.dart';
 export 'likes_count_row_component_model.dart';
 
 class LikesCountRowComponentWidget extends StatefulWidget {
-  const LikesCountRowComponentWidget({super.key});
+  const LikesCountRowComponentWidget({
+    super.key,
+    int? likeCountsInteger,
+  }) : likeCountsInteger = likeCountsInteger ?? 0;
+
+  final int likeCountsInteger;
 
   @override
   State<LikesCountRowComponentWidget> createState() =>

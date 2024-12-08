@@ -75,6 +75,38 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                     ),
                   ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      FFButtonWidget(
+                        onPressed: () async {
+                          logFirebaseEvent(
+                              'LOGINMAIN_EMAIL_PAGE_BACK_BTN_ON_TAP');
+                          logFirebaseEvent('Button_navigate_back');
+                          context.safePop();
+                        },
+                        text: FFLocalizations.of(context).getText(
+                          'rbne13yj' /* back */,
+                        ),
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              16.0, 0.0, 16.0, 0.0),
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).primary,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
+                                  ),
+                          elevation: 0.0,
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                    ],
+                  ),
                   Text(
                     FFLocalizations.of(context).getText(
                       'l6jao0uu' /* Sync */,

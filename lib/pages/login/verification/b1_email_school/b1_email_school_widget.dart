@@ -146,8 +146,11 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   FFButtonWidget(
-                                    onPressed: () {
-                                      print('Button pressed ...');
+                                    onPressed: () async {
+                                      logFirebaseEvent(
+                                          'B1_EMAIL_SCHOOL_PAGE_BACK_BTN_ON_TAP');
+                                      logFirebaseEvent('Button_navigate_back');
+                                      context.safePop();
                                     },
                                     text: FFLocalizations.of(context).getText(
                                       '09flglxp' /* Back */,
@@ -370,7 +373,8 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
                                                 .call(
                                           email: _model
                                               .emailAddressTextController1.text,
-                                          univId: FFAppState().univid,
+                                          univId:
+                                              FFAppState().selectedUniversityID,
                                           accessToken:
                                               currentAuthenticationToken,
                                         );
@@ -536,7 +540,8 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
                                               email: _model
                                                   .emailAddressTextController1
                                                   .text,
-                                              univId: FFAppState().univid,
+                                              univId: FFAppState()
+                                                  .selectedUniversityID,
                                               verificationCode: _model
                                                   .emailAddressTextController2
                                                   .text,

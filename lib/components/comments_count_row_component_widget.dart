@@ -6,7 +6,12 @@ import 'comments_count_row_component_model.dart';
 export 'comments_count_row_component_model.dart';
 
 class CommentsCountRowComponentWidget extends StatefulWidget {
-  const CommentsCountRowComponentWidget({super.key});
+  const CommentsCountRowComponentWidget({
+    super.key,
+    int? commentsCountsInteger,
+  }) : commentsCountsInteger = commentsCountsInteger ?? 0;
+
+  final int commentsCountsInteger;
 
   @override
   State<CommentsCountRowComponentWidget> createState() =>

@@ -110,8 +110,10 @@ class _AlertGeneralCMPWidgetState extends State<AlertGeneralCMPWidget> {
                 color: Color(0xFF606A85),
                 size: 24.0,
               ),
-              onPressed: () {
-                print('IconButton pressed ...');
+              onPressed: () async {
+                logFirebaseEvent('ALERT_GENERAL_C_M_P_close_rounded_ICN_ON');
+                logFirebaseEvent('IconButton_navigate_back');
+                context.safePop();
               },
             ),
           ].divide(const SizedBox(width: 8.0)),

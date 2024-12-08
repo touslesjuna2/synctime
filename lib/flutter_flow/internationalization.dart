@@ -182,10 +182,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'More >',
       'ja': '',
     },
-    'xg44j698': {
-      'en': 'BoardName',
-      'ja': '',
-    },
     'c5nz18n3': {
       'en': 'Home',
       'ja': '',
@@ -210,7 +206,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
   },
-  // BoardList
+  // viewBoardList
   {
     'mwcd354r': {
       'en': '게시판',
@@ -674,6 +670,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // a_Select_School
   {
+    '3lhy56bs': {
+      'en': 'Back',
+      'ja': '',
+    },
     'dba2j2zp': {
       'en': '어느학교이신가요?',
       'ja': '',
@@ -729,6 +729,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // a_Verification_select
   {
+    'i2qt2eh6': {
+      'en': 'Back',
+      'ja': '',
+    },
     'goj4fg1q': {
       'en': '인증 절차를 진행함.',
       'ja': '',
@@ -1125,7 +1129,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // Loginmain
   {
     'u5w90d4w': {
-      'en': 'Sync2',
+      'en': 'Sync5',
       'ja': '',
     },
     'rif7vlcc': {
@@ -1174,6 +1178,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Loginmain_Email
   {
+    'rbne13yj': {
+      'en': 'back',
+      'ja': '',
+    },
     'l6jao0uu': {
       'en': 'Sync',
       'ja': '',
@@ -1234,7 +1242,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
     'v839gynv': {
-      'en': 'Username',
+      'en': 'full name',
+      'ja': '',
+    },
+    'qybnbry3': {
+      'en': 'student id',
       'ja': '',
     },
     'mek0nln3': {
@@ -1242,15 +1254,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
     'v0wbh573': {
-      'en': 'Option 1',
-      'ja': '',
-    },
-    'en6651tl': {
-      'en': 'Option 2',
-      'ja': '',
-    },
-    '4efb84th': {
-      'en': 'Option 3',
+      'en': 'Enrolled',
       'ja': '',
     },
     'm7r5zbq9': {
@@ -1270,7 +1274,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
   },
-  // ViewBoard
+  // viewBoard
   {
     '5dgcr974': {
       'en': '전전 용어 정리',
@@ -1286,10 +1290,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'bizahudi': {
       'en': '11/30',
-      'ja': '',
-    },
-    'ychmwt2t': {
-      'en': '익명',
       'ja': '',
     },
     'gpa6tcds': {
@@ -1309,7 +1309,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
   },
-  // CreatePost
+  // createPost
   {
     'z496wr85': {
       'en':
@@ -1361,7 +1361,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
   },
-  // CreateBoard
+  // createBoard
   {
     '3i4clmfe': {
       'en': '',
@@ -1375,32 +1375,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Description',
       'ja': '',
     },
+    'uz4eqe85': {
+      'en': 'Board_types',
+      'ja': '',
+    },
+    'r5b9ig55': {
+      'en': 'Rule',
+      'ja': '',
+    },
     'sw90v4su': {
       'en': 'Allow Anonym',
       'ja': '',
     },
-    'mlz29lau': {
-      'en': 'Required Tags ',
-      'ja': '',
-    },
-    'brxd7ei3': {
-      'en': 'Add tag',
-      'ja': '',
-    },
-    '8vd8lxhi': {
-      'en': 'Free',
-      'ja': '',
-    },
-    '02djap6l': {
-      'en': 'Buy',
-      'ja': '',
-    },
-    'b38d2jrh': {
-      'en': 'Sell',
-      'ja': '',
-    },
-    'n0l2450e': {
-      'en': 'Anything you can tag',
+    '2j8xkuqq': {
+      'en': 'QnA',
       'ja': '',
     },
     'eqhl2fh6': {
@@ -1416,7 +1404,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
   },
-  // ViewPost
+  // viewPost
   {
     '50c4wzd5': {
       'en': 'Board Name',
@@ -1466,10 +1454,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
   },
-  // SearchPost
+  // searchPost
   {
     'o4w3uj1d': {
-      'en': 'Search posts by hashtags. #exam ',
+      'en': 'name, contents, author, #hashtags ',
       'ja': '',
     },
     'w70ibiyy': {
@@ -1493,7 +1481,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
     '1b43bw44': {
-      'en': 'Board Name',
+      'en': 'Search Post',
       'ja': '',
     },
     'o0bfe71k': {
@@ -1505,7 +1493,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
   },
-  // SearchBoard
+  // searchBoard
   {
     'b1ud8hld': {
       'en': 'Board name ',
@@ -1536,6 +1524,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ja': '',
     },
     'et32wqx3': {
+      'en': 'Home',
+      'ja': '',
+    },
+  },
+  // viewMyBoard
+  {
+    'm3t83lp1': {
+      'en': '11/30',
+      'ja': '',
+    },
+    'i2ro4zn9': {
+      'en': 'Board Name',
+      'ja': '',
+    },
+    '77khj18f': {
+      'en': 'Create Post',
+      'ja': '',
+    },
+    'gnw2i0v1': {
       'en': 'Home',
       'ja': '',
     },
@@ -1679,35 +1686,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'thvb7olb': {
       'en': 'Verify',
-      'ja': '',
-    },
-  },
-  // CommentReplyContainer
-  {
-    'r5fy9fe7': {
-      'en': 'Sarah Johnson',
-      'ja': '',
-    },
-    'ny7aa9g5': {
-      'en': '2 hours ago',
-      'ja': '',
-    },
-    'd8qdcsnp': {
-      'en':
-          'This is such an insightful post! I particularly appreciate how you broke down the complex topic into digestible pieces. It really helped me understand the concept better.',
-      'ja': '',
-    },
-    'wh6pbajt': {
-      'en': 'Mike Chen',
-      'ja': '',
-    },
-    'tu4gfume': {
-      'en': '1 hour ago',
-      'ja': '',
-    },
-    '1gg94xiu': {
-      'en':
-          'Totally agree with you Sarah! The examples provided were especially helpful.',
       'ja': '',
     },
   },

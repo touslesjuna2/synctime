@@ -1,4 +1,5 @@
 import '/auth/custom_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/components/ads_banner_widget.dart';
 import '/components/comments_count_row_component_widget.dart';
 import '/components/likes_count_row_component_widget.dart';
@@ -12,7 +13,12 @@ import 'view_board_model.dart';
 export 'view_board_model.dart';
 
 class ViewBoardWidget extends StatefulWidget {
-  const ViewBoardWidget({super.key});
+  const ViewBoardWidget({
+    super.key,
+    required this.boardid,
+  });
+
+  final int? boardid;
 
   @override
   State<ViewBoardWidget> createState() => _ViewBoardWidgetState();
@@ -28,7 +34,7 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
     super.initState();
     _model = createModel(context, () => ViewBoardModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'ViewBoard'});
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'viewBoard'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -57,7 +63,7 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                 logFirebaseEvent('VIEW_BOARD_FloatingActionButton_gsbvk3xx');
                 logFirebaseEvent('FloatingActionButton_navigate_to');
 
-                context.pushNamed('CreatePost');
+                context.pushNamed('createPost');
               },
               backgroundColor: const Color(0xFFE1E1E7),
               icon: FaIcon(
@@ -526,75 +532,112 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
-                        child: Builder(
-                          builder: (context) {
-                            final recentPosts =
-                                FFAppState().PPViewBoardRecentPosts.toList();
-
-                            return ListView.builder(
-                              padding: EdgeInsets.zero,
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: recentPosts.length,
-                              itemBuilder: (context, recentPostsIndex) {
-                                final recentPostsItem =
-                                    recentPosts[recentPostsIndex];
-                                return Container(
-                                  width: 100.0,
-                                  height:
-                                      MediaQuery.sizeOf(context).height * 0.14,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
+                        child: FutureBuilder<ApiCallResponse>(
+                          future: CommuniyUnivIDGroup
+                              .unividBoardsBoardIdREADCall
+                              .call(
+                            boardId: '1',
+                            accessToken: currentAuthenticationToken,
+                            univId: FFAppState().id,
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
+                                    ),
                                   ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Expanded(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Container(
-                                            width: 100.0,
-                                            height: MediaQuery.sizeOf(context)
-                                                    .height *
-                                                0.14,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
+                                ),
+                              );
+                            }
+                            final postsListViewUnividBoardsBoardIdREADResponse =
+                                snapshot.data!;
+
+                            return Builder(
+                              builder: (context) {
+                                final recentPosts = FFAppState()
+                                    .ppReadPostsListInBoardId
+                                    .toList();
+
+                                return ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: recentPosts.length,
+                                  itemBuilder: (context, recentPostsIndex) {
+                                    final recentPostsItem =
+                                        recentPosts[recentPostsIndex];
+                                    return Container(
+                                      width: 100.0,
+                                      height:
+                                          MediaQuery.sizeOf(context).height *
+                                              0.14,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Expanded(
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Container(
+                                                width: 100.0,
+                                                height:
+                                                    MediaQuery.sizeOf(context)
+                                                            .height *
+                                                        0.14,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
                                                       .secondaryBackground,
-                                            ),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
-                                              children: [
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          5.0, 0.0, 0.0, 0.0),
-                                                  child: Container(
-                                                    width: MediaQuery.sizeOf(
-                                                                context)
-                                                            .width *
-                                                        1.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
-                                                    child: Padding(
+                                                ),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                  children: [
+                                                    Padding(
                                                       padding:
                                                           const EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  4.0,
+                                                                  5.0,
                                                                   0.0,
                                                                   0.0,
-                                                                  4.0),
-                                                      child: Text(
-                                                        recentPostsItem.title,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                                  0.0),
+                                                      child: Container(
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                1.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      4.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      4.0),
+                                                          child: Text(
+                                                            recentPostsItem
+                                                                .title,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
@@ -605,300 +648,319 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                                                                       FontWeight
                                                                           .bold,
                                                                 ),
+                                                          ),
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
+                                                    Container(
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
                                                               .width *
                                                           1.0,
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(8.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      recentPostsItem.content,
-                                                      maxLines: 2,
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Plus Jakarta Sans',
-                                                            fontSize: 14.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                          ),
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    8.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          recentPostsItem
+                                                              .content,
+                                                          maxLines: 2,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Plus Jakarta Sans',
+                                                                fontSize: 14.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
+                                                        ),
+                                                      ),
                                                     ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          8.0, 0.0, 0.0, 0.0),
-                                                  child: Container(
-                                                    width: MediaQuery.sizeOf(
-                                                                context)
-                                                            .width *
-                                                        1.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
-                                                    child: Padding(
+                                                    Padding(
                                                       padding:
                                                           const EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  5.0,
+                                                                  8.0,
                                                                   0.0,
                                                                   0.0,
                                                                   0.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Container(
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                            ),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Builder(
-                                                                  builder:
-                                                                      (context) {
-                                                                    if (loggedIn) {
-                                                                      return Container(
-                                                                        height: MediaQuery.sizeOf(context).height *
-                                                                            0.04,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).secondaryBackground,
-                                                                        ),
-                                                                        child:
-                                                                            wrapWithModel(
-                                                                          model: _model
-                                                                              .likesCountRowComponentModels
-                                                                              .getModel(
-                                                                            recentPostsItem.id.toString(),
-                                                                            recentPostsIndex,
-                                                                          ),
-                                                                          updateCallback: () =>
-                                                                              safeSetState(() {}),
-                                                                          child:
-                                                                              LikesCountRowComponentWidget(
-                                                                            key:
-                                                                                Key(
-                                                                              'Keyqn2_${recentPostsItem.id.toString()}',
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      );
-                                                                    } else {
-                                                                      return Container(
-                                                                        width: MediaQuery.sizeOf(context).width *
-                                                                            0.0,
-                                                                        height: MediaQuery.sizeOf(context).height *
-                                                                            0.0,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).secondaryBackground,
-                                                                        ),
-                                                                      );
-                                                                    }
-                                                                  },
-                                                                ),
-                                                                Builder(
-                                                                  builder:
-                                                                      (context) {
-                                                                    if (loggedIn) {
-                                                                      return Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                                                            10.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                        child:
-                                                                            Container(
-                                                                          height:
-                                                                              MediaQuery.sizeOf(context).height * 0.04,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).secondaryBackground,
-                                                                          ),
-                                                                          child:
-                                                                              CommentsCountRowComponentWidget(
-                                                                            key:
-                                                                                Key('Key2qj_${recentPostsIndex}_of_${recentPosts.length}'),
-                                                                          ),
-                                                                        ),
-                                                                      );
-                                                                    } else {
-                                                                      return Container(
-                                                                        width: MediaQuery.sizeOf(context).width *
-                                                                            0.0,
-                                                                        height: MediaQuery.sizeOf(context).height *
-                                                                            0.0,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).secondaryBackground,
-                                                                        ),
-                                                                      );
-                                                                    }
-                                                                  },
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Opacity(
-                                                            opacity: 0.3,
-                                                            child: SizedBox(
-                                                              height: 20.0,
-                                                              child:
-                                                                  VerticalDivider(
-                                                                thickness: 2.0,
-                                                                color: FlutterFlowTheme.of(
+                                                      child: Container(
+                                                        width:
+                                                            MediaQuery.sizeOf(
                                                                         context)
-                                                                    .secondaryText,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Container(
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                            ),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Text(
-                                                                  FFLocalizations.of(
+                                                                    .width *
+                                                                1.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      5.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Container(
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .getText(
-                                                                    'bizahudi' /* 1130 */,
+                                                                      .secondaryBackground,
+                                                                ),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Builder(
+                                                                      builder:
+                                                                          (context) {
+                                                                        if (loggedIn) {
+                                                                          return Container(
+                                                                            height:
+                                                                                MediaQuery.sizeOf(context).height * 0.04,
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                            ),
+                                                                            child:
+                                                                                wrapWithModel(
+                                                                              model: _model.likesCountRowComponentModels.getModel(
+                                                                                recentPostsItem.id.toString(),
+                                                                                recentPostsIndex,
+                                                                              ),
+                                                                              updateCallback: () => safeSetState(() {}),
+                                                                              child: LikesCountRowComponentWidget(
+                                                                                key: Key(
+                                                                                  'Keyqn2_${recentPostsItem.id.toString()}',
+                                                                                ),
+                                                                                likeCountsInteger: recentPostsItem.likeCount,
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                        } else {
+                                                                          return Container(
+                                                                            width:
+                                                                                MediaQuery.sizeOf(context).width * 0.0,
+                                                                            height:
+                                                                                MediaQuery.sizeOf(context).height * 0.0,
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                            ),
+                                                                          );
+                                                                        }
+                                                                      },
+                                                                    ),
+                                                                    Builder(
+                                                                      builder:
+                                                                          (context) {
+                                                                        if (loggedIn) {
+                                                                          return Padding(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                                10.0,
+                                                                                0.0,
+                                                                                0.0,
+                                                                                0.0),
+                                                                            child:
+                                                                                Container(
+                                                                              height: MediaQuery.sizeOf(context).height * 0.04,
+                                                                              decoration: BoxDecoration(
+                                                                                color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                              ),
+                                                                              child: wrapWithModel(
+                                                                                model: _model.commentsCountRowComponentModels.getModel(
+                                                                                  recentPostsItem.id.toString(),
+                                                                                  recentPostsIndex,
+                                                                                ),
+                                                                                updateCallback: () => safeSetState(() {}),
+                                                                                child: CommentsCountRowComponentWidget(
+                                                                                  key: Key(
+                                                                                    'Key2qj_${recentPostsItem.id.toString()}',
+                                                                                  ),
+                                                                                  commentsCountsInteger: valueOrDefault<int>(
+                                                                                    recentPostsItem.commentCount,
+                                                                                    0,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                        } else {
+                                                                          return Container(
+                                                                            width:
+                                                                                MediaQuery.sizeOf(context).width * 0.0,
+                                                                            height:
+                                                                                MediaQuery.sizeOf(context).height * 0.0,
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                            ),
+                                                                          );
+                                                                        }
+                                                                      },
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Opacity(
+                                                                opacity: 0.3,
+                                                                child: SizedBox(
+                                                                  height: 20.0,
+                                                                  child:
+                                                                      VerticalDivider(
+                                                                    thickness:
+                                                                        2.0,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
                                                                   ),
+                                                                ),
+                                                              ),
+                                                              Container(
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                ),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Text(
+                                                                      FFLocalizations.of(
+                                                                              context)
+                                                                          .getText(
+                                                                        'bizahudi' /* 1130 */,
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Plus Jakarta Sans',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).secondaryText,
+                                                                            fontSize:
+                                                                                12.0,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w500,
+                                                                          ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Opacity(
+                                                                opacity: 0.3,
+                                                                child: SizedBox(
+                                                                  height: 20.0,
+                                                                  child:
+                                                                      VerticalDivider(
+                                                                    thickness:
+                                                                        2.0,
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryText,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                              Container(
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                ),
+                                                                child: Text(
+                                                                  recentPostsItem
+                                                                      .userBoardProfile
+                                                                      .nickname,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Plus Jakarta Sans',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryText,
                                                                         fontSize:
                                                                             12.0,
                                                                         letterSpacing:
                                                                             0.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
                                                                       ),
                                                                 ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                          Opacity(
-                                                            opacity: 0.3,
-                                                            child: SizedBox(
-                                                              height: 20.0,
-                                                              child:
-                                                                  VerticalDivider(
-                                                                thickness: 2.0,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryText,
                                                               ),
-                                                            ),
+                                                            ].divide(const SizedBox(
+                                                                width: 2.0)),
                                                           ),
-                                                          Container(
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                            ),
-                                                            child: Text(
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                                'ychmwt2t' /* 익명 */,
-                                                              ),
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Plus Jakarta Sans',
-                                                                    fontSize:
-                                                                        12.0,
-                                                                    letterSpacing:
-                                                                        0.0,
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                        ].divide(const SizedBox(
-                                                            width: 2.0)),
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
+                                                  ],
                                                 ),
-                                              ],
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ),
-                                      Container(
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
+                                          Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
                                                 0.3,
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
                                                 0.14,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(20.0),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(14.0),
-                                            child: Image.network(
-                                              'https://picsum.photos/seed/848/600',
-                                              width: 200.0,
-                                              height: 200.0,
-                                              fit: BoxFit.cover,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(20.0),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(14.0),
+                                                child: Image.network(
+                                                  recentPostsItem
+                                                      .userBoardProfile
+                                                      .imageUrl,
+                                                  width: 200.0,
+                                                  height: 200.0,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
                                             ),
                                           ),
-                                        ),
+                                        ],
                                       ),
-                                    ],
-                                  ),
+                                    );
+                                  },
                                 );
                               },
                             );

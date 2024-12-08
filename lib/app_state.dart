@@ -18,10 +18,8 @@ class FFAppState extends ChangeNotifier {
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
     _safeInit(() {
-      _accesstoken = prefs.getString('ff_accesstoken') ?? _accesstoken;
-    });
-    _safeInit(() {
-      _refreshtoken = prefs.getString('ff_refreshtoken') ?? _refreshtoken;
+      _anonymImagePath =
+          prefs.getString('ff_anonymImagePath') ?? _anonymImagePath;
     });
   }
 
@@ -98,6 +96,12 @@ class FFAppState extends ChangeNotifier {
     _academicstatus = value;
   }
 
+  String _userstatus = '';
+  String get userstatus => _userstatus;
+  set userstatus(String value) {
+    _userstatus = value;
+  }
+
   String _studentid = '';
   String get studentid => _studentid;
   set studentid(String value) {
@@ -114,20 +118,6 @@ class FFAppState extends ChangeNotifier {
   String get password => _password;
   set password(String value) {
     _password = value;
-  }
-
-  String _accesstoken = '';
-  String get accesstoken => _accesstoken;
-  set accesstoken(String value) {
-    _accesstoken = value;
-    prefs.setString('ff_accesstoken', value);
-  }
-
-  String _refreshtoken = '';
-  String get refreshtoken => _refreshtoken;
-  set refreshtoken(String value) {
-    _refreshtoken = value;
-    prefs.setString('ff_refreshtoken', value);
   }
 
   List<String> _uniqueContries = [];
@@ -235,40 +225,151 @@ class FFAppState extends ChangeNotifier {
     filtereduniversities.insert(index, value);
   }
 
-  List<GetRecentPostsFromBoardidAndUnividStruct> _PPViewBoardRecentPosts = [];
-  List<GetRecentPostsFromBoardidAndUnividStruct> get PPViewBoardRecentPosts =>
-      _PPViewBoardRecentPosts;
-  set PPViewBoardRecentPosts(
-      List<GetRecentPostsFromBoardidAndUnividStruct> value) {
-    _PPViewBoardRecentPosts = value;
+  List<ReadRecentPostsInBoardIdStruct> _ppReadPostsListInBoardId = [];
+  List<ReadRecentPostsInBoardIdStruct> get ppReadPostsListInBoardId =>
+      _ppReadPostsListInBoardId;
+  set ppReadPostsListInBoardId(List<ReadRecentPostsInBoardIdStruct> value) {
+    _ppReadPostsListInBoardId = value;
   }
 
-  void addToPPViewBoardRecentPosts(
-      GetRecentPostsFromBoardidAndUnividStruct value) {
-    PPViewBoardRecentPosts.add(value);
+  void addToPpReadPostsListInBoardId(ReadRecentPostsInBoardIdStruct value) {
+    ppReadPostsListInBoardId.add(value);
   }
 
-  void removeFromPPViewBoardRecentPosts(
-      GetRecentPostsFromBoardidAndUnividStruct value) {
-    PPViewBoardRecentPosts.remove(value);
+  void removeFromPpReadPostsListInBoardId(
+      ReadRecentPostsInBoardIdStruct value) {
+    ppReadPostsListInBoardId.remove(value);
   }
 
-  void removeAtIndexFromPPViewBoardRecentPosts(int index) {
-    PPViewBoardRecentPosts.removeAt(index);
+  void removeAtIndexFromPpReadPostsListInBoardId(int index) {
+    ppReadPostsListInBoardId.removeAt(index);
   }
 
-  void updatePPViewBoardRecentPostsAtIndex(
+  void updatePpReadPostsListInBoardIdAtIndex(
     int index,
-    GetRecentPostsFromBoardidAndUnividStruct Function(
-            GetRecentPostsFromBoardidAndUnividStruct)
+    ReadRecentPostsInBoardIdStruct Function(ReadRecentPostsInBoardIdStruct)
         updateFn,
   ) {
-    PPViewBoardRecentPosts[index] = updateFn(_PPViewBoardRecentPosts[index]);
+    ppReadPostsListInBoardId[index] =
+        updateFn(_ppReadPostsListInBoardId[index]);
   }
 
-  void insertAtIndexInPPViewBoardRecentPosts(
-      int index, GetRecentPostsFromBoardidAndUnividStruct value) {
-    PPViewBoardRecentPosts.insert(index, value);
+  void insertAtIndexInPpReadPostsListInBoardId(
+      int index, ReadRecentPostsInBoardIdStruct value) {
+    ppReadPostsListInBoardId.insert(index, value);
+  }
+
+  List<ReadMyRelatedBoardStruct> _ppReadMyRelatedBoard = [];
+  List<ReadMyRelatedBoardStruct> get ppReadMyRelatedBoard =>
+      _ppReadMyRelatedBoard;
+  set ppReadMyRelatedBoard(List<ReadMyRelatedBoardStruct> value) {
+    _ppReadMyRelatedBoard = value;
+  }
+
+  void addToPpReadMyRelatedBoard(ReadMyRelatedBoardStruct value) {
+    ppReadMyRelatedBoard.add(value);
+  }
+
+  void removeFromPpReadMyRelatedBoard(ReadMyRelatedBoardStruct value) {
+    ppReadMyRelatedBoard.remove(value);
+  }
+
+  void removeAtIndexFromPpReadMyRelatedBoard(int index) {
+    ppReadMyRelatedBoard.removeAt(index);
+  }
+
+  void updatePpReadMyRelatedBoardAtIndex(
+    int index,
+    ReadMyRelatedBoardStruct Function(ReadMyRelatedBoardStruct) updateFn,
+  ) {
+    ppReadMyRelatedBoard[index] = updateFn(_ppReadMyRelatedBoard[index]);
+  }
+
+  void insertAtIndexInPpReadMyRelatedBoard(
+      int index, ReadMyRelatedBoardStruct value) {
+    ppReadMyRelatedBoard.insert(index, value);
+  }
+
+  String _anonymImagePath =
+      'https://i.pinimg.com/280x280_RS/ce/6c/fc/ce6cfc73ef62f44510a64bc62937328f.jpg';
+  String get anonymImagePath => _anonymImagePath;
+  set anonymImagePath(String value) {
+    _anonymImagePath = value;
+    prefs.setString('ff_anonymImagePath', value);
+  }
+
+  ReadPostDetailsStruct _ppReadPostDetails = ReadPostDetailsStruct();
+  ReadPostDetailsStruct get ppReadPostDetails => _ppReadPostDetails;
+  set ppReadPostDetails(ReadPostDetailsStruct value) {
+    _ppReadPostDetails = value;
+  }
+
+  void updatePpReadPostDetailsStruct(Function(ReadPostDetailsStruct) updateFn) {
+    updateFn(_ppReadPostDetails);
+  }
+
+  List<String> _selectedTags = [];
+  List<String> get selectedTags => _selectedTags;
+  set selectedTags(List<String> value) {
+    _selectedTags = value;
+  }
+
+  void addToSelectedTags(String value) {
+    selectedTags.add(value);
+  }
+
+  void removeFromSelectedTags(String value) {
+    selectedTags.remove(value);
+  }
+
+  void removeAtIndexFromSelectedTags(int index) {
+    selectedTags.removeAt(index);
+  }
+
+  void updateSelectedTagsAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    selectedTags[index] = updateFn(_selectedTags[index]);
+  }
+
+  void insertAtIndexInSelectedTags(int index, String value) {
+    selectedTags.insert(index, value);
+  }
+
+  List<String> _myTags = [];
+  List<String> get myTags => _myTags;
+  set myTags(List<String> value) {
+    _myTags = value;
+  }
+
+  void addToMyTags(String value) {
+    myTags.add(value);
+  }
+
+  void removeFromMyTags(String value) {
+    myTags.remove(value);
+  }
+
+  void removeAtIndexFromMyTags(int index) {
+    myTags.removeAt(index);
+  }
+
+  void updateMyTagsAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    myTags[index] = updateFn(_myTags[index]);
+  }
+
+  void insertAtIndexInMyTags(int index, String value) {
+    myTags.insert(index, value);
+  }
+
+  String _access = '';
+  String get access => _access;
+  set access(String value) {
+    _access = value;
   }
 }
 

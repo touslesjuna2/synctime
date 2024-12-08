@@ -1,9 +1,9 @@
 import '/components/ads_banner_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'board_list_widget.dart' show BoardListWidget;
+import 'view_board_list_widget.dart' show ViewBoardListWidget;
 import 'package:flutter/material.dart';
 
-class BoardListModel extends FlutterFlowModel<BoardListWidget> {
+class ViewBoardListModel extends FlutterFlowModel<ViewBoardListWidget> {
   ///  State fields for stateful widgets in this page.
 
   // Model for ads_banner component.

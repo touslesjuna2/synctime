@@ -25,7 +25,7 @@ class _SearchPostWidgetState extends State<SearchPostWidget> {
     super.initState();
     _model = createModel(context, () => SearchPostModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'SearchPost'});
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'searchPost'});
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
@@ -138,7 +138,7 @@ class _SearchPostWidgetState extends State<SearchPostWidget> {
                                               hintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                'o4w3uj1d' /* Search posts by hashtags. #exa... */,
+                                                'o4w3uj1d' /* name, contents, author, #hasht... */,
                                               ),
                                               hintStyle:
                                                   FlutterFlowTheme.of(context)
@@ -313,7 +313,7 @@ class _SearchPostWidgetState extends State<SearchPostWidget> {
                             children: [
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  '1b43bw44' /* Board Name */,
+                                  '1b43bw44' /* Search Post */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium

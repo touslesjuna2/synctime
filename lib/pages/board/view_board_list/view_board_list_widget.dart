@@ -1,29 +1,35 @@
+import '/auth/custom_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/components/ads_banner_widget.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'board_list_model.dart';
-export 'board_list_model.dart';
+import 'package:provider/provider.dart';
+import 'view_board_list_model.dart';
+export 'view_board_list_model.dart';
 
-class BoardListWidget extends StatefulWidget {
-  const BoardListWidget({super.key});
+class ViewBoardListWidget extends StatefulWidget {
+  const ViewBoardListWidget({super.key});
 
   @override
-  State<BoardListWidget> createState() => _BoardListWidgetState();
+  State<ViewBoardListWidget> createState() => _ViewBoardListWidgetState();
 }
 
-class _BoardListWidgetState extends State<BoardListWidget> {
-  late BoardListModel _model;
+class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
+  late ViewBoardListModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => BoardListModel());
+    _model = createModel(context, () => ViewBoardListModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'BoardList'});
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'viewBoardList'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -36,6 +42,8 @@ class _BoardListWidgetState extends State<BoardListWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -562,10 +570,10 @@ class _BoardListWidgetState extends State<BoardListWidget> {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 0.0, 10.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 10.0, 20.0, 10.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           FFLocalizations.of(context).getText(
@@ -578,6 +586,22 @@ class _BoardListWidgetState extends State<BoardListWidget> {
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
                                   ),
+                        ),
+                        FlutterFlowIconButton(
+                          borderRadius: 8.0,
+                          buttonSize: 40.0,
+                          icon: Icon(
+                            Icons.add,
+                            color: FlutterFlowTheme.of(context).primaryText,
+                            size: 24.0,
+                          ),
+                          onPressed: () async {
+                            logFirebaseEvent(
+                                'VIEW_BOARD_LIST_PAGE_add_ICN_ON_TAP');
+                            logFirebaseEvent('IconButton_navigate_to');
+
+                            context.pushNamed('createBoard');
+                          },
                         ),
                       ],
                     ),
@@ -643,6 +667,109 @@ class _BoardListWidgetState extends State<BoardListWidget> {
                     indent: 30.0,
                     endIndent: 30.0,
                     color: FlutterFlowTheme.of(context).alternate,
+                  ),
+                  FutureBuilder<ApiCallResponse>(
+                    future: CommuniyUnivIDGroup.unividBoardsREADCall.call(
+                      accessToken: currentAuthenticationToken,
+                      univId: FFAppState().univid,
+                    ),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50.0,
+                            height: 50.0,
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                FlutterFlowTheme.of(context).primary,
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                      final listViewUnividBoardsREADResponse = snapshot.data!;
+
+                      return Builder(
+                        builder: (context) {
+                          final board = listViewUnividBoardsREADResponse
+                              .jsonBody
+                              .toList();
+
+                          return ListView.builder(
+                            padding: EdgeInsets.zero,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: board.length,
+                            itemBuilder: (context, boardIndex) {
+                              final boardItem = board[boardIndex];
+                              return Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 10.0, 10.0, 10.0),
+                                child: Container(
+                                  width: 100.0,
+                                  height: 49.0,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      logFirebaseEvent(
+                                          'VIEW_BOARD_LIST_PAGE_Row_tkv6q8ex_ON_TAP');
+                                      logFirebaseEvent('Row_navigate_to');
+
+                                      context.pushNamed(
+                                        'viewBoard',
+                                        queryParameters: {
+                                          'boardid': serializeParam(
+                                            BoardListStruct.maybeFromMap(
+                                                    listViewUnividBoardsREADResponse
+                                                        .jsonBody)
+                                                ?.id,
+                                            ParamType.int,
+                                          ),
+                                        }.withoutNulls,
+                                      );
+                                    },
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  15.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            valueOrDefault<String>(
+                                              BoardListStruct.maybeFromMap(
+                                                      boardItem)
+                                                  ?.name,
+                                              'BoardName',
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily:
+                                                      'Plus Jakarta Sans',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      );
+                    },
                   ),
                 ],
               ),

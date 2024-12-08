@@ -99,11 +99,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   : const TimeblockWidget(),
             ),
             FFRoute(
-              name: 'BoardList',
-              path: 'Board',
+              name: 'viewBoardList',
+              path: 'viewBoardList',
               builder: (context, params) => params.isEmpty
-                  ? const NavBarPage(initialPage: 'BoardList')
-                  : const BoardListWidget(),
+                  ? const NavBarPage(initialPage: 'viewBoardList')
+                  : const ViewBoardListWidget(),
             ),
             FFRoute(
               name: 'Settings',
@@ -262,7 +262,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             FFRoute(
               name: 'Loginmain',
-              path: 'loginmain/:code',
+              path: 'loginmain',
               builder: (context, params) => LoginmainWidget(
                 code: params.getParam(
                   'code',
@@ -286,34 +286,44 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => const AProfileWidget(),
             ),
             FFRoute(
-              name: 'ViewBoard',
+              name: 'viewBoard',
               path: 'viewBoard',
-              builder: (context, params) => const ViewBoardWidget(),
+              builder: (context, params) => ViewBoardWidget(
+                boardid: params.getParam(
+                  'boardid',
+                  ParamType.int,
+                ),
+              ),
             ),
             FFRoute(
-              name: 'CreatePost',
+              name: 'createPost',
               path: 'createPost',
               builder: (context, params) => const CreatePostWidget(),
             ),
             FFRoute(
-              name: 'CreateBoard',
+              name: 'createBoard',
               path: 'createBoard',
               builder: (context, params) => const CreateBoardWidget(),
             ),
             FFRoute(
-              name: 'ViewPost',
+              name: 'viewPost',
               path: 'viewPost',
               builder: (context, params) => const ViewPostWidget(),
             ),
             FFRoute(
-              name: 'SearchPost',
+              name: 'searchPost',
               path: 'searchPost',
               builder: (context, params) => const SearchPostWidget(),
             ),
             FFRoute(
-              name: 'SearchBoard',
+              name: 'searchBoard',
               path: 'searchBoard',
               builder: (context, params) => const SearchBoardWidget(),
+            ),
+            FFRoute(
+              name: 'viewMyBoard',
+              path: 'viewMyBoard',
+              builder: (context, params) => const ViewMyBoardWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -486,7 +496,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/loginmain/:code';
+            return '/loginmain';
           }
           return null;
         },

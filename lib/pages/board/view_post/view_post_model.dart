@@ -1,6 +1,6 @@
 import '/components/ads_banner_widget.dart';
 import '/components/anonym_check_box_row_widget.dart';
-import '/components/comment_reply_container_widget.dart';
+import '/components/comment_and_reply_container_widget.dart';
 import '/components/comments_count_row_component_widget.dart';
 import '/components/empty_widget.dart';
 import '/components/likes_count_row_component_widget.dart';
@@ -34,8 +34,9 @@ class ViewPostModel extends FlutterFlowModel<ViewPostWidget> {
   late EmptyModel emptyModel1;
   // Model for Empty component.
   late EmptyModel emptyModel2;
-  // Model for CommentReplyContainer component.
-  late CommentReplyContainerModel commentReplyContainerModel;
+  // Models for CommentAndReplyContainer dynamic component.
+  late FlutterFlowDynamicModels<CommentAndReplyContainerModel>
+      commentAndReplyContainerModels;
   // Model for AnonymCheckBoxRow component.
   late AnonymCheckBoxRowModel anonymCheckBoxRowModel;
   // State field(s) for TextField widget.
@@ -54,8 +55,8 @@ class ViewPostModel extends FlutterFlowModel<ViewPostWidget> {
     adsBannerModel = createModel(context, () => AdsBannerModel());
     emptyModel1 = createModel(context, () => EmptyModel());
     emptyModel2 = createModel(context, () => EmptyModel());
-    commentReplyContainerModel =
-        createModel(context, () => CommentReplyContainerModel());
+    commentAndReplyContainerModels =
+        FlutterFlowDynamicModels(() => CommentAndReplyContainerModel());
     anonymCheckBoxRowModel =
         createModel(context, () => AnonymCheckBoxRowModel());
   }
@@ -68,7 +69,7 @@ class ViewPostModel extends FlutterFlowModel<ViewPostWidget> {
     adsBannerModel.dispose();
     emptyModel1.dispose();
     emptyModel2.dispose();
-    commentReplyContainerModel.dispose();
+    commentAndReplyContainerModels.dispose();
     anonymCheckBoxRowModel.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();

@@ -25,7 +25,7 @@ class _SearchBoardWidgetState extends State<SearchBoardWidget> {
     super.initState();
     _model = createModel(context, () => SearchBoardModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'SearchBoard'});
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'searchBoard'});
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 

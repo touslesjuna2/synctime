@@ -138,7 +138,7 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'MainPage': const MainPageWidget(),
       'Timeblock': const TimeblockWidget(),
-      'BoardList': const BoardListWidget(),
+      'viewBoardList': const ViewBoardListWidget(),
       'Settings': const SettingsWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);

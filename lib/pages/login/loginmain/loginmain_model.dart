@@ -7,7 +7,7 @@ class LoginmainModel extends FlutterFlowModel<LoginmainWidget> {
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Backend Call - API (Google Token)] action in Loginmain widget.
-  ApiCallResponse? googlecode;
+  ApiCallResponse? tokentoken;
   // State field(s) for ID widget.
   FocusNode? idFocusNode;
   TextEditingController? idTextController;
@@ -21,8 +21,6 @@ class LoginmainModel extends FlutterFlowModel<LoginmainWidget> {
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
   // Stores action output result for [Backend Call - API (Token)] action in Button widget.
   ApiCallResponse? token;
-  // Stores action output result for [Backend Call - API (me)] action in Button widget.
-  ApiCallResponse? userme;
 
   @override
   void initState(BuildContext context) {

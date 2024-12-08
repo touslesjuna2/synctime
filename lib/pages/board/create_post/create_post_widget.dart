@@ -24,7 +24,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
     super.initState();
     _model = createModel(context, () => CreatePostModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'CreatePost'});
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'createPost'});
     _model.titleTextFieldTextController ??= TextEditingController();
     _model.titleTextFieldFocusNode ??= FocusNode();
 

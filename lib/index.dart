@@ -1,8 +1,9 @@
 // Export pages
 export '/pages/main/main_page/main_page_widget.dart' show MainPageWidget;
 export '/pages/timeblock/timeblock/timeblock_widget.dart' show TimeblockWidget;
-export '/pages/board/board_list/board_list_widget.dart' show BoardListWidget;
-export '/pages/settings/settings/settings_widget.dart' show SettingsWidget;
+export '/pages/board/view_board_list/view_board_list_widget.dart'
+    show ViewBoardListWidget;
+export '/pages/settings/settings_widget.dart' show SettingsWidget;
 export '/pages/main/webviewex/webviewex_widget.dart' show WebviewexWidget;
 export '/pages/settings/change_password/change_password_widget.dart'
     show ChangePasswordWidget;
@@ -71,4 +72,7 @@ export '/pages/board/create_board/create_board_widget.dart'
     show CreateBoardWidget;
 export '/pages/board/view_post/view_post_widget.dart' show ViewPostWidget;
 export '/pages/board/search_post/search_post_widget.dart' show SearchPostWidget;
-export '/pages/search_board/search_board_widget.dart' show SearchBoardWidget;
+export '/pages/board/search_board/search_board_widget.dart'
+    show SearchBoardWidget;
+export '/pages/board/view_my_board/view_my_board_widget.dart'
+    show ViewMyBoardWidget;

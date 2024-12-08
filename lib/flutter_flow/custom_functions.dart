@@ -20,18 +20,16 @@ List<String> duplicatedCountriesRemoval(List<String> universities) {
 
 List<String> filteredUniversities(
   dynamic getUnivsJSON,
-  String selectedCountiry,
+  String selectedcountry,
 ) {
-  // 선택된 국가를 정의 (Widget State나 AppState에서 가져오도록 수정 가능)
-  String selectedCountry = "Korea (Republic of)"; // 임시 값으로 "Korea" 설정
+  // null-safe 처리 및 JSON 필터링
+  List<String> filteredList = (getUnivsJSON as List<dynamic>?)
+          ?.where((uni) => uni['country_code'] == selectedcountry) // 선택된 국가 필터링
+          ?.map((uni) => uni['name'] as String) // 대학 이름만 추출
+          ?.toList() ?? // List로 변환
+      []; // null인 경우 빈 리스트 반환
 
-  // 해당 국가에 해당하는 대학 필터링
-  List<String> filtered = getUnivsJSON
-      .where((uni) => uni['country_code'] == selectedCountry) // 선택된 국가와 일치
-      .map((uni) => uni['name'] as String) // 대학 이름만 추출
-      .toList(); // 리스트로 변환
-
-  return filtered; // 필터링된 대학 이름 리스트 반환
+  return filteredList; // 필터링된 대학 이름 리스트 반환
 }
 
 int? univToID(

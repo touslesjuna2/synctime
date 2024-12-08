@@ -1944,7 +1944,9 @@ class _SettingsWidgetState extends State<SettingsWidget>
                     );
 
                     shouldSetState = true;
-                    if ((_model.logout?.succeeded ?? true)) {
+                    if ((_model.logout?.succeeded ?? true) ||
+                        ((_model.logout?.bodyText ?? '') ==
+                            '{\"detail\":\"Could not validate credentials\"}')) {
                       logFirebaseEvent('contentView_1_auth');
                       GoRouter.of(context).prepareAuthEvent();
                       await authManager.signOut();
