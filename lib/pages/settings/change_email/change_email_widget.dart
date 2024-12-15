@@ -44,7 +44,10 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -73,15 +76,14 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
           title: Align(
             alignment: const AlignmentDirectional(-0.3, 0.0),
             child: Text(
-              FFLocalizations.of(context).getText(
-                'ly9tnkz9' /* Change email */,
-              ),
+              'Change email',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Outfit',
+                    fontFamily: 'Maruburi',
                     color: FlutterFlowTheme.of(context).primaryText,
                     fontSize: 22.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
+                    useGoogleFonts: false,
                   ),
             ),
           ),
@@ -101,12 +103,10 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                   child: Text(
-                    FFLocalizations.of(context).getText(
-                      'xspp2a7e' /* Email */,
-                    ),
+                    'Email',
                     textAlign: TextAlign.start,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          fontFamily: 'Roboto',
                           letterSpacing: 0.0,
                         ),
                   ),
@@ -126,7 +126,7 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                       isDense: true,
                       labelStyle:
                           FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Plus Jakarta Sans',
+                        fontFamily: 'Roboto',
                         letterSpacing: 0.0,
                         shadows: [
                           Shadow(
@@ -138,8 +138,9 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                       ),
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Outfit',
+                                fontFamily: 'Maruburi',
                                 letterSpacing: 0.0,
+                                useGoogleFonts: false,
                               ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
@@ -174,7 +175,7 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                           FlutterFlowTheme.of(context).secondaryBackground,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          fontFamily: 'Roboto',
                           letterSpacing: 0.0,
                         ),
                     cursorColor: FlutterFlowTheme.of(context).primaryText,
@@ -188,11 +189,9 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                   child: Text(
-                    FFLocalizations.of(context).getText(
-                      'bqv8dmlf' /* Account password */,
-                    ),
+                    'Account password',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          fontFamily: 'Roboto',
                           letterSpacing: 0.0,
                         ),
                   ),
@@ -211,16 +210,16 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                       isDense: true,
                       labelStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Outfit',
+                                fontFamily: 'Maruburi',
                                 letterSpacing: 0.0,
+                                useGoogleFonts: false,
                               ),
-                      hintText: FFLocalizations.of(context).getText(
-                        '1a92ffyi' /* Current password */,
-                      ),
+                      hintText: 'Current password',
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Outfit',
+                                fontFamily: 'Maruburi',
                                 letterSpacing: 0.0,
+                                useGoogleFonts: false,
                               ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
@@ -268,7 +267,7 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                       ),
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          fontFamily: 'Roboto',
                           letterSpacing: 0.0,
                         ),
                     maxLength: 20,
@@ -294,9 +293,7 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                       logFirebaseEvent('Button_navigate_back');
                       context.safePop();
                     },
-                    text: FFLocalizations.of(context).getText(
-                      'ei1loxp2' /* Change email */,
-                    ),
+                    text: 'Change email',
                     options: FFButtonOptions(
                       width: double.infinity,
                       height: 39.0,
@@ -307,7 +304,7 @@ class _ChangeEmailWidgetState extends State<ChangeEmailWidget> {
                       color: const Color(0xFF3972EF),
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Plus Jakarta Sans',
+                                fontFamily: 'Roboto',
                                 color: Colors.white,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.w600,

@@ -39,7 +39,10 @@ class _ChangeProfileImageWidgetState extends State<ChangeProfileImageWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -67,15 +70,14 @@ class _ChangeProfileImageWidgetState extends State<ChangeProfileImageWidget> {
           title: Align(
             alignment: const AlignmentDirectional(-0.3, 0.0),
             child: Text(
-              FFLocalizations.of(context).getText(
-                'vfxs1rxt' /* Change profile image */,
-              ),
+              'Change profile image',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Outfit',
+                    fontFamily: 'Maruburi',
                     color: FlutterFlowTheme.of(context).primaryText,
                     fontSize: 22.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
+                    useGoogleFonts: false,
                   ),
             ),
           ),
@@ -136,9 +138,7 @@ class _ChangeProfileImageWidgetState extends State<ChangeProfileImageWidget> {
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 16.0, 0.0),
                                           child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              '5d5pd32l' /* Change Photo */,
-                                            ),
+                                            'Change Photo',
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineMedium
                                                 .override(
@@ -162,9 +162,7 @@ class _ChangeProfileImageWidgetState extends State<ChangeProfileImageWidget> {
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 8.0, 0.0, 0.0),
                                           child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              '5al6k25n' /* Upload a new photo below in or... */,
-                                            ),
+                                            'Upload a new photo below in order to change your avatar seen by others.',
                                             style: FlutterFlowTheme.of(context)
                                                 .labelMedium
                                                 .override(
@@ -254,10 +252,7 @@ class _ChangeProfileImageWidgetState extends State<ChangeProfileImageWidget> {
                                                 'Button_navigate_back');
                                             context.safePop();
                                           },
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            '5mjubcq4' /* Upload Image */,
-                                          ),
+                                          text: 'Upload Image',
                                           options: FFButtonOptions(
                                             width: 150.0,
                                             height: 50.0,
@@ -295,10 +290,7 @@ class _ChangeProfileImageWidgetState extends State<ChangeProfileImageWidget> {
                                                 'Button_navigate_back');
                                             context.pop();
                                           },
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            'xb6gngmz' /* Save Changes */,
-                                          ),
+                                          text: 'Save Changes',
                                           options: FFButtonOptions(
                                             width: 150.0,
                                             height: 50.0,

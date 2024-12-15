@@ -1,9 +1,9 @@
 // Export pages
-export '/pages/main/main_page/main_page_widget.dart' show MainPageWidget;
+export '/pages/main_page/main_page_widget.dart' show MainPageWidget;
 export '/pages/timeblock/timeblock/timeblock_widget.dart' show TimeblockWidget;
 export '/pages/board/view_board_list/view_board_list_widget.dart'
     show ViewBoardListWidget;
-export '/pages/settings/settings_widget.dart' show SettingsWidget;
+export '/pages/settings/settings/settings_widget.dart' show SettingsWidget;
 export '/pages/main/webviewex/webviewex_widget.dart' show WebviewexWidget;
 export '/pages/settings/change_password/change_password_widget.dart'
     show ChangePasswordWidget;
@@ -47,7 +47,7 @@ export '/pages/settings/passcode_lock/passcode_lock_widget.dart'
     show PasscodeLockWidget;
 export '/pages/settings/notice/notice_widget.dart' show NoticeWidget;
 export '/pages/settings/faq/faq_widget.dart' show FaqWidget;
-export '/pages/settings/terms_of_sevice/terms_of_sevice_widget.dart'
+export '/pages/terms_of_sevice/terms_of_sevice_widget.dart'
     show TermsOfSeviceWidget;
 export '/pages/settings/privacy_policy/privacy_policy_widget.dart'
     show PrivacyPolicyWidget;
@@ -76,3 +76,5 @@ export '/pages/board/search_board/search_board_widget.dart'
     show SearchBoardWidget;
 export '/pages/board/view_my_board/view_my_board_widget.dart'
     show ViewMyBoardWidget;
+export '/pages/review/search_review/search_review_widget.dart'
+    show SearchReviewWidget;

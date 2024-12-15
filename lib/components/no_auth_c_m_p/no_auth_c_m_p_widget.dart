@@ -53,9 +53,7 @@ class _NoAuthCMPWidgetState extends State<NoAuthCMPWidget> {
             Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
               child: Text(
-                FFLocalizations.of(context).getText(
-                  'njng85i0' /* 학교 인증 하시오 */,
-                ),
+                '학교 인증 하시오',
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Outfit',
                       color: const Color(0xFF15161E),
@@ -68,9 +66,7 @@ class _NoAuthCMPWidgetState extends State<NoAuthCMPWidget> {
             Padding(
               padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
               child: Text(
-                FFLocalizations.of(context).getText(
-                  'rhqowkxb' /* 하면 보여줌 */,
-                ),
+                '하면 보여줌',
                 style: FlutterFlowTheme.of(context).labelMedium.override(
                       fontFamily: 'Plus Jakarta Sans',
                       color: const Color(0xFF606A85),
@@ -87,16 +83,14 @@ class _NoAuthCMPWidgetState extends State<NoAuthCMPWidget> {
 
                 context.pushNamed('a_Select_School');
               },
-              text: FFLocalizations.of(context).getText(
-                'thvb7olb' /* Verify */,
-              ),
+              text: 'Verify',
               options: FFButtonOptions(
                 height: 40.0,
                 padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                 color: FlutterFlowTheme.of(context).primaryText,
                 textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                      fontFamily: 'Plus Jakarta Sans',
+                      fontFamily: 'Roboto',
                       color: Colors.white,
                       letterSpacing: 0.0,
                     ),

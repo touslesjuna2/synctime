@@ -289,8 +289,9 @@ class ReadPostDetailsStruct extends BaseStruct {
           data['media'],
           MediaStruct.fromMap,
         ),
-        userBoardProfile:
-            UserBoardProfileStruct.maybeFromMap(data['user_board_profile']),
+        userBoardProfile: data['user_board_profile'] is UserBoardProfileStruct
+            ? data['user_board_profile']
+            : UserBoardProfileStruct.maybeFromMap(data['user_board_profile']),
       );
 
   static ReadPostDetailsStruct? maybeFromMap(dynamic data) => data is Map

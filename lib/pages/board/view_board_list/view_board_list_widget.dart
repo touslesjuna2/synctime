@@ -45,7 +45,10 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -53,12 +56,11 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
           title: Text(
-            FFLocalizations.of(context).getText(
-              'mwcd354r' /* 게시판 */,
-            ),
+            '게시판',
             style: FlutterFlowTheme.of(context).titleLarge.override(
-                  fontFamily: 'Outfit',
+                  fontFamily: 'Maruburi',
                   letterSpacing: 0.0,
+                  useGoogleFonts: false,
                 ),
           ),
           actions: const [],
@@ -98,13 +100,11 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               15.0, 0.0, 0.0, 0.0),
                           child: Text(
-                            FFLocalizations.of(context).getText(
-                              'aj4hvfgd' /* 내가 쓴 글 */,
-                            ),
+                            '내가 쓴 글',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: 'Roboto',
                                   letterSpacing: 0.0,
                                 ),
                           ),
@@ -130,13 +130,11 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               15.0, 0.0, 0.0, 0.0),
                           child: Text(
-                            FFLocalizations.of(context).getText(
-                              'it9wvyrh' /* 댓글 단 글  */,
-                            ),
+                            '댓글 단 글 ',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: 'Roboto',
                                   letterSpacing: 0.0,
                                 ),
                           ),
@@ -159,13 +157,11 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               15.0, 0.0, 0.0, 0.0),
                           child: Text(
-                            FFLocalizations.of(context).getText(
-                              'xu4wf07x' /* 스크랩 */,
-                            ),
+                            '스크랩',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: 'Roboto',
                                   letterSpacing: 0.0,
                                 ),
                           ),
@@ -191,13 +187,11 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               15.0, 0.0, 0.0, 0.0),
                           child: Text(
-                            FFLocalizations.of(context).getText(
-                              '6ezrzc8r' /* HOT 게시판 */,
-                            ),
+                            'HOT 게시판',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: 'Roboto',
                                   letterSpacing: 0.0,
                                 ),
                           ),
@@ -223,13 +217,11 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               15.0, 0.0, 0.0, 0.0),
                           child: Text(
-                            FFLocalizations.of(context).getText(
-                              'vnlwny8q' /* BEST 게시판 */,
-                            ),
+                            'BEST 게시판',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: 'Roboto',
                                   letterSpacing: 0.0,
                                 ),
                           ),
@@ -256,13 +248,11 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          FFLocalizations.of(context).getText(
-                            'blhjwo9v' /* Pinned */,
-                          ),
+                          'Pinned',
                           textAlign: TextAlign.start,
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -285,13 +275,11 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   15.0, 0.0, 0.0, 0.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'tdhuld82' /* 자유 게시판 */,
-                                ),
+                                '자유 게시판',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -309,13 +297,11 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   15.0, 0.0, 0.0, 0.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'uwffehri' /* 비밀 게시판 */,
-                                ),
+                                '비밀 게시판',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -333,13 +319,11 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   15.0, 0.0, 0.0, 0.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'gz238ypk' /* 졸업생 게시판 */,
-                                ),
+                                '졸업생 게시판',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -357,13 +341,11 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   15.0, 0.0, 0.0, 0.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'g60nyksc' /* 새내기 게시판 */,
-                                ),
+                                '새내기 게시판',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -381,13 +363,11 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   15.0, 0.0, 0.0, 0.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  '2r5qhhw3' /* 교내 정보 게시판 */,
-                                ),
+                                '교내 정보 게시판',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -405,13 +385,11 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   15.0, 0.0, 0.0, 0.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  '4ii4k9e5' /* 교외 정보 게시판 */,
-                                ),
+                                '교외 정보 게시판',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -440,13 +418,11 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          FFLocalizations.of(context).getText(
-                            'e6w9xkfu' /* Special */,
-                          ),
+                          'Special',
                           textAlign: TextAlign.start,
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -477,13 +453,11 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   15.0, 0.0, 0.0, 0.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'thsnxdjn' /* 강의 평가 */,
-                                ),
+                                '강의 평가',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -509,13 +483,11 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   15.0, 0.0, 0.0, 0.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  '1zncswni' /* 장터 게시판 */,
-                                ),
+                                '장터 게시판',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -541,13 +513,11 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   15.0, 0.0, 0.0, 0.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'qyhioxf1' /* 토론 게시판 */,
-                                ),
+                                '토론 게시판',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -576,13 +546,11 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          FFLocalizations.of(context).getText(
-                            '2kcj9xgx' /* All */,
-                          ),
+                          'All',
                           textAlign: TextAlign.start,
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -639,13 +607,11 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     10.0, 0.0, 0.0, 0.0),
                                 child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    'jhho0rvp' /* 다른 게시판을 검색해보세요 */,
-                                  ),
+                                  '다른 게시판을 검색해보세요',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        fontFamily: 'Roboto',
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -692,7 +658,7 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
 
                       return Builder(
                         builder: (context) {
-                          final board = listViewUnividBoardsREADResponse
+                          final boardList = listViewUnividBoardsREADResponse
                               .jsonBody
                               .toList();
 
@@ -700,9 +666,9 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                             padding: EdgeInsets.zero,
                             shrinkWrap: true,
                             scrollDirection: Axis.vertical,
-                            itemCount: board.length,
-                            itemBuilder: (context, boardIndex) {
-                              final boardItem = board[boardIndex];
+                            itemCount: boardList.length,
+                            itemBuilder: (context, boardListIndex) {
+                              final boardListItem = boardList[boardListIndex];
                               return Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     10.0, 10.0, 10.0, 10.0),
@@ -728,9 +694,8 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                                         'viewBoard',
                                         queryParameters: {
                                           'boardid': serializeParam(
-                                            BoardListStruct.maybeFromMap(
-                                                    listViewUnividBoardsREADResponse
-                                                        .jsonBody)
+                                            BoardDetailStruct.maybeFromMap(
+                                                    boardListItem)
                                                 ?.id,
                                             ParamType.int,
                                           ),
@@ -746,16 +711,15 @@ class _ViewBoardListWidgetState extends State<ViewBoardListWidget> {
                                                   15.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             valueOrDefault<String>(
-                                              BoardListStruct.maybeFromMap(
-                                                      boardItem)
+                                              BoardDetailStruct.maybeFromMap(
+                                                      boardListItem)
                                                   ?.name,
                                               'BoardName',
                                             ),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily:
-                                                      'Plus Jakarta Sans',
+                                                  fontFamily: 'Roboto',
                                                   letterSpacing: 0.0,
                                                 ),
                                           ),

@@ -38,7 +38,10 @@ class _TimeblockWidgetState extends State<TimeblockWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -46,9 +49,7 @@ class _TimeblockWidgetState extends State<TimeblockWidget> {
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
           title: Text(
-            FFLocalizations.of(context).getText(
-              'j6q4ru7g' /* Timeblock */,
-            ),
+            'Timeblock',
             style: FlutterFlowTheme.of(context).titleMedium.override(
                   fontFamily: 'Roboto',
                   letterSpacing: 0.0,
@@ -87,7 +88,10 @@ class _TimeblockWidgetState extends State<TimeblockWidget> {
                   builder: (context) {
                     return WebViewAware(
                       child: GestureDetector(
-                        onTap: () => FocusScope.of(context).unfocus(),
+                        onTap: () {
+                          FocusScope.of(context).unfocus();
+                          FocusManager.instance.primaryFocus?.unfocus();
+                        },
                         child: Padding(
                           padding: MediaQuery.viewInsetsOf(context),
                           child: const TimetableSettingsCMPWidget(),
@@ -155,14 +159,12 @@ class _TimeblockWidgetState extends State<TimeblockWidget> {
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         20.0, 10.0, 0.0, 0.0),
                                     child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        '7kk5ymx0' /* 1학년 1학기 */,
-                                      ),
+                                      '1학년 1학기',
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily: 'Roboto',
                                             letterSpacing: 0.0,
                                           ),
                                     ),
@@ -181,14 +183,12 @@ class _TimeblockWidgetState extends State<TimeblockWidget> {
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 5.0, 0.0, 0.0),
                                     child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        '734xz7gr' /* 시간표 이상헌 */,
-                                      ),
+                                      '시간표 이상헌',
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily: 'Roboto',
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,

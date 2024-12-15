@@ -55,7 +55,10 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -84,15 +87,14 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
           title: Align(
             alignment: const AlignmentDirectional(-0.3, 0.0),
             child: Text(
-              FFLocalizations.of(context).getText(
-                '9c2xakme' /* Change password */,
-              ),
+              'Change password',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Outfit',
+                    fontFamily: 'Maruburi',
                     color: FlutterFlowTheme.of(context).primaryText,
                     fontSize: 22.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
+                    useGoogleFonts: false,
                   ),
             ),
           ),
@@ -112,12 +114,10 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                   child: Text(
-                    FFLocalizations.of(context).getText(
-                      'whfth9wg' /* New password */,
-                    ),
+                    'New password',
                     textAlign: TextAlign.start,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          fontFamily: 'Roboto',
                           letterSpacing: 0.0,
                         ),
                   ),
@@ -126,12 +126,10 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
               Align(
                 alignment: const AlignmentDirectional(1.0, -1.0),
                 child: Text(
-                  FFLocalizations.of(context).getText(
-                    'bijlbkjl' /*  8-20 characters */,
-                  ),
+                  ' 8-20 characters',
                   textAlign: TextAlign.start,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Plus Jakarta Sans',
+                        fontFamily: 'Roboto',
                         fontSize: 14.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.w200,
@@ -152,7 +150,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                       isDense: true,
                       labelStyle:
                           FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Plus Jakarta Sans',
+                        fontFamily: 'Roboto',
                         letterSpacing: 0.0,
                         shadows: [
                           Shadow(
@@ -162,13 +160,12 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                           )
                         ],
                       ),
-                      hintText: FFLocalizations.of(context).getText(
-                        '5wc4t145' /* New password */,
-                      ),
+                      hintText: 'New password',
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Outfit',
+                                fontFamily: 'Maruburi',
                                 letterSpacing: 0.0,
+                                useGoogleFonts: false,
                               ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
@@ -216,7 +213,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                       ),
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          fontFamily: 'Roboto',
                           letterSpacing: 0.0,
                         ),
                     maxLength: 20,
@@ -243,16 +240,16 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                     isDense: true,
                     labelStyle:
                         FlutterFlowTheme.of(context).labelMedium.override(
-                              fontFamily: 'Outfit',
+                              fontFamily: 'Maruburi',
                               letterSpacing: 0.0,
+                              useGoogleFonts: false,
                             ),
-                    hintText: FFLocalizations.of(context).getText(
-                      '75s8y5x5' /* Confirm new password */,
-                    ),
+                    hintText: 'Confirm new password',
                     hintStyle:
                         FlutterFlowTheme.of(context).labelMedium.override(
-                              fontFamily: 'Outfit',
+                              fontFamily: 'Maruburi',
                               letterSpacing: 0.0,
+                              useGoogleFonts: false,
                             ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
@@ -299,7 +296,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                     ),
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Plus Jakarta Sans',
+                        fontFamily: 'Roboto',
                         letterSpacing: 0.0,
                       ),
                   maxLength: 20,
@@ -319,11 +316,9 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                   child: Text(
-                    FFLocalizations.of(context).getText(
-                      '33kb30aw' /* Current password */,
-                    ),
+                    'Current password',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          fontFamily: 'Roboto',
                           letterSpacing: 0.0,
                         ),
                   ),
@@ -342,16 +337,16 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                       isDense: true,
                       labelStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Outfit',
+                                fontFamily: 'Maruburi',
                                 letterSpacing: 0.0,
+                                useGoogleFonts: false,
                               ),
-                      hintText: FFLocalizations.of(context).getText(
-                        'zeczmgzq' /* Current password */,
-                      ),
+                      hintText: 'Current password',
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Outfit',
+                                fontFamily: 'Maruburi',
                                 letterSpacing: 0.0,
+                                useGoogleFonts: false,
                               ),
                       enabledBorder: OutlineInputBorder(
                         borderSide: const BorderSide(
@@ -399,7 +394,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                       ),
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          fontFamily: 'Roboto',
                           letterSpacing: 0.0,
                         ),
                     maxLength: 20,
@@ -437,9 +432,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
 
                       safeSetState(() {});
                     },
-                    text: FFLocalizations.of(context).getText(
-                      'gxwr56xl' /* Change password */,
-                    ),
+                    text: 'Change password',
                     options: FFButtonOptions(
                       width: double.infinity,
                       height: 39.0,
@@ -450,7 +443,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                       color: const Color(0xFF3972EF),
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Plus Jakarta Sans',
+                                fontFamily: 'Roboto',
                                 color: Colors.white,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.w600,

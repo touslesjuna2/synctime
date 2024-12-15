@@ -66,12 +66,10 @@ class _AnonymCheckBoxRowWidgetState extends State<AnonymCheckBoxRowWidget> {
           ),
         ),
         Text(
-          FFLocalizations.of(context).getText(
-            '1t0w1y2y' /* Anonym */,
-          ),
+          'Anonym',
           textAlign: TextAlign.start,
           style: FlutterFlowTheme.of(context).bodyMedium.override(
-                fontFamily: 'Plus Jakarta Sans',
+                fontFamily: 'Roboto',
                 color: const Color(0xFFCE3B30),
                 fontSize: 10.0,
                 letterSpacing: 0.0,

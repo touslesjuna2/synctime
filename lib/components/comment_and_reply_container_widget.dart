@@ -108,7 +108,7 @@ class _CommentAndReplyContainerWidgetState
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyLarge.override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
@@ -128,10 +128,11 @@ class _CommentAndReplyContainerWidgetState
                           style: FlutterFlowTheme.of(context)
                               .labelSmall
                               .override(
-                                fontFamily: 'Outfit',
+                                fontFamily: 'Maruburi',
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
                                 letterSpacing: 0.0,
+                                useGoogleFonts: false,
                               ),
                         ),
                       ],
@@ -211,7 +212,7 @@ class _CommentAndReplyContainerWidgetState
                 ),
                 textAlign: TextAlign.start,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Plus Jakarta Sans',
+                      fontFamily: 'Roboto',
                       letterSpacing: 0.0,
                     ),
               ),
@@ -311,8 +312,7 @@ class _CommentAndReplyContainerWidgetState
                                                           context)
                                                       .bodyLarge
                                                       .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                        fontFamily: 'Roboto',
                                                         fontSize: 14.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -336,12 +336,13 @@ class _CommentAndReplyContainerWidgetState
                                                           context)
                                                       .labelSmall
                                                       .override(
-                                                        fontFamily: 'Outfit',
+                                                        fontFamily: 'Maruburi',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts: false,
                                                       ),
                                                 ),
                                               ],
@@ -414,7 +415,7 @@ class _CommentAndReplyContainerWidgetState
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontFamily: 'Roboto',
                                               letterSpacing: 0.0,
                                             ),
                                       ),

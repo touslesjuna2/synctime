@@ -80,7 +80,10 @@ class _C1VerificationCompleteWidgetState
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -143,15 +146,14 @@ class _C1VerificationCompleteWidgetState
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 20.0, 0.0, 20.0),
                                     child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'jmac7vl8' /* Verified! */,
-                                      ),
+                                      'Verified!',
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
                                           .displaySmall
                                           .override(
-                                            fontFamily: 'Outfit',
+                                            fontFamily: 'Maruburi',
                                             letterSpacing: 0.0,
+                                            useGoogleFonts: false,
                                           ),
                                     ),
                                   ),
@@ -175,18 +177,12 @@ class _C1VerificationCompleteWidgetState
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 10.0),
                                             child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'bwzjr8t4' /* 당신의 계정이 본교 재학생임이 확인되었습니다.
-귀하의 ... */
-                                                ,
-                                              ),
+                                              '당신의 계정이 본교 재학생임이 확인되었습니다.\n귀하의 프로필과 설정을 지정해주세요!',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                        fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
@@ -208,9 +204,7 @@ class _C1VerificationCompleteWidgetState
 
                                     context.pushNamed('a_profile');
                                   },
-                                  text: FFLocalizations.of(context).getText(
-                                    'wz8alxlp' /* next */,
-                                  ),
+                                  text: 'next',
                                   options: FFButtonOptions(
                                     width: double.infinity,
                                     height: 44.0,
@@ -222,7 +216,7 @@ class _C1VerificationCompleteWidgetState
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily: 'Roboto',
                                           color: Colors.white,
                                           letterSpacing: 0.0,
                                         ),

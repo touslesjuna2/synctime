@@ -44,7 +44,10 @@ class _BMakeNewPasswordWidgetState extends State<BMakeNewPasswordWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -82,15 +85,14 @@ class _BMakeNewPasswordWidgetState extends State<BMakeNewPasswordWidget> {
                           ),
                         ),
                         Text(
-                          FFLocalizations.of(context).getText(
-                            '1d22ejnh' /* Everytime */,
-                          ),
+                          'Everytime',
                           style: FlutterFlowTheme.of(context)
                               .displaySmall
                               .override(
-                                fontFamily: 'Outfit',
+                                fontFamily: 'Maruburi',
                                 color: FlutterFlowTheme.of(context).info,
                                 letterSpacing: 0.0,
+                                useGoogleFonts: false,
                               ),
                         ),
                       ],
@@ -158,15 +160,14 @@ class _BMakeNewPasswordWidgetState extends State<BMakeNewPasswordWidget> {
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  '6dlecz4x' /* Change your Password */,
-                                ),
+                                'Change your Password',
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
                                     .displaySmall
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Maruburi',
                                       letterSpacing: 0.0,
+                                      useGoogleFonts: false,
                                     ),
                               ),
                             ),
@@ -183,15 +184,13 @@ class _BMakeNewPasswordWidgetState extends State<BMakeNewPasswordWidget> {
                                   autofillHints: const [AutofillHints.email],
                                   obscureText: false,
                                   decoration: InputDecoration(
-                                    labelText:
-                                        FFLocalizations.of(context).getText(
-                                      'i2lcwnyu' /* 새 비밀번호 */,
-                                    ),
+                                    labelText: '새 비밀번호',
                                     labelStyle: FlutterFlowTheme.of(context)
                                         .labelLarge
                                         .override(
-                                          fontFamily: 'Outfit',
+                                          fontFamily: 'Maruburi',
                                           letterSpacing: 0.0,
+                                          useGoogleFonts: false,
                                         ),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -232,7 +231,7 @@ class _BMakeNewPasswordWidgetState extends State<BMakeNewPasswordWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .bodyLarge
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        fontFamily: 'Roboto',
                                         letterSpacing: 0.0,
                                       ),
                                   keyboardType: TextInputType.emailAddress,
@@ -266,16 +265,14 @@ class _BMakeNewPasswordWidgetState extends State<BMakeNewPasswordWidget> {
                                         ],
                                         obscureText: false,
                                         decoration: InputDecoration(
-                                          labelText: FFLocalizations.of(context)
-                                              .getText(
-                                            'h2lxupny' /* 새 비밀번호 확인 */,
-                                          ),
+                                          labelText: '새 비밀번호 확인',
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
                                                   .labelLarge
                                                   .override(
-                                                    fontFamily: 'Outfit',
+                                                    fontFamily: 'Maruburi',
                                                     letterSpacing: 0.0,
+                                                    useGoogleFonts: false,
                                                   ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
@@ -326,7 +323,7 @@ class _BMakeNewPasswordWidgetState extends State<BMakeNewPasswordWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
-                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontFamily: 'Roboto',
                                               letterSpacing: 0.0,
                                             ),
                                         keyboardType:
@@ -363,9 +360,8 @@ class _BMakeNewPasswordWidgetState extends State<BMakeNewPasswordWidget> {
                                     },
                                   );
                                 },
-                                text: FFLocalizations.of(context).getText(
-                                  'yvlxglnv' /* Confirm   이메일과 변경된 비밀번호를 동시에... */,
-                                ),
+                                text:
+                                    'Confirm  // 이메일과 변경된 비밀번호를 동시에 보내줘야함. 이메일>로컬 \n(이메일이 캐시인 캐시파일을  서버에서 동적으로 보관. )',
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 44.0,
@@ -377,7 +373,7 @@ class _BMakeNewPasswordWidgetState extends State<BMakeNewPasswordWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        fontFamily: 'Roboto',
                                         color: Colors.white,
                                         letterSpacing: 0.0,
                                       ),

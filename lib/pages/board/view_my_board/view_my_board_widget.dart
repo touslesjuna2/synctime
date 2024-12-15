@@ -44,47 +44,13 @@ class _ViewMyBoardWidgetState extends State<ViewMyBoardWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        floatingActionButton: Align(
-          alignment: const AlignmentDirectional(0.0, 1.0),
-          child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
-            child: FloatingActionButton.extended(
-              onPressed: () async {
-                logFirebaseEvent('VIEW_MY_BOARD_FloatingActionButton_ro9uv');
-                logFirebaseEvent('FloatingActionButton_navigate_to');
-
-                context.pushNamed('createPost');
-              },
-              backgroundColor: const Color(0xFFE1E1E7),
-              icon: FaIcon(
-                FontAwesomeIcons.pen,
-                color: FlutterFlowTheme.of(context).secondaryText,
-                size: 16.0,
-              ),
-              elevation: 5.0,
-              label: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Text(
-                    FFLocalizations.of(context).getText(
-                      '77khj18f' /* Create Post */,
-                    ),
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Outfit',
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.w500,
-                        ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
         body: SafeArea(
           top: true,
           child: Stack(
@@ -197,7 +163,7 @@ class _ViewMyBoardWidgetState extends State<ViewMyBoardWidget> {
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Plus Jakarta Sans',
+                                                                      'Roboto',
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight:
@@ -231,7 +197,7 @@ class _ViewMyBoardWidgetState extends State<ViewMyBoardWidget> {
                                                           .bodyMedium
                                                           .override(
                                                             fontFamily:
-                                                                'Plus Jakarta Sans',
+                                                                'Roboto',
                                                             fontSize: 14.0,
                                                             letterSpacing: 0.0,
                                                             fontWeight:
@@ -414,17 +380,13 @@ class _ViewMyBoardWidgetState extends State<ViewMyBoardWidget> {
                                                                       .max,
                                                               children: [
                                                                 Text(
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                    'm3t83lp1' /* 1130 */,
-                                                                  ),
+                                                                  '11/30',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Plus Jakarta Sans',
+                                                                            'Roboto',
                                                                         color: FlutterFlowTheme.of(context)
                                                                             .secondaryText,
                                                                         fontSize:
@@ -467,7 +429,7 @@ class _ViewMyBoardWidgetState extends State<ViewMyBoardWidget> {
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Plus Jakarta Sans',
+                                                                        'Roboto',
                                                                     fontSize:
                                                                         12.0,
                                                                     letterSpacing:
@@ -572,13 +534,11 @@ class _ViewMyBoardWidgetState extends State<ViewMyBoardWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                FFLocalizations.of(context).getText(
-                                  'i2ro4zn9' /* Board Name */,
-                                ),
+                                'Board Name',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       fontSize: 17.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,

@@ -51,7 +51,10 @@ class _ViewPostWidgetState extends State<ViewPostWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -117,25 +120,21 @@ class _ViewPostWidgetState extends State<ViewPostWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      FFLocalizations.of(context).getText(
-                                        '50c4wzd5' /* Board Name */,
-                                      ),
+                                      'Board Name',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily: 'Roboto',
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
                                           ),
                                     ),
                                     Text(
-                                      FFLocalizations.of(context).getText(
-                                        'yzs5tk1j' /* 연세대 신촌캠 */,
-                                      ),
+                                      '연세대 신촌캠',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily: 'Roboto',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                             fontSize: 12.0,
@@ -354,14 +353,11 @@ class _ViewPostWidgetState extends State<ViewPostWidget> {
                                           alignment:
                                               const AlignmentDirectional(-1.0, 1.0),
                                           child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'fw1a8c3c' /* 익명 */,
-                                            ),
+                                            '익명',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily:
-                                                      'Plus Jakarta Sans',
+                                                  fontFamily: 'Roboto',
                                                   fontSize: 15.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
@@ -384,14 +380,11 @@ class _ViewPostWidgetState extends State<ViewPostWidget> {
                                           alignment:
                                               const AlignmentDirectional(-1.0, -1.0),
                                           child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'x57zdhwa' /* 241130 02:55 */,
-                                            ),
+                                            '24/11/30 02:55',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily:
-                                                      'Plus Jakarta Sans',
+                                                  fontFamily: 'Roboto',
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryText,
@@ -434,14 +427,12 @@ class _ViewPostWidgetState extends State<ViewPostWidget> {
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 6.0, 0.0, 0.0),
                                       child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          'uenlyg0o' /* 미국 캘리포니아 설탭 */,
-                                        ),
+                                        '미국 캘리포니아 설탭',
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontFamily: 'Roboto',
                                               fontSize: 17.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
@@ -464,14 +455,12 @@ class _ViewPostWidgetState extends State<ViewPostWidget> {
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           24.0, 0.0, 24.0, 0.0),
                                       child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          'ofrr5tgx' /* 캘리포니아로 교환 가신 분들 중에 설탭 계속 하시는 분... */,
-                                        ),
+                                        '캘리포니아로 교환 가신 분들 중에 설탭 계속 하시는 분들 계신가요? vpn으로 접속해야하는지 1년동안도 가능한지 궁금합니다..',
                                         textAlign: TextAlign.start,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
-                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontFamily: 'Roboto',
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                             ),
@@ -535,16 +524,12 @@ class _ViewPostWidgetState extends State<ViewPostWidget> {
                                             child: Padding(
                                               padding: const EdgeInsets.all(10.0),
                                               child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'xgq723u1' /* 이 게시글은 게시판 관리자에 의해 공지로 등록된 글이에... */,
-                                                ),
+                                                '이 게시글은 게시판 관리자에 의해 공지로 등록된 글이에요. 공지는 총 5개까지 등록될 수 있으며, 새로운 공지가 등록되면 기존 공지 중 가장 오래된 것부터 해제됩니다.',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                          fontFamily: 'Roboto',
                                                           color:
                                                               const Color(0xFFBD6F4E),
                                                           fontSize: 12.0,
@@ -606,16 +591,12 @@ class _ViewPostWidgetState extends State<ViewPostWidget> {
                                             child: Padding(
                                               padding: const EdgeInsets.all(10.0),
                                               child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'ywfhdkmu' /* 이 글은 댓글이 달린 이후에는 수정 및 삭제가 불가능하... */,
-                                                ),
+                                                '이 글은 댓글이 달린 이후에는 수정 및 삭제가 불가능하므로, 작성하신 댓글이 삭제될 우려가 없어요. 보다 많은 학우들에게 도움이 될 수 있도록 정성이 담긴 답변을 부탁드려요.',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                          fontFamily: 'Roboto',
                                                           color:
                                                               const Color(0xFF279083),
                                                           fontSize: 12.0,
@@ -789,17 +770,13 @@ class _ViewPostWidgetState extends State<ViewPostWidget> {
                                                           size: 14.0,
                                                         ),
                                                         Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            '9jkj0nu6' /* Like */,
-                                                          ),
+                                                          'Like',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Plus Jakarta Sans',
+                                                                    'Roboto',
                                                                 color: const Color(
                                                                     0xB8606A85),
                                                                 letterSpacing:
@@ -986,19 +963,18 @@ class _ViewPostWidgetState extends State<ViewPostWidget> {
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Outfit',
+                                              fontFamily: 'Maruburi',
                                               letterSpacing: 0.0,
+                                              useGoogleFonts: false,
                                             ),
-                                        hintText:
-                                            FFLocalizations.of(context).getText(
-                                          'he8ro3q4' /* Write comment */,
-                                        ),
+                                        hintText: 'Write comment',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
-                                              fontFamily: 'Outfit',
+                                              fontFamily: 'Maruburi',
                                               color: const Color(0x8B606A85),
                                               letterSpacing: 0.0,
+                                              useGoogleFonts: false,
                                             ),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: const BorderSide(
@@ -1040,7 +1016,7 @@ class _ViewPostWidgetState extends State<ViewPostWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily: 'Roboto',
                                             letterSpacing: 0.0,
                                           ),
                                       maxLines: null,

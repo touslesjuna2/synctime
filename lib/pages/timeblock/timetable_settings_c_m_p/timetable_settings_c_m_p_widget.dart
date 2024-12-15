@@ -124,13 +124,11 @@ class _TimetableSettingsCMPWidgetState
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 0.0, 0.0),
                             child: Text(
-                              FFLocalizations.of(context).getText(
-                                'itdbfro8' /* 이름 변경 */,
-                              ),
+                              '이름 변경',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                   ),
@@ -159,13 +157,11 @@ class _TimetableSettingsCMPWidgetState
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 0.0, 0.0),
                             child: Text(
-                              FFLocalizations.of(context).getText(
-                                '577gjwpm' /* 공개 범위 변경 */,
-                              ),
+                              '공개 범위 변경',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                   ),
@@ -221,13 +217,11 @@ class _TimetableSettingsCMPWidgetState
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 0.0, 0.0),
                             child: Text(
-                              FFLocalizations.of(context).getText(
-                                'q4i5znr5' /* 테마 및 스타일 변경 */,
-                              ),
+                              '테마 및 스타일 변경',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                   ),
@@ -256,13 +250,11 @@ class _TimetableSettingsCMPWidgetState
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 0.0, 0.0),
                             child: Text(
-                              FFLocalizations.of(context).getText(
-                                'bvd1oxeh' /* 이미지로 저장 */,
-                              ),
+                              '이미지로 저장',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                   ),
@@ -291,13 +283,11 @@ class _TimetableSettingsCMPWidgetState
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 0.0, 0.0),
                             child: Text(
-                              FFLocalizations.of(context).getText(
-                                '1v89jn3v' /* URL 공유 */,
-                              ),
+                              'URL 공유',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                   ),
@@ -326,13 +316,11 @@ class _TimetableSettingsCMPWidgetState
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 0.0, 0.0),
                             child: Text(
-                              FFLocalizations.of(context).getText(
-                                'hmofirz1' /* 삭제 */,
-                              ),
+                              '삭제',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                   ),

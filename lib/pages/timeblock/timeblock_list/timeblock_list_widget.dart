@@ -37,7 +37,10 @@ class _TimeblockListWidgetState extends State<TimeblockListWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -60,12 +63,10 @@ class _TimeblockListWidgetState extends State<TimeblockListWidget> {
             },
           ),
           title: Text(
-            FFLocalizations.of(context).getText(
-              '9pjx2t6a' /* Timetable List */,
-            ),
+            'Timetable List',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Plus Jakarta Sans',
+                  fontFamily: 'Roboto',
                   letterSpacing: 0.0,
                 ),
           ),
@@ -110,11 +111,9 @@ class _TimeblockListWidgetState extends State<TimeblockListWidget> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Text(
-                        FFLocalizations.of(context).getText(
-                          '1l0ohjd6' /* (쿼리로 잡아야함) */,
-                        ),
+                        '(쿼리로 잡아야함)',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              fontFamily: 'Roboto',
                               fontSize: 40.0,
                               letterSpacing: 0.0,
                             ),
@@ -132,11 +131,9 @@ class _TimeblockListWidgetState extends State<TimeblockListWidget> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Text(
-                        FFLocalizations.of(context).getText(
-                          'xh2jpk66' /* (쿼리로 잡아야함) */,
-                        ),
+                        '(쿼리로 잡아야함)',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              fontFamily: 'Roboto',
                               fontSize: 40.0,
                               letterSpacing: 0.0,
                             ),
@@ -154,11 +151,9 @@ class _TimeblockListWidgetState extends State<TimeblockListWidget> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Text(
-                        FFLocalizations.of(context).getText(
-                          'obtg4ae1' /* (쿼리로 잡아야함) */,
-                        ),
+                        '(쿼리로 잡아야함)',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              fontFamily: 'Roboto',
                               fontSize: 40.0,
                               letterSpacing: 0.0,
                             ),
@@ -176,11 +171,9 @@ class _TimeblockListWidgetState extends State<TimeblockListWidget> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Text(
-                        FFLocalizations.of(context).getText(
-                          '6ghngk8h' /* (쿼리로 잡아야함) */,
-                        ),
+                        '(쿼리로 잡아야함)',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              fontFamily: 'Roboto',
                               fontSize: 40.0,
                               letterSpacing: 0.0,
                             ),
@@ -198,11 +191,9 @@ class _TimeblockListWidgetState extends State<TimeblockListWidget> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Text(
-                        FFLocalizations.of(context).getText(
-                          '0mk7vsgn' /* (쿼리로 잡아야함) */,
-                        ),
+                        '(쿼리로 잡아야함)',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              fontFamily: 'Roboto',
                               fontSize: 40.0,
                               letterSpacing: 0.0,
                             ),
@@ -220,11 +211,9 @@ class _TimeblockListWidgetState extends State<TimeblockListWidget> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Text(
-                        FFLocalizations.of(context).getText(
-                          't020e6ms' /* (쿼리로 잡아야함) */,
-                        ),
+                        '(쿼리로 잡아야함)',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              fontFamily: 'Roboto',
                               fontSize: 40.0,
                               letterSpacing: 0.0,
                             ),
@@ -242,11 +231,9 @@ class _TimeblockListWidgetState extends State<TimeblockListWidget> {
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Text(
-                        FFLocalizations.of(context).getText(
-                          'iunmaql2' /* (쿼리로 잡아야함) */,
-                        ),
+                        '(쿼리로 잡아야함)',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              fontFamily: 'Roboto',
                               fontSize: 40.0,
                               letterSpacing: 0.0,
                             ),

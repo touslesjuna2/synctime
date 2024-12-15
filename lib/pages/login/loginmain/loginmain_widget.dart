@@ -15,9 +15,11 @@ class LoginmainWidget extends StatefulWidget {
   const LoginmainWidget({
     super.key,
     this.code,
+    this.type,
   });
 
   final String? code;
+  final String? type;
 
   @override
   State<LoginmainWidget> createState() => _LoginmainWidgetState();
@@ -40,20 +42,21 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
       Function() navigate = () {};
       if (widget.code != null && widget.code != '') {
         logFirebaseEvent('Loginmain_backend_call');
-        _model.tokentoken = await AuthGroup.googleTokenCall.call(
+        _model.tokentoken = await AuthGroup.googleAppleTokenCall.call(
           code: widget.code,
+          type: widget.type,
         );
 
         if ((_model.tokentoken?.succeeded ?? true)) {
           logFirebaseEvent('Loginmain_auth');
           GoRouter.of(context).prepareAuthEvent();
           await authManager.signIn(
-            authenticationToken: AuthGroup.googleTokenCall
+            authenticationToken: AuthGroup.googleAppleTokenCall
                 .accesstoken(
                   (_model.tokentoken?.jsonBody ?? ''),
                 )
                 .toString(),
-            refreshToken: AuthGroup.googleTokenCall
+            refreshToken: AuthGroup.googleAppleTokenCall
                 .refreshtoken(
                   (_model.tokentoken?.jsonBody ?? ''),
                 )
@@ -73,7 +76,10 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
                     .resolve(Directionality.of(context)),
                 child: WebViewAware(
                   child: GestureDetector(
-                    onTap: () => FocusScope.of(dialogContext).unfocus(),
+                    onTap: () {
+                      FocusScope.of(dialogContext).unfocus();
+                      FocusManager.instance.primaryFocus?.unfocus();
+                    },
                     child: const AlertGeneralCMPWidget(
                       alertmessage: '2',
                     ),
@@ -108,7 +114,10 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
   Widget build(BuildContext context) {
     return Builder(
       builder: (context) => GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
+        onTap: () {
+          FocusScope.of(context).unfocus();
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
         child: Scaffold(
           key: scaffoldKey,
           backgroundColor: Colors.white,
@@ -130,26 +139,24 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
                       ),
                     ),
                     Text(
-                      FFLocalizations.of(context).getText(
-                        'u5w90d4w' /* Sync5 */,
-                      ),
+                      'Sync5',
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).displaySmall.override(
-                            fontFamily: 'Outfit',
+                            fontFamily: 'Maruburi',
                             letterSpacing: 0.0,
+                            useGoogleFonts: false,
                           ),
                     ),
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 24.0),
                       child: Text(
-                        FFLocalizations.of(context).getText(
-                          'rif7vlcc' /* Hi */,
-                        ),
+                        'Hi',
                         textAlign: TextAlign.start,
                         style: FlutterFlowTheme.of(context).labelLarge.override(
-                              fontFamily: 'Outfit',
+                              fontFamily: 'Maruburi',
                               letterSpacing: 0.0,
+                              useGoogleFonts: false,
                             ),
                       ),
                     ),
@@ -164,9 +171,7 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
                           await launchURL(
                               'http://ec2-18-191-211-86.us-east-2.compute.amazonaws.com/auth/google/login');
                         },
-                        text: FFLocalizations.of(context).getText(
-                          '1utnquo1' /* Continue with Google */,
-                        ),
+                        text: 'Continue with Google',
                         icon: const FaIcon(
                           FontAwesomeIcons.google,
                           size: 20.0,
@@ -183,7 +188,50 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
                           textStyle: FlutterFlowTheme.of(context)
                               .titleSmall
                               .override(
-                                fontFamily: 'Plus Jakarta Sans',
+                                fontFamily: 'Roboto',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                letterSpacing: 0.0,
+                              ),
+                          elevation: 0.0,
+                          borderSide: BorderSide(
+                            color: FlutterFlowTheme.of(context).alternate,
+                            width: 2.0,
+                          ),
+                          borderRadius: BorderRadius.circular(12.0),
+                          hoverColor:
+                              FlutterFlowTheme.of(context).primaryBackground,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
+                      child: FFButtonWidget(
+                        onPressed: () async {
+                          logFirebaseEvent(
+                              'LOGINMAIN_CONTINUE_WITH_APPLE_BTN_ON_TAP');
+                          logFirebaseEvent('Button_launch_u_r_l');
+                          await launchURL(
+                              'http://ec2-18-191-211-86.us-east-2.compute.amazonaws.com/auth/apple/login');
+                        },
+                        text: 'Continue with Apple',
+                        icon: const Icon(
+                          Icons.apple,
+                          size: 20.0,
+                        ),
+                        options: FFButtonOptions(
+                          width: double.infinity,
+                          height: 44.0,
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          textStyle: FlutterFlowTheme.of(context)
+                              .titleSmall
+                              .override(
+                                fontFamily: 'Roboto',
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 letterSpacing: 0.0,
                               ),
@@ -204,14 +252,13 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
                         padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 24.0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
-                            'stny9e1i' /* Or  */,
-                          ),
+                          'Or ',
                           textAlign: TextAlign.center,
                           style:
                               FlutterFlowTheme.of(context).labelLarge.override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: 'Maruburi',
                                     letterSpacing: 0.0,
+                                    useGoogleFonts: false,
                                   ),
                         ),
                       ),
@@ -248,14 +295,13 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
                           autofillHints: const [AutofillHints.email],
                           obscureText: false,
                           decoration: InputDecoration(
-                            labelText: FFLocalizations.of(context).getText(
-                              'vxqgrind' /* Email */,
-                            ),
+                            labelText: 'Email',
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelLarge
                                 .override(
-                                  fontFamily: 'Outfit',
+                                  fontFamily: 'Maruburi',
                                   letterSpacing: 0.0,
+                                  useGoogleFonts: false,
                                 ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -291,7 +337,7 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyLarge.override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     letterSpacing: 0.0,
                                   ),
                           keyboardType: TextInputType.emailAddress,
@@ -331,9 +377,7 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
                               onPressed: () {
                                 print('Button pressed ...');
                               },
-                              text: FFLocalizations.of(context).getText(
-                                'e1w1nrij' /* Continue with ID */,
-                              ),
+                              text: 'Continue with ID',
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: 44.0,
@@ -345,7 +389,7 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       color: Colors.white,
                                       letterSpacing: 0.0,
                                     ),
@@ -377,14 +421,13 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
                             autofillHints: const [AutofillHints.password],
                             obscureText: !_model.passwordVisibility,
                             decoration: InputDecoration(
-                              labelText: FFLocalizations.of(context).getText(
-                                'h3x2vula' /* Password */,
-                              ),
+                              labelText: 'Password',
                               labelStyle: FlutterFlowTheme.of(context)
                                   .labelLarge
                                   .override(
-                                    fontFamily: 'Outfit',
+                                    fontFamily: 'Maruburi',
                                     letterSpacing: 0.0,
+                                    useGoogleFonts: false,
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -435,7 +478,7 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
                             ),
                             style:
                                 FlutterFlowTheme.of(context).bodyLarge.override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       letterSpacing: 0.0,
                                     ),
                             cursorColor: FlutterFlowTheme.of(context).primary,
@@ -479,9 +522,7 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
 
                             if (shouldSetState) safeSetState(() {});
                           },
-                          text: FFLocalizations.of(context).getText(
-                            '6k14ivm5' /* Start */,
-                          ),
+                          text: 'Start',
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 44.0,
@@ -493,7 +534,7 @@ class _LoginmainWidgetState extends State<LoginmainWidget> {
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: 'Roboto',
                                   color: FlutterFlowTheme.of(context).alternate,
                                   letterSpacing: 0.0,
                                 ),

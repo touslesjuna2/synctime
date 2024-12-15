@@ -80,7 +80,10 @@ class _AVerificationSelectWidgetState extends State<AVerificationSelectWidget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -139,9 +142,7 @@ class _AVerificationSelectWidgetState extends State<AVerificationSelectWidget>
                                       logFirebaseEvent('Button_navigate_back');
                                       context.safePop();
                                     },
-                                    text: FFLocalizations.of(context).getText(
-                                      'i2qt2eh6' /* Back */,
-                                    ),
+                                    text: 'Back',
                                     options: FFButtonOptions(
                                       height: 33.0,
                                       padding: const EdgeInsetsDirectional.fromSTEB(
@@ -153,7 +154,7 @@ class _AVerificationSelectWidgetState extends State<AVerificationSelectWidget>
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily: 'Roboto',
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
                                             letterSpacing: 0.0,
@@ -168,15 +169,14 @@ class _AVerificationSelectWidgetState extends State<AVerificationSelectWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 40.0, 0.0, 20.0),
                                 child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    'goj4fg1q' /* 인증 절차를 진행함. */,
-                                  ),
+                                  '인증 절차를 진행함.',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
                                       .displaySmall
                                       .override(
-                                        fontFamily: 'Outfit',
+                                        fontFamily: 'Maruburi',
                                         letterSpacing: 0.0,
+                                        useGoogleFonts: false,
                                       ),
                                 ),
                               ),
@@ -222,18 +222,12 @@ class _AVerificationSelectWidgetState extends State<AVerificationSelectWidget>
                                                   .fromSTEB(
                                                       0.0, 10.0, 0.0, 10.0),
                                               child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'v8hk0byc' /* School Mail
-(immediate) */
-                                                  ,
-                                                ),
+                                                'School Mail\n(immediate)',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                          fontFamily: 'Roboto',
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
@@ -276,19 +270,13 @@ class _AVerificationSelectWidgetState extends State<AVerificationSelectWidget>
                                                   .fromSTEB(
                                                       0.0, 10.0, 0.0, 10.0),
                                               child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'wa4jkj68' /* certificate
-(a few days) */
-                                                  ,
-                                                ),
+                                                'certificate\n(a few days)',
                                                 textAlign: TextAlign.center,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                          fontFamily: 'Roboto',
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),

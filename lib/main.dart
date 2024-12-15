@@ -95,7 +95,6 @@ class _MyAppState extends State<MyApp> {
       locale: _locale,
       supportedLocales: const [
         Locale('en'),
-        Locale('ja'),
       ],
       theme: ThemeData(
         brightness: Brightness.light,
@@ -157,45 +156,37 @@ class _NavBarPageState extends State<NavBarPage> {
         showSelectedLabels: true,
         showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: const Icon(
+            icon: Icon(
               Icons.home,
               size: 24.0,
             ),
-            label: FFLocalizations.of(context).getText(
-              'c5nz18n3' /* Home */,
-            ),
+            label: 'Home',
             tooltip: '',
           ),
           BottomNavigationBarItem(
-            icon: const Icon(
+            icon: Icon(
               Icons.table_chart,
               size: 24.0,
             ),
-            label: FFLocalizations.of(context).getText(
-              'k0rck2lu' /* Timeblock */,
-            ),
+            label: 'Timeblock',
             tooltip: '',
           ),
           BottomNavigationBarItem(
-            icon: const Icon(
+            icon: Icon(
               Icons.message,
               size: 24.0,
             ),
-            label: FFLocalizations.of(context).getText(
-              '4huey9lg' /* Board */,
-            ),
+            label: 'Board',
             tooltip: '',
           ),
           BottomNavigationBarItem(
-            icon: const Icon(
+            icon: Icon(
               Icons.settings,
               size: 24.0,
             ),
-            label: FFLocalizations.of(context).getText(
-              'o4f9fbj4' /* Settings */,
-            ),
+            label: 'Settings',
             tooltip: '',
           )
         ],

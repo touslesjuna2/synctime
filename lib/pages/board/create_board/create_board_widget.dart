@@ -67,7 +67,10 @@ class _CreateBoardWidgetState extends State<CreateBoardWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -96,22 +99,18 @@ class _CreateBoardWidgetState extends State<CreateBoardWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  FFLocalizations.of(context).getText(
-                    'eqhl2fh6' /* Create new board */,
-                  ),
+                  'Create new board',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Plus Jakarta Sans',
+                        fontFamily: 'Roboto',
                         fontSize: 18.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.w600,
                       ),
                 ),
                 Text(
-                  FFLocalizations.of(context).getText(
-                    '1q9uz5tl' /* 연세대 신촌캠 */,
-                  ),
+                  '연세대 신촌캠',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Plus Jakarta Sans',
+                        fontFamily: 'Roboto',
                         color: FlutterFlowTheme.of(context).secondaryText,
                         fontSize: 12.0,
                         letterSpacing: 0.0,
@@ -161,8 +160,10 @@ class _CreateBoardWidgetState extends State<CreateBoardWidget> {
                                 .resolve(Directionality.of(context)),
                             child: WebViewAware(
                               child: GestureDetector(
-                                onTap: () =>
-                                    FocusScope.of(dialogContext).unfocus(),
+                                onTap: () {
+                                  FocusScope.of(dialogContext).unfocus();
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                },
                                 child: const AlertGeneralCMPWidget(
                                   alertmessage: '게시글 정상 등록!',
                                 ),
@@ -235,18 +236,16 @@ class _CreateBoardWidgetState extends State<CreateBoardWidget> {
                                     decoration: InputDecoration(
                                       isDense: true,
                                       alignLabelWithHint: false,
-                                      hintText:
-                                          FFLocalizations.of(context).getText(
-                                        'a2z4mcqt' /* Name */,
-                                      ),
+                                      hintText: 'Name',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Outfit',
+                                            fontFamily: 'Maruburi',
                                             color: const Color(0x80606A85),
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
+                                            useGoogleFonts: false,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: const BorderSide(
@@ -289,7 +288,7 @@ class _CreateBoardWidgetState extends State<CreateBoardWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily: 'Roboto',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 16.0,
@@ -336,21 +335,20 @@ class _CreateBoardWidgetState extends State<CreateBoardWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Outfit',
+                                            fontFamily: 'Maruburi',
                                             letterSpacing: 0.0,
+                                            useGoogleFonts: false,
                                           ),
-                                      hintText:
-                                          FFLocalizations.of(context).getText(
-                                        'kcme65s9' /* Description */,
-                                      ),
+                                      hintText: 'Description',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Outfit',
+                                            fontFamily: 'Maruburi',
                                             color: const Color(0x80606A85),
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
+                                            useGoogleFonts: false,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: const BorderSide(
@@ -393,7 +391,7 @@ class _CreateBoardWidgetState extends State<CreateBoardWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily: 'Roboto',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 14.0,
@@ -437,21 +435,20 @@ class _CreateBoardWidgetState extends State<CreateBoardWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Outfit',
+                                            fontFamily: 'Maruburi',
                                             letterSpacing: 0.0,
+                                            useGoogleFonts: false,
                                           ),
-                                      hintText:
-                                          FFLocalizations.of(context).getText(
-                                        'uz4eqe85' /* Board_types */,
-                                      ),
+                                      hintText: 'Board_types',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Outfit',
+                                            fontFamily: 'Maruburi',
                                             color: const Color(0x80606A85),
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
+                                            useGoogleFonts: false,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: const BorderSide(
@@ -494,7 +491,7 @@ class _CreateBoardWidgetState extends State<CreateBoardWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily: 'Roboto',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 14.0,
@@ -542,21 +539,20 @@ class _CreateBoardWidgetState extends State<CreateBoardWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Outfit',
+                                            fontFamily: 'Maruburi',
                                             letterSpacing: 0.0,
+                                            useGoogleFonts: false,
                                           ),
-                                      hintText:
-                                          FFLocalizations.of(context).getText(
-                                        'r5b9ig55' /* Rule */,
-                                      ),
+                                      hintText: 'Rule',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Outfit',
+                                            fontFamily: 'Maruburi',
                                             color: const Color(0x80606A85),
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
+                                            useGoogleFonts: false,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: const BorderSide(
@@ -599,7 +595,7 @@ class _CreateBoardWidgetState extends State<CreateBoardWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily: 'Roboto',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 14.0,
@@ -647,8 +643,7 @@ class _CreateBoardWidgetState extends State<CreateBoardWidget> {
                                               'CREATE_BOARD_Container_en3gquzy_ON_DOUBL');
                                           logFirebaseEvent(
                                               'TagMaker_update_app_state');
-                                          FFAppState().selectedTags =
-                                              [].toList().cast<String>();
+
                                           safeSetState(() {});
                                         },
                                         child: SizedBox(
@@ -722,16 +717,12 @@ class _CreateBoardWidgetState extends State<CreateBoardWidget> {
                                             child: Padding(
                                               padding: const EdgeInsets.all(12.0),
                                               child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'sw90v4su' /* Allow Anonym */,
-                                                ),
+                                                'Allow Anonym',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                          fontFamily: 'Roboto',
                                                           color:
                                                               const Color(0xB815161E),
                                                           fontSize: 16.0,
@@ -813,16 +804,12 @@ class _CreateBoardWidgetState extends State<CreateBoardWidget> {
                                             child: Padding(
                                               padding: const EdgeInsets.all(12.0),
                                               child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '2j8xkuqq' /* QnA */,
-                                                ),
+                                                'QnA',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                          fontFamily: 'Roboto',
                                                           color:
                                                               const Color(0xB815161E),
                                                           fontSize: 16.0,

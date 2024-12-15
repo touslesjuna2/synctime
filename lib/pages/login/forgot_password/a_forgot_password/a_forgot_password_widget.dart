@@ -86,7 +86,10 @@ class _AForgotPasswordWidgetState extends State<AForgotPasswordWidget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -124,15 +127,14 @@ class _AForgotPasswordWidgetState extends State<AForgotPasswordWidget>
                           ),
                         ),
                         Text(
-                          FFLocalizations.of(context).getText(
-                            'jsic2ilp' /* Everytime */,
-                          ),
+                          'Everytime',
                           style: FlutterFlowTheme.of(context)
                               .displaySmall
                               .override(
-                                fontFamily: 'Outfit',
+                                fontFamily: 'Maruburi',
                                 color: FlutterFlowTheme.of(context).info,
                                 letterSpacing: 0.0,
+                                useGoogleFonts: false,
                               ),
                         ),
                       ],
@@ -200,15 +202,14 @@ class _AForgotPasswordWidgetState extends State<AForgotPasswordWidget>
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'cd807y04' /* Forgot Password */,
-                                ),
+                                'Forgot Password',
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
                                     .displaySmall
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Maruburi',
                                       letterSpacing: 0.0,
+                                      useGoogleFonts: false,
                                     ),
                               ),
                             ),
@@ -216,15 +217,14 @@ class _AForgotPasswordWidgetState extends State<AForgotPasswordWidget>
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 8.0, 0.0, 24.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  '6292dokx' /* Please fill ~~ */,
-                                ),
+                                'Please fill ~~',
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Maruburi',
                                       letterSpacing: 0.0,
+                                      useGoogleFonts: false,
                                     ),
                               ),
                             ),
@@ -241,15 +241,13 @@ class _AForgotPasswordWidgetState extends State<AForgotPasswordWidget>
                                   autofillHints: const [AutofillHints.email],
                                   obscureText: false,
                                   decoration: InputDecoration(
-                                    labelText:
-                                        FFLocalizations.of(context).getText(
-                                      'q12x4v2n' /* Email */,
-                                    ),
+                                    labelText: 'Email',
                                     labelStyle: FlutterFlowTheme.of(context)
                                         .labelLarge
                                         .override(
-                                          fontFamily: 'Outfit',
+                                          fontFamily: 'Maruburi',
                                           letterSpacing: 0.0,
+                                          useGoogleFonts: false,
                                         ),
                                     enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -290,7 +288,7 @@ class _AForgotPasswordWidgetState extends State<AForgotPasswordWidget>
                                   style: FlutterFlowTheme.of(context)
                                       .bodyLarge
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        fontFamily: 'Roboto',
                                         letterSpacing: 0.0,
                                       ),
                                   keyboardType: TextInputType.emailAddress,
@@ -324,16 +322,14 @@ class _AForgotPasswordWidgetState extends State<AForgotPasswordWidget>
                                         ],
                                         obscureText: false,
                                         decoration: InputDecoration(
-                                          labelText: FFLocalizations.of(context)
-                                              .getText(
-                                            'bknfrbwo' /* verification number */,
-                                          ),
+                                          labelText: 'verification number',
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
                                                   .labelLarge
                                                   .override(
-                                                    fontFamily: 'Outfit',
+                                                    fontFamily: 'Maruburi',
                                                     letterSpacing: 0.0,
+                                                    useGoogleFonts: false,
                                                   ),
                                           enabledBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
@@ -384,7 +380,7 @@ class _AForgotPasswordWidgetState extends State<AForgotPasswordWidget>
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
-                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontFamily: 'Roboto',
                                               letterSpacing: 0.0,
                                             ),
                                         keyboardType:
@@ -405,9 +401,7 @@ class _AForgotPasswordWidgetState extends State<AForgotPasswordWidget>
                                       onPressed: () {
                                         print('Button pressed ...');
                                       },
-                                      text: FFLocalizations.of(context).getText(
-                                        'jqzbb7nq' /* Verify */,
-                                      ),
+                                      text: 'Verify',
                                       options: FFButtonOptions(
                                         height: 40.0,
                                         padding: const EdgeInsetsDirectional.fromSTEB(
@@ -420,7 +414,7 @@ class _AForgotPasswordWidgetState extends State<AForgotPasswordWidget>
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
-                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontFamily: 'Roboto',
                                               color: Colors.white,
                                               letterSpacing: 0.0,
                                             ),
@@ -444,9 +438,7 @@ class _AForgotPasswordWidgetState extends State<AForgotPasswordWidget>
 
                                   context.pushNamed('b_Make_New_Password');
                                 },
-                                text: FFLocalizations.of(context).getText(
-                                  'jdjkxq8m' /* next */,
-                                ),
+                                text: 'next',
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 44.0,
@@ -458,7 +450,7 @@ class _AForgotPasswordWidgetState extends State<AForgotPasswordWidget>
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        fontFamily: 'Roboto',
                                         color: Colors.white,
                                         letterSpacing: 0.0,
                                       ),

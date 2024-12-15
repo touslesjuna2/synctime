@@ -131,9 +131,7 @@ class _AlertCMPWidgetState extends State<AlertCMPWidget> {
                           onPressed: () {
                             print('Button pressed ...');
                           },
-                          text: FFLocalizations.of(context).getText(
-                            'o3olpxka' /* No */,
-                          ),
+                          text: 'No',
                           options: FFButtonOptions(
                             width: 65.0,
                             height: 30.0,
@@ -161,9 +159,7 @@ class _AlertCMPWidgetState extends State<AlertCMPWidget> {
                           logFirebaseEvent('Button_navigate_back');
                           context.safePop();
                         },
-                        text: FFLocalizations.of(context).getText(
-                          'vx55ypq5' /* Yes */,
-                        ),
+                        text: 'Yes',
                         options: FFButtonOptions(
                           width: 65.0,
                           height: 30.0,

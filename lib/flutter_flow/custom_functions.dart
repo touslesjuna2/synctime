@@ -51,3 +51,49 @@ int? univToID(
     return null;
   }
 }
+
+dynamic postCREATEJsonmaker(
+  int boardid,
+  String title,
+  String content,
+  bool anonym,
+  List<String>? tags,
+  bool qna,
+) {
+  // tags가 null인 경우 빈 리스트로 초기화
+  tags ??= [];
+
+  // JSON 객체 생성
+  final Map<String, dynamic> postData = {
+    "board_id": boardid,
+    "title": title,
+    "content": content,
+    "anonym": anonym,
+    "tags": tags,
+    "qna": qna,
+  };
+
+  // JSON 객체를 문자열로 변환
+  return jsonEncode(postData);
+}
+
+List<FFUploadedFile>? convertStringsToUploadedFiles(List<String>? stringList) {
+  if (stringList == null) {
+    return [];
+  }
+
+  final List<FFUploadedFile> files = [];
+  for (final base64Str in stringList) {
+    try {
+      final bytes = base64Decode(base64Str);
+      final file = FFUploadedFile(
+        bytes: bytes,
+      );
+      files.add(file);
+    } catch (_) {
+      // Base64 decoding 실패 시 해당 문자열은 무시
+    }
+  }
+
+  return files;
+}

@@ -44,7 +44,10 @@ class _SearchPostWidgetState extends State<SearchPostWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -132,22 +135,21 @@ class _SearchPostWidgetState extends State<SearchPostWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
                                                       .override(
-                                                        fontFamily: 'Outfit',
+                                                        fontFamily: 'Maruburi',
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts: false,
                                                       ),
                                               hintText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                'o4w3uj1d' /* name, contents, author, #hasht... */,
-                                              ),
+                                                  'name, contents, author, #hashtags ',
                                               hintStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
                                                       .override(
-                                                        fontFamily: 'Outfit',
+                                                        fontFamily: 'Maruburi',
                                                         color:
                                                             const Color(0x96606A85),
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts: false,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: const BorderSide(
@@ -206,8 +208,7 @@ class _SearchPostWidgetState extends State<SearchPostWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily:
-                                                      'Plus Jakarta Sans',
+                                                  fontFamily: 'Roboto',
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
@@ -312,25 +313,21 @@ class _SearchPostWidgetState extends State<SearchPostWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                FFLocalizations.of(context).getText(
-                                  '1b43bw44' /* Search Post */,
-                                ),
+                                'Search Post',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
                                     ),
                               ),
                               Text(
-                                FFLocalizations.of(context).getText(
-                                  'o0bfe71k' /* 연세대 신촌캠 */,
-                                ),
+                                '연세대 신촌캠',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryText,
                                       fontSize: 12.0,

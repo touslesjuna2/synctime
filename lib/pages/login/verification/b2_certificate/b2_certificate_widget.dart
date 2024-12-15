@@ -79,7 +79,10 @@ class _B2CertificateWidgetState extends State<B2CertificateWidget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -131,15 +134,14 @@ class _B2CertificateWidgetState extends State<B2CertificateWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 40.0, 0.0, 20.0),
                                 child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    'ckplg8ao' /* 인증 절차를 진행함. */,
-                                  ),
+                                  '인증 절차를 진행함.',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
                                       .displaySmall
                                       .override(
-                                        fontFamily: 'Outfit',
+                                        fontFamily: 'Maruburi',
                                         letterSpacing: 0.0,
+                                        useGoogleFonts: false,
                                       ),
                                 ),
                               ),
@@ -172,19 +174,13 @@ class _B2CertificateWidgetState extends State<B2CertificateWidget>
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 10.0),
                                             child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                '98ksxczf' /* certificate
-(a few days) */
-                                                ,
-                                              ),
+                                              'certificate\n(a few days)',
                                               textAlign: TextAlign.center,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                        fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
@@ -196,13 +192,11 @@ class _B2CertificateWidgetState extends State<B2CertificateWidget>
                                 ),
                               ),
                               Text(
-                                FFLocalizations.of(context).getText(
-                                  'vane8193' /* 내부 직원이 직접 첨부된 파일을 기준으로 학교 구성원 ... */,
-                                ),
+                                '내부 직원이 직접 첨부된 파일을 기준으로 학교 구성원 여부를 심사합니다\n*~~은 확인 후 관련 서류 파기를 원칙으로 하며 철저한 익명성 원칙을 고수합니다.',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -235,16 +229,12 @@ class _B2CertificateWidgetState extends State<B2CertificateWidget>
                                               ),
                                             ),
                                             Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'gofvbqub' /* File_upload */,
-                                              ),
+                                              'File_upload',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                        fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
@@ -259,15 +249,11 @@ class _B2CertificateWidgetState extends State<B2CertificateWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 30.0, 0.0, 10.0),
                                 child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    'vqjta3bm' /* 예시: 졸업장, 재학증명서, 휴학증명서 등 
-파일형식:... */
-                                    ,
-                                  ),
+                                  '예시: 졸업장, 재학증명서, 휴학증명서 등 \n파일형식: jpg, jpeg, png, pdf',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        fontFamily: 'Roboto',
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -284,9 +270,7 @@ class _B2CertificateWidgetState extends State<B2CertificateWidget>
                                     context
                                         .pushNamed('c2_Verification_Progress');
                                   },
-                                  text: FFLocalizations.of(context).getText(
-                                    '0pihbhdx' /* next */,
-                                  ),
+                                  text: 'next',
                                   options: FFButtonOptions(
                                     width: double.infinity,
                                     height: 44.0,
@@ -298,7 +282,7 @@ class _B2CertificateWidgetState extends State<B2CertificateWidget>
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily: 'Roboto',
                                           color: Colors.white,
                                           letterSpacing: 0.0,
                                         ),

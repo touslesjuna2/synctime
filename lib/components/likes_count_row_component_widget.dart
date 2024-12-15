@@ -61,7 +61,7 @@ class _LikesCountRowComponentWidgetState
               '0',
             ),
             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Plus Jakarta Sans',
+                  fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).accent3,
                   fontSize: 12.0,
                   letterSpacing: 0.0,

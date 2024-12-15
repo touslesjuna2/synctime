@@ -84,9 +84,7 @@ class _Material2ActionSheetSimpleWidgetState
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              FFLocalizations.of(context).getText(
-                                'hr8fomt7' /* Share */,
-                              ),
+                              'Share',
                               style: FlutterFlowTheme.of(context)
                                   .labelLarge
                                   .override(
@@ -139,9 +137,7 @@ class _Material2ActionSheetSimpleWidgetState
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              FFLocalizations.of(context).getText(
-                                'azcyds7q' /* Get Link */,
-                              ),
+                              'Get Link',
                               style: FlutterFlowTheme.of(context)
                                   .labelLarge
                                   .override(
@@ -194,9 +190,7 @@ class _Material2ActionSheetSimpleWidgetState
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              FFLocalizations.of(context).getText(
-                                '77jk0ftt' /* Edit */,
-                              ),
+                              'Edit',
                               style: FlutterFlowTheme.of(context)
                                   .labelLarge
                                   .override(
@@ -249,9 +243,7 @@ class _Material2ActionSheetSimpleWidgetState
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              FFLocalizations.of(context).getText(
-                                'lnz8dn7s' /* Delete */,
-                              ),
+                              'Delete',
                               style: FlutterFlowTheme.of(context)
                                   .labelLarge
                                   .override(

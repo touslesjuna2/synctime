@@ -1,14 +1,27 @@
+import '/auth/custom_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
+import '/components/alert_general_c_m_p/alert_general_c_m_p_widget.dart';
 import '/components/anonym_check_box_container_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/widgets/index.dart' as custom_widgets;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'create_post_model.dart';
 export 'create_post_model.dart';
 
 class CreatePostWidget extends StatefulWidget {
-  const CreatePostWidget({super.key});
+  const CreatePostWidget({
+    super.key,
+    required this.board,
+  });
+
+  final int? board;
 
   @override
   State<CreatePostWidget> createState() => _CreatePostWidgetState();
@@ -25,6 +38,14 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
     _model = createModel(context, () => CreatePostModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'createPost'});
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('CREATE_POST_createPost_ON_INIT_STATE');
+      logFirebaseEvent('createPost_update_app_state');
+      FFAppState().myTags = [];
+      safeSetState(() {});
+    });
+
     _model.titleTextFieldTextController ??= TextEditingController();
     _model.titleTextFieldFocusNode ??= FocusNode();
 
@@ -43,8 +64,13 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -74,7 +100,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                             ),
                           ),
                         ),
-                        if (_model.checkboxValue ?? true)
+                        if (_model.qnAValue ?? true)
                           Container(
                             width: MediaQuery.sizeOf(context).width * 1.0,
                             height: MediaQuery.sizeOf(context).height * 0.11,
@@ -95,13 +121,11 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(10.0),
                                   child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'z496wr85' /* 질문 글을 작성하면 게시판 상단에 일정 기간 동안 노출... */,
-                                    ),
+                                    '질문 글을 작성하면 게시판 상단에 일정 기간 동안 노출되며, 더욱 빠르게 답변을 얻을 수 있게 됩니다. 또한, 다른 학우들이 정성껏 작성한 답변을 유지하기 위해, 댓글이 달린 이후에는 글을 수정 및 삭제 할 수 없습니다.',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily: 'Roboto',
                                           color: const Color(0xFF279083),
                                           fontSize: 12.0,
                                           letterSpacing: 0.0,
@@ -137,18 +161,16 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                     decoration: InputDecoration(
                                       isDense: true,
                                       alignLabelWithHint: false,
-                                      hintText:
-                                          FFLocalizations.of(context).getText(
-                                        'm9oon90z' /* Title */,
-                                      ),
+                                      hintText: 'Title',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Outfit',
+                                            fontFamily: 'Maruburi',
                                             color: const Color(0x80606A85),
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
+                                            useGoogleFonts: false,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: const BorderSide(
@@ -191,7 +213,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily: 'Roboto',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 16.0,
@@ -239,21 +261,20 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Outfit',
+                                            fontFamily: 'Maruburi',
                                             letterSpacing: 0.0,
+                                            useGoogleFonts: false,
                                           ),
-                                      hintText:
-                                          FFLocalizations.of(context).getText(
-                                        'vxzdxztz' /* Content */,
-                                      ),
+                                      hintText: 'Content',
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .labelMedium
                                           .override(
-                                            fontFamily: 'Outfit',
+                                            fontFamily: 'Maruburi',
                                             color: const Color(0x80606A85),
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
+                                            useGoogleFonts: false,
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: const BorderSide(
@@ -296,7 +317,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily: 'Roboto',
                                           color: FlutterFlowTheme.of(context)
                                               .primaryText,
                                           fontSize: 14.0,
@@ -316,6 +337,29 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                             ],
                           ),
                         ),
+                        Divider(
+                          thickness: 2.0,
+                          color: FlutterFlowTheme.of(context).alternate,
+                        ),
+                        SizedBox(
+                          width: MediaQuery.sizeOf(context).width * 1.0,
+                          height: 100.0,
+                          child: custom_widgets.ImageListManager(
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            height: 100.0,
+                            plusButtonColor:
+                                FlutterFlowTheme.of(context).secondaryText,
+                            removeButtonColor:
+                                FlutterFlowTheme.of(context).accent3,
+                            enableReorder: false,
+                            placeholderColor:
+                                FlutterFlowTheme.of(context).primaryText,
+                          ),
+                        ),
+                        Divider(
+                          thickness: 2.0,
+                          color: FlutterFlowTheme.of(context).alternate,
+                        ),
                         Container(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           constraints: BoxConstraints(
@@ -330,6 +374,19 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
+                              SizedBox(
+                                width: MediaQuery.sizeOf(context).width * 1.0,
+                                height: 100.0,
+                                child: custom_widgets.TagMaker(
+                                  width: MediaQuery.sizeOf(context).width * 1.0,
+                                  height: 100.0,
+                                  hintText: 'Write Post\'s Tags',
+                                  chipColor:
+                                      FlutterFlowTheme.of(context).primary,
+                                  textColor:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                              ),
                               Divider(
                                 thickness: 2.0,
                                 color: FlutterFlowTheme.of(context).alternate,
@@ -339,13 +396,11 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                 child: Padding(
                                   padding: const EdgeInsets.all(6.0),
                                   child: Text(
-                                    FFLocalizations.of(context).getText(
-                                      'ekb1r82h' /* Rules */,
-                                    ),
+                                    'Rules',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily: 'Roboto',
                                           color: FlutterFlowTheme.of(context)
                                               .secondaryText,
                                           fontSize: 14.0,
@@ -373,13 +428,11 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                       child: Padding(
                                         padding: const EdgeInsets.all(6.0),
                                         child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            '1b6jblec' /* Board */,
-                                          ),
+                                          'Board',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Plus Jakarta Sans',
+                                                fontFamily: 'Roboto',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryText,
@@ -395,13 +448,11 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                       child: Padding(
                                         padding: const EdgeInsets.all(4.0),
                                         child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            't05q2g7h' /* Custom Rule from Board Manager */,
-                                          ),
+                                          'Custom Rule from Board Manager',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Plus Jakarta Sans',
+                                                fontFamily: 'Roboto',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryText,
@@ -434,13 +485,11 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                       child: Padding(
                                         padding: const EdgeInsets.all(6.0),
                                         child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'luxiky48' /* Community */,
-                                          ),
+                                          'Community',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Plus Jakarta Sans',
+                                                fontFamily: 'Roboto',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryText,
@@ -456,13 +505,11 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                       child: Padding(
                                         padding: const EdgeInsets.all(4.0),
                                         child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'z5ru1bwr' /* Community Rule from Synctime D... */,
-                                          ),
+                                          'Community Rule from Synctime Developers',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Plus Jakarta Sans',
+                                                fontFamily: 'Roboto',
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryText,
@@ -513,8 +560,11 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                               color: Colors.black,
                               size: 30.0,
                             ),
-                            onPressed: () {
-                              print('IconButton pressed ...');
+                            onPressed: () async {
+                              logFirebaseEvent(
+                                  'CREATE_POST_clear_rounded_ICN_ON_TAP');
+                              logFirebaseEvent('IconButton_navigate_back');
+                              context.safePop();
                             },
                           ),
                         ),
@@ -531,13 +581,11 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               5.0, 0.0, 0.0, 0.0),
                           child: Text(
-                            FFLocalizations.of(context).getText(
-                              'kqnnc1k2' /* Write Post */,
-                            ),
+                            'Write Post',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: 'Roboto',
                                   fontSize: 16.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
@@ -552,19 +600,84 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
-                        child: FlutterFlowIconButton(
-                          borderRadius: 8.0,
-                          buttonSize: 40.0,
-                          fillColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          icon: const FaIcon(
-                            FontAwesomeIcons.pen,
-                            color: Color(0xBD000000),
-                            size: 20.0,
+                        child: Builder(
+                          builder: (context) => FlutterFlowIconButton(
+                            borderRadius: 8.0,
+                            buttonSize: 40.0,
+                            fillColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            icon: const FaIcon(
+                              FontAwesomeIcons.pen,
+                              color: Color(0xBD000000),
+                              size: 20.0,
+                            ),
+                            onPressed: () async {
+                              logFirebaseEvent(
+                                  'CREATE_POST_PAGE_pen_ICN_ON_TAP');
+                              logFirebaseEvent('IconButton_update_app_state');
+                              FFAppState().myTags = [];
+                              safeSetState(() {});
+                              logFirebaseEvent('IconButton_backend_call');
+                              _model.postsCREATE = await CommuniyUnivIDGroup
+                                  .unividPostsCREATECall
+                                  .call(
+                                postJson:
+                                    functions.postCREATEJsonmaker(
+                                        widget.board!,
+                                        _model
+                                            .titleTextFieldTextController.text,
+                                        (_model.contentTextFieldFocusNode
+                                                    ?.hasFocus ??
+                                                false)
+                                            .toString(),
+                                        _model
+                                            .anonymCheckBoxContainerModel
+                                            .anonymCheckBoxRowModel
+                                            .checkboxValue!,
+                                        FFAppState().myTags.toList(),
+                                        _model.qnAValue!),
+                                filesList:
+                                    functions.convertStringsToUploadedFiles(
+                                        FFAppState().myImages.toList()),
+                                accessToken: currentAuthenticationToken,
+                                univId: FFAppState().univid,
+                              );
+
+                              if ((_model.postsCREATE?.succeeded ?? true)) {
+                                logFirebaseEvent('IconButton_alert_dialog');
+                                await showDialog(
+                                  context: context,
+                                  builder: (dialogContext) {
+                                    return Dialog(
+                                      elevation: 0,
+                                      insetPadding: EdgeInsets.zero,
+                                      backgroundColor: Colors.transparent,
+                                      alignment: const AlignmentDirectional(0.0, 0.0)
+                                          .resolve(Directionality.of(context)),
+                                      child: WebViewAware(
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            FocusScope.of(dialogContext)
+                                                .unfocus();
+                                            FocusManager.instance.primaryFocus
+                                                ?.unfocus();
+                                          },
+                                          child: const AlertGeneralCMPWidget(
+                                            alertmessage: 'Post등록완료',
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+
+                                logFirebaseEvent('IconButton_navigate_back');
+                                context.safePop();
+                              }
+
+                              safeSetState(() {});
+                            },
                           ),
-                          onPressed: () {
-                            print('IconButton pressed ...');
-                          },
                         ),
                       ),
                     ],
@@ -671,10 +784,10 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                                 .alternate,
                                       ),
                                       child: Checkbox(
-                                        value: _model.checkboxValue ??= true,
+                                        value: _model.qnAValue ??= true,
                                         onChanged: (newValue) async {
                                           safeSetState(() =>
-                                              _model.checkboxValue = newValue!);
+                                              _model.qnAValue = newValue!);
                                         },
                                         side: BorderSide(
                                           width: 2,
@@ -689,13 +802,11 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
                                       ),
                                     ),
                                     Text(
-                                      FFLocalizations.of(context).getText(
-                                        '27y8xfox' /* QnA */,
-                                      ),
+                                      'QnA',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily: 'Roboto',
                                             color: FlutterFlowTheme.of(context)
                                                 .secondary,
                                             fontSize: 12.0,

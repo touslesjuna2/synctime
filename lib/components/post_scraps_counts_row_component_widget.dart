@@ -60,7 +60,7 @@ class _PostScrapsCountsRowComponentWidgetState
               '0',
             ),
             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Plus Jakarta Sans',
+                  fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).warning,
                   fontSize: 12.0,
                   letterSpacing: 0.0,

@@ -39,7 +39,10 @@ class _NotificationSettingsWidgetState
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -67,15 +70,14 @@ class _NotificationSettingsWidgetState
           title: Align(
             alignment: const AlignmentDirectional(-0.3, 0.0),
             child: Text(
-              FFLocalizations.of(context).getText(
-                '6ht8yhq8' /* Notification settings */,
-              ),
+              'Notification settings',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Outfit',
+                    fontFamily: 'Maruburi',
                     color: FlutterFlowTheme.of(context).primaryText,
                     fontSize: 22.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
+                    useGoogleFonts: false,
                   ),
             ),
           ),

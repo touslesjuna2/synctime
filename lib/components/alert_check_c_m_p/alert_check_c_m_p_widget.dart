@@ -81,9 +81,7 @@ class _AlertCheckCMPWidgetState extends State<AlertCheckCMPWidget> {
                         ),
                       ),
                       Text(
-                        FFLocalizations.of(context).getText(
-                          'lmrma8fu' /* Notification Title */,
-                        ),
+                        'Notification Title',
                         style: FlutterFlowTheme.of(context).titleSmall.override(
                               fontFamily: 'Figtree',
                               color: Colors.white,
@@ -95,9 +93,7 @@ class _AlertCheckCMPWidgetState extends State<AlertCheckCMPWidget> {
                     ].divide(const SizedBox(width: 8.0)),
                   ),
                   Text(
-                    FFLocalizations.of(context).getText(
-                      'rie91vgr' /* Some body copy that is present... */,
-                    ),
+                    'Some body copy that is present in this small notification.',
                     style: FlutterFlowTheme.of(context).labelMedium.override(
                           fontFamily: 'Figtree',
                           color: const Color(0x9AFFFFFF),

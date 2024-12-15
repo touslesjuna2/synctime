@@ -38,7 +38,10 @@ class _KeywordsOfIntersetWidgetState extends State<KeywordsOfIntersetWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -66,15 +69,14 @@ class _KeywordsOfIntersetWidgetState extends State<KeywordsOfIntersetWidget> {
           title: Align(
             alignment: const AlignmentDirectional(-0.3, 0.0),
             child: Text(
-              FFLocalizations.of(context).getText(
-                '2zo14wov' /* Keywords of interest settings */,
-              ),
+              'Keywords of interest settings',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Outfit',
+                    fontFamily: 'Maruburi',
                     color: FlutterFlowTheme.of(context).primaryText,
                     fontSize: 22.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
+                    useGoogleFonts: false,
                   ),
             ),
           ),
@@ -90,11 +92,9 @@ class _KeywordsOfIntersetWidgetState extends State<KeywordsOfIntersetWidget> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                FFLocalizations.of(context).getText(
-                  'wbxwy18s' /* (쿼리로 잡아야함) */,
-                ),
+                '(쿼리로 잡아야함)',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Plus Jakarta Sans',
+                      fontFamily: 'Roboto',
                       fontSize: 40.0,
                       letterSpacing: 0.0,
                     ),

@@ -78,7 +78,10 @@ class _CCompleteWidgetState extends State<CCompleteWidget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -116,15 +119,14 @@ class _CCompleteWidgetState extends State<CCompleteWidget>
                           ),
                         ),
                         Text(
-                          FFLocalizations.of(context).getText(
-                            'r6wmoxoi' /* Everytime */,
-                          ),
+                          'Everytime',
                           style: FlutterFlowTheme.of(context)
                               .displaySmall
                               .override(
-                                fontFamily: 'Outfit',
+                                fontFamily: 'Maruburi',
                                 color: FlutterFlowTheme.of(context).info,
                                 letterSpacing: 0.0,
+                                useGoogleFonts: false,
                               ),
                         ),
                       ],
@@ -165,17 +167,14 @@ class _CCompleteWidgetState extends State<CCompleteWidget>
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 20.0, 0.0, 0.0),
                               child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'jrqgisoh' /* Your password
-is changed! */
-                                  ,
-                                ),
+                                'Your password\nis changed!',
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
                                     .displaySmall
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Maruburi',
                                       letterSpacing: 0.0,
+                                      useGoogleFonts: false,
                                     ),
                               ),
                             ),
@@ -190,9 +189,7 @@ is changed! */
 
                                   context.pushNamed('Loginmain');
                                 },
-                                text: FFLocalizations.of(context).getText(
-                                  'jfcyyty7' /* Start! */,
-                                ),
+                                text: 'Start!',
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 44.0,
@@ -204,7 +201,7 @@ is changed! */
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        fontFamily: 'Roboto',
                                         color: Colors.white,
                                         letterSpacing: 0.0,
                                       ),

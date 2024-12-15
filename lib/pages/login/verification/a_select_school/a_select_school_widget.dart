@@ -115,7 +115,10 @@ class _ASelectSchoolWidgetState extends State<ASelectSchoolWidget>
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -174,9 +177,7 @@ class _ASelectSchoolWidgetState extends State<ASelectSchoolWidget>
                                       logFirebaseEvent('Button_navigate_back');
                                       context.safePop();
                                     },
-                                    text: FFLocalizations.of(context).getText(
-                                      '3lhy56bs' /* Back */,
-                                    ),
+                                    text: 'Back',
                                     options: FFButtonOptions(
                                       height: 33.0,
                                       padding: const EdgeInsetsDirectional.fromSTEB(
@@ -188,7 +189,7 @@ class _ASelectSchoolWidgetState extends State<ASelectSchoolWidget>
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily: 'Roboto',
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
                                             letterSpacing: 0.0,
@@ -203,15 +204,14 @@ class _ASelectSchoolWidgetState extends State<ASelectSchoolWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 40.0, 0.0, 20.0),
                                 child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    'dba2j2zp' /* 어느학교이신가요? */,
-                                  ),
+                                  '어느학교이신가요?',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
                                       .displaySmall
                                       .override(
-                                        fontFamily: 'Outfit',
+                                        fontFamily: 'Maruburi',
                                         letterSpacing: 0.0,
+                                        useGoogleFonts: false,
                                       ),
                                 ),
                               ),
@@ -245,12 +245,10 @@ class _ASelectSchoolWidgetState extends State<ASelectSchoolWidget>
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        fontFamily: 'Roboto',
                                         letterSpacing: 0.0,
                                       ),
-                                  hintText: FFLocalizations.of(context).getText(
-                                    'jgp4ikb2' /* Country */,
-                                  ),
+                                  hintText: 'Country',
                                   icon: Icon(
                                     Icons.keyboard_arrow_down_rounded,
                                     color: FlutterFlowTheme.of(context)
@@ -302,12 +300,10 @@ class _ASelectSchoolWidgetState extends State<ASelectSchoolWidget>
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        fontFamily: 'Roboto',
                                         letterSpacing: 0.0,
                                       ),
-                                  hintText: FFLocalizations.of(context).getText(
-                                    'pc3n2fql' /* University */,
-                                  ),
+                                  hintText: 'University',
                                   icon: Icon(
                                     Icons.keyboard_arrow_down_rounded,
                                     color: FlutterFlowTheme.of(context)
@@ -343,9 +339,7 @@ class _ASelectSchoolWidgetState extends State<ASelectSchoolWidget>
 
                                     context.pushNamed('a_Verification_select');
                                   },
-                                  text: FFLocalizations.of(context).getText(
-                                    '63g3p75a' /* Next */,
-                                  ),
+                                  text: 'Next',
                                   options: FFButtonOptions(
                                     width: double.infinity,
                                     height: 44.0,
@@ -358,7 +352,7 @@ class _ASelectSchoolWidgetState extends State<ASelectSchoolWidget>
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily: 'Roboto',
                                           color: FlutterFlowTheme.of(context)
                                               .alternate,
                                           letterSpacing: 0.0,

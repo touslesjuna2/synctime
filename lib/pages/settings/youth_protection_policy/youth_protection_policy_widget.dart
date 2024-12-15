@@ -39,7 +39,10 @@ class _YouthProtectionPolicyWidgetState
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -67,15 +70,14 @@ class _YouthProtectionPolicyWidgetState
           title: Align(
             alignment: const AlignmentDirectional(-0.3, 0.0),
             child: Text(
-              FFLocalizations.of(context).getText(
-                '671pxkcv' /* Youth protection policy */,
-              ),
+              'Youth protection policy',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Outfit',
+                    fontFamily: 'Maruburi',
                     color: FlutterFlowTheme.of(context).primaryText,
                     fontSize: 22.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
+                    useGoogleFonts: false,
                   ),
             ),
           ),
@@ -91,14 +93,9 @@ class _YouthProtectionPolicyWidgetState
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                FFLocalizations.of(context).getText(
-                  'ik5cpewh' /* Youth Protection Policy
-
-Our c... */
-                  ,
-                ),
+                'Youth Protection Policy\n\nOur company, Bizlum Co., Ltd. (\"the Company\"), aims to protect adolescents by preventing harmful information and creating a safe online environment based on the \"Act on Promotion of Information and Communications Network Utilization and Information Protection.\"\nPurpose and Basic Principles for Youth Protection\n\nThe Company strives to provide services in a safe environment where adolescents can grow in a healthy and well-rounded way.\nAccess Restriction and Control of Harmful Information\n\nThe Company prevents minors from being exposed to harmful information by monitoring posts and systems. Any harmful posts are reported to the support center. Additionally, we block and restrict obscene and violent content in accordance with our community guidelines.\nEducation for Youth Protection\n\nThe Company provides education for relevant personnel on legal regulations, youth protection policies, detection and handling methods of harmful information, and reporting procedures.\nCounseling and Grievance Handling for Harmful Information\n\nThe Company offers counseling and guidance to minimize damage caused by harmful information. Users can contact the youth protection officer or dedicated support team for assistance.\n',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Plus Jakarta Sans',
+                      fontFamily: 'Roboto',
                       letterSpacing: 0.0,
                     ),
               ),

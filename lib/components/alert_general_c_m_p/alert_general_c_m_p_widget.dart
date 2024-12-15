@@ -75,9 +75,7 @@ class _AlertGeneralCMPWidgetState extends State<AlertGeneralCMPWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    FFLocalizations.of(context).getText(
-                      'c6btr8tm' /* Notification  */,
-                    ),
+                    'Notification ',
                     style: FlutterFlowTheme.of(context).bodyLarge.override(
                           fontFamily: 'Figtree',
                           color: const Color(0xFF15161E),

@@ -268,6 +268,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'code',
                   ParamType.String,
                 ),
+                type: params.getParam(
+                  'type',
+                  ParamType.String,
+                ),
               ),
             ),
             FFRoute(
@@ -298,7 +302,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'createPost',
               path: 'createPost',
-              builder: (context, params) => const CreatePostWidget(),
+              builder: (context, params) => CreatePostWidget(
+                board: params.getParam(
+                  'board',
+                  ParamType.int,
+                ),
+              ),
             ),
             FFRoute(
               name: 'createBoard',
@@ -324,6 +333,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'viewMyBoard',
               path: 'viewMyBoard',
               builder: (context, params) => const ViewMyBoardWidget(),
+            ),
+            FFRoute(
+              name: 'searchReview',
+              path: 'searchReview',
+              builder: (context, params) => const SearchReviewWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

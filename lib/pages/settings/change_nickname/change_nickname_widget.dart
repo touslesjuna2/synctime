@@ -42,7 +42,10 @@ class _ChangeNicknameWidgetState extends State<ChangeNicknameWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -71,15 +74,14 @@ class _ChangeNicknameWidgetState extends State<ChangeNicknameWidget> {
           title: Align(
             alignment: const AlignmentDirectional(-0.3, 0.0),
             child: Text(
-              FFLocalizations.of(context).getText(
-                '1b1wu0ek' /* Change nickname */,
-              ),
+              'Change nickname',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Outfit',
+                    fontFamily: 'Maruburi',
                     color: FlutterFlowTheme.of(context).primaryText,
                     fontSize: 22.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
+                    useGoogleFonts: false,
                   ),
             ),
           ),
@@ -99,11 +101,9 @@ class _ChangeNicknameWidgetState extends State<ChangeNicknameWidget> {
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Text(
-                    FFLocalizations.of(context).getText(
-                      'wuih1mzm' /* New nickname */,
-                    ),
+                    'New nickname',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          fontFamily: 'Roboto',
                           letterSpacing: 0.0,
                         ),
                   ),
@@ -122,15 +122,14 @@ class _ChangeNicknameWidgetState extends State<ChangeNicknameWidget> {
                       isDense: true,
                       labelStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
-                                fontFamily: 'Outfit',
+                                fontFamily: 'Maruburi',
                                 letterSpacing: 0.0,
+                                useGoogleFonts: false,
                               ),
-                      hintText: FFLocalizations.of(context).getText(
-                        'x5ix9dez' /* Nickname */,
-                      ),
+                      hintText: 'Nickname',
                       hintStyle:
                           FlutterFlowTheme.of(context).bodyMedium.override(
-                                fontFamily: 'Plus Jakarta Sans',
+                                fontFamily: 'Roboto',
                                 letterSpacing: 0.0,
                               ),
                       enabledBorder: OutlineInputBorder(
@@ -166,7 +165,7 @@ class _ChangeNicknameWidgetState extends State<ChangeNicknameWidget> {
                           FlutterFlowTheme.of(context).secondaryBackground,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          fontFamily: 'Roboto',
                           letterSpacing: 0.0,
                         ),
                     maxLength: 20,
@@ -187,11 +186,9 @@ class _ChangeNicknameWidgetState extends State<ChangeNicknameWidget> {
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Text(
-                    FFLocalizations.of(context).getText(
-                      'ko3xuquc' /* "Once set, the nickname cannot... */,
-                    ),
+                    '\"Once set, the nickname cannot be changed for 30 days.\"\n',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          fontFamily: 'Roboto',
                           color: FlutterFlowTheme.of(context).error,
                           letterSpacing: 0.0,
                         ),
@@ -209,9 +206,7 @@ class _ChangeNicknameWidgetState extends State<ChangeNicknameWidget> {
                       logFirebaseEvent('Button_navigate_back');
                       context.safePop();
                     },
-                    text: FFLocalizations.of(context).getText(
-                      'frza8wle' /* Change nickname */,
-                    ),
+                    text: 'Change nickname',
                     options: FFButtonOptions(
                       width: double.infinity,
                       height: 39.0,
@@ -222,7 +217,7 @@ class _ChangeNicknameWidgetState extends State<ChangeNicknameWidget> {
                       color: const Color(0xFF3972EF),
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Plus Jakarta Sans',
+                                fontFamily: 'Roboto',
                                 color: Colors.white,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.w600,

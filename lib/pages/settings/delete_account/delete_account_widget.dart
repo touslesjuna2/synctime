@@ -42,7 +42,10 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -69,15 +72,14 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
           title: Align(
             alignment: const AlignmentDirectional(-0.3, 0.0),
             child: Text(
-              FFLocalizations.of(context).getText(
-                'r79nsrfb' /* Delete account */,
-              ),
+              'Delete account',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Outfit',
+                    fontFamily: 'Maruburi',
                     color: FlutterFlowTheme.of(context).primaryText,
                     fontSize: 22.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
+                    useGoogleFonts: false,
                   ),
             ),
           ),
@@ -105,12 +107,10 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
-                            'k7evj8zw' /* Account password */,
-                          ),
+                          'Account password',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -132,17 +132,17 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Outfit',
+                                  fontFamily: 'Maruburi',
                                   letterSpacing: 0.0,
+                                  useGoogleFonts: false,
                                 ),
-                            hintText: FFLocalizations.of(context).getText(
-                              '7pwy7upo' /* Current password */,
-                            ),
+                            hintText: 'Current password',
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Outfit',
+                                  fontFamily: 'Maruburi',
                                   letterSpacing: 0.0,
+                                  useGoogleFonts: false,
                                 ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
@@ -191,7 +191,7 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     letterSpacing: 0.0,
                                   ),
                           maxLength: 20,
@@ -211,11 +211,9 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
                       child: Text(
-                        FFLocalizations.of(context).getText(
-                          '552tj3oe' /* →  "If you repeatedly deactiva... */,
-                        ),
+                        '→  \"If you repeatedly deactivate and reactivate your account, re-registration may be restricted to prevent service abuse. For the first deactivation, re-registration is restricted for 1 day based on the registration time. If repeated more than twice, re-registration is restricted for 30 days.\"',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              fontFamily: 'Roboto',
                               fontSize: 12.0,
                               letterSpacing: 0.0,
                             ),
@@ -225,11 +223,9 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                       child: Text(
-                        FFLocalizations.of(context).getText(
-                          '9g4o1b0q' /* → "After account deletion, per... */,
-                        ),
+                        '→ \"After account deletion, personal information and data, such as schedules, will be deleted and cannot be recovered.\"\n',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              fontFamily: 'Roboto',
                               fontSize: 12.0,
                               letterSpacing: 0.0,
                             ),
@@ -239,11 +235,9 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                       child: Text(
-                        FFLocalizations.of(context).getText(
-                          'y2ov7pu0' /* → "Even if you re-register, us... */,
-                        ),
+                        '→ \"Even if you re-register, usage restriction records on bulletin boards, etc., are not reset.\"\n',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              fontFamily: 'Roboto',
                               fontSize: 12.0,
                               letterSpacing: 0.0,
                             ),
@@ -253,11 +247,9 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                       child: Text(
-                        FFLocalizations.of(context).getText(
-                          'a6o2e4f7' /* → "Posts you have created will... */,
-                        ),
+                        '→ \"Posts you have created will not be deleted and will be displayed under an anonymous nickname.\"\n',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              fontFamily: 'Roboto',
                               fontSize: 12.0,
                               letterSpacing: 0.0,
                             ),
@@ -269,12 +261,10 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
-                            'u66mbfqn' /* → "Please refer to the Privacy... */,
-                          ),
+                          '→ \"Please refer to the Privacy Policy for more details.\"\n',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     fontSize: 12.0,
                                     letterSpacing: 0.0,
                                   ),
@@ -289,9 +279,7 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
 
                         context.pushNamed('Loginmain');
                       },
-                      text: FFLocalizations.of(context).getText(
-                        'qniouyph' /* Delete account */,
-                      ),
+                      text: 'Delete account',
                       options: FFButtonOptions(
                         width: 200.0,
                         height: 40.0,
@@ -302,7 +290,7 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                         color: FlutterFlowTheme.of(context).secondary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: 'Roboto',
                                   color: Colors.white,
                                   letterSpacing: 0.0,
                                 ),

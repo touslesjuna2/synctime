@@ -39,7 +39,10 @@ class _PasscodeLockWidgetState extends State<PasscodeLockWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -67,15 +70,14 @@ class _PasscodeLockWidgetState extends State<PasscodeLockWidget> {
           title: Align(
             alignment: const AlignmentDirectional(-0.3, 0.0),
             child: Text(
-              FFLocalizations.of(context).getText(
-                'yjsb83tq' /* Passcode lock */,
-              ),
+              'Passcode lock',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Outfit',
+                    fontFamily: 'Maruburi',
                     color: FlutterFlowTheme.of(context).primaryText,
                     fontSize: 22.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
+                    useGoogleFonts: false,
                   ),
             ),
           ),
@@ -103,13 +105,11 @@ class _PasscodeLockWidgetState extends State<PasscodeLockWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 0.0),
                           child: Text(
-                            FFLocalizations.of(context).getText(
-                              'f4k9utfn' /* passcode lock */,
-                            ),
+                            'passcode lock',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: 'Roboto',
                                   fontSize: 15.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,
@@ -148,11 +148,9 @@ class _PasscodeLockWidgetState extends State<PasscodeLockWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                       child: Text(
-                        FFLocalizations.of(context).getText(
-                          'o64r9z9p' /* Change passcode lock */,
-                        ),
+                        'Change passcode lock',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              fontFamily: 'Roboto',
                               letterSpacing: 0.0,
                               decoration: TextDecoration.underline,
                             ),
@@ -174,13 +172,11 @@ class _PasscodeLockWidgetState extends State<PasscodeLockWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 20.0, 0.0, 0.0),
                           child: Text(
-                            FFLocalizations.of(context).getText(
-                              '3z4d7zvv' /* Use Face ID */,
-                            ),
+                            'Use Face ID',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: 'Roboto',
                                   fontSize: 15.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w600,

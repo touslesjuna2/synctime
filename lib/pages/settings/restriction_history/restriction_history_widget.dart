@@ -38,7 +38,10 @@ class _RestrictionHistoryWidgetState extends State<RestrictionHistoryWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -66,15 +69,14 @@ class _RestrictionHistoryWidgetState extends State<RestrictionHistoryWidget> {
           title: Align(
             alignment: const AlignmentDirectional(-0.3, 0.0),
             child: Text(
-              FFLocalizations.of(context).getText(
-                'y7990jfn' /* Restriction history */,
-              ),
+              'Restriction history',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Outfit',
+                    fontFamily: 'Maruburi',
                     color: FlutterFlowTheme.of(context).primaryText,
                     fontSize: 22.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
+                    useGoogleFonts: false,
                   ),
             ),
           ),
@@ -90,11 +92,9 @@ class _RestrictionHistoryWidgetState extends State<RestrictionHistoryWidget> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                FFLocalizations.of(context).getText(
-                  'za417d4y' /* (쿼리로 잡아야함) */,
-                ),
+                '(쿼리로 잡아야함)',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Plus Jakarta Sans',
+                      fontFamily: 'Roboto',
                       fontSize: 40.0,
                       letterSpacing: 0.0,
                     ),

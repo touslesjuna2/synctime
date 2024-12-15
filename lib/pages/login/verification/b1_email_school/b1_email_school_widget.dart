@@ -93,7 +93,10 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -152,9 +155,7 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
                                       logFirebaseEvent('Button_navigate_back');
                                       context.safePop();
                                     },
-                                    text: FFLocalizations.of(context).getText(
-                                      '09flglxp' /* Back */,
-                                    ),
+                                    text: 'Back',
                                     options: FFButtonOptions(
                                       height: 33.0,
                                       padding: const EdgeInsetsDirectional.fromSTEB(
@@ -166,7 +167,7 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(
-                                            fontFamily: 'Plus Jakarta Sans',
+                                            fontFamily: 'Roboto',
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
                                             letterSpacing: 0.0,
@@ -181,15 +182,14 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 20.0),
                                 child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    '11v1gnlc' /* 인증 절차를 진행함. */,
-                                  ),
+                                  '인증 절차를 진행함.',
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
                                       .displaySmall
                                       .override(
-                                        fontFamily: 'Outfit',
+                                        fontFamily: 'Maruburi',
                                         letterSpacing: 0.0,
+                                        useGoogleFonts: false,
                                       ),
                                 ),
                               ),
@@ -222,18 +222,12 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 10.0),
                                             child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'swliuad6' /* School Mail
-(immediate) */
-                                                ,
-                                              ),
+                                              'School Mail\n(immediate)',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                        fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
@@ -245,13 +239,11 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
                                 ),
                               ),
                               Text(
-                                FFLocalizations.of(context).getText(
-                                  'apoobyx5' /* 학교 이메일을 통한 인증절차를 진행할게요 */,
-                                ),
+                                '학교 이메일을 통한 인증절차를 진행할게요',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -273,17 +265,14 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
                                           autofillHints: const [AutofillHints.email],
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'c73wiap5' /* Email */,
-                                            ),
+                                            labelText: 'Email',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
                                                     .override(
-                                                      fontFamily: 'Outfit',
+                                                      fontFamily: 'Maruburi',
                                                       letterSpacing: 0.0,
+                                                      useGoogleFonts: false,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
@@ -334,7 +323,7 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
-                                                fontFamily: 'Plus Jakarta Sans',
+                                                fontFamily: 'Roboto',
                                                 letterSpacing: 0.0,
                                               ),
                                           keyboardType:
@@ -398,9 +387,14 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
                                                         context)),
                                                 child: WebViewAware(
                                                   child: GestureDetector(
-                                                    onTap: () => FocusScope.of(
-                                                            dialogContext)
-                                                        .unfocus(),
+                                                    onTap: () {
+                                                      FocusScope.of(
+                                                              dialogContext)
+                                                          .unfocus();
+                                                      FocusManager
+                                                          .instance.primaryFocus
+                                                          ?.unfocus();
+                                                    },
                                                     child:
                                                         const AlertGeneralCMPWidget(
                                                       alertmessage:
@@ -448,17 +442,14 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
                                           ],
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText:
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                              'wd1494o6' /* verification number */,
-                                            ),
+                                            labelText: 'verification number',
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelLarge
                                                     .override(
-                                                      fontFamily: 'Outfit',
+                                                      fontFamily: 'Maruburi',
                                                       letterSpacing: 0.0,
+                                                      useGoogleFonts: false,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
@@ -509,7 +500,7 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge
                                               .override(
-                                                fontFamily: 'Plus Jakarta Sans',
+                                                fontFamily: 'Roboto',
                                                 letterSpacing: 0.0,
                                               ),
                                           keyboardType:
@@ -570,10 +561,14 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
                                                                     context)),
                                                     child: WebViewAware(
                                                       child: GestureDetector(
-                                                        onTap: () =>
-                                                            FocusScope.of(
-                                                                    dialogContext)
-                                                                .unfocus(),
+                                                        onTap: () {
+                                                          FocusScope.of(
+                                                                  dialogContext)
+                                                              .unfocus();
+                                                          FocusManager.instance
+                                                              .primaryFocus
+                                                              ?.unfocus();
+                                                        },
                                                         child:
                                                             const AlertGeneralCMPWidget(
                                                           alertmessage:
@@ -588,10 +583,7 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
 
                                             safeSetState(() {});
                                           },
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            'msgi97zf' /* Verify */,
-                                          ),
+                                          text: 'Verify',
                                           options: FFButtonOptions(
                                             height: 40.0,
                                             padding:
@@ -606,8 +598,7 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmall
                                                     .override(
-                                                      fontFamily:
-                                                          'Plus Jakarta Sans',
+                                                      fontFamily: 'Roboto',
                                                       color: Colors.white,
                                                       letterSpacing: 0.0,
                                                     ),
@@ -622,13 +613,11 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
                                 ),
                               ),
                               Text(
-                                FFLocalizations.of(context).getText(
-                                  '07k729ae' /* 5분 안에 입력하셔야 합니다. */,
-                                ),
+                                '5분 안에 입력하셔야 합니다.',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       letterSpacing: 0.0,
                                     ),
                               ),
@@ -644,9 +633,7 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
                                     context
                                         .pushNamed('c1_Verification_complete');
                                   },
-                                  text: FFLocalizations.of(context).getText(
-                                    'zjewwhuz' /* Next */,
-                                  ),
+                                  text: 'Next',
                                   options: FFButtonOptions(
                                     width: double.infinity,
                                     height: 44.0,
@@ -658,7 +645,7 @@ class _B1EmailSchoolWidgetState extends State<B1EmailSchoolWidget>
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily: 'Roboto',
                                           color: Colors.white,
                                           letterSpacing: 0.0,
                                         ),

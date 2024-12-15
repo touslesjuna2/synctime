@@ -84,21 +84,17 @@ class _BoardAppBarWidgetState extends State<BoardAppBarWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      FFLocalizations.of(context).getText(
-                        '4mh6zsn7' /* Board Name */,
-                      ),
+                      'Board Name',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Plus Jakarta Sans',
+                            fontFamily: 'Roboto',
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
                           ),
                     ),
                     Text(
-                      FFLocalizations.of(context).getText(
-                        'dfl2egl6' /* 연세대 신촌캠 */,
-                      ),
+                      '연세대 신촌캠',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Plus Jakarta Sans',
+                            fontFamily: 'Roboto',
                             color: const Color(0xFF697089),
                             fontSize: 12.0,
                             letterSpacing: 0.0,

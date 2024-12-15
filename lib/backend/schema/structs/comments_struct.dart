@@ -209,8 +209,9 @@ class CommentsStruct extends BaseStruct {
         isDeleted: data['is_deleted'] as bool?,
         isCreator: data['is_creator'] as bool?,
         myLikeStatus: castToType<int>(data['my_like_status']),
-        userBoardProfile:
-            UserBoardProfileStruct.maybeFromMap(data['user_board_profile']),
+        userBoardProfile: data['user_board_profile'] is UserBoardProfileStruct
+            ? data['user_board_profile']
+            : UserBoardProfileStruct.maybeFromMap(data['user_board_profile']),
         replies: getStructList(
           data['replies'],
           CommentsStruct.fromMap,

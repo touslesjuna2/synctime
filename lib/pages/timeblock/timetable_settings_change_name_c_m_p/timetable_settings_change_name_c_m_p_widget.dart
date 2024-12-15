@@ -106,9 +106,7 @@ class _TimetableSettingsChangeNameCMPWidgetState
                         padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 16.0, 0.0, 0.0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
-                            '1dq529cg' /* Change Timetable's Name */,
-                          ),
+                          'Change Timetable\'s Name',
                           style: FlutterFlowTheme.of(context)
                               .headlineSmall
                               .override(
@@ -137,9 +135,7 @@ class _TimetableSettingsChangeNameCMPWidgetState
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
                                     ),
-                            hintText: FFLocalizations.of(context).getText(
-                              'py8q5fel' /* Write here */,
-                            ),
+                            hintText: 'Write here',
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelLarge
                                 .override(
@@ -203,9 +199,7 @@ class _TimetableSettingsChangeNameCMPWidgetState
                           onPressed: () {
                             print('Button pressed ...');
                           },
-                          text: FFLocalizations.of(context).getText(
-                            'vg69ol3n' /* Subject */,
-                          ),
+                          text: 'Subject',
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 50.0,

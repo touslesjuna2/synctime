@@ -84,7 +84,10 @@ class _AProfileWidgetState extends State<AProfileWidget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -140,14 +143,12 @@ class _AProfileWidgetState extends State<AProfileWidget>
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 10.0, 10.0, 0.0, 10.0),
                             child: Text(
-                              FFLocalizations.of(context).getText(
-                                '5y0tac5p' /* Make A Profile */,
-                              ),
+                              'Make A Profile',
                               textAlign: TextAlign.start,
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     fontSize: 26.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
@@ -166,15 +167,13 @@ class _AProfileWidgetState extends State<AProfileWidget>
                                 autofillHints: const [AutofillHints.email],
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText:
-                                      FFLocalizations.of(context).getText(
-                                    'v839gynv' /* full name */,
-                                  ),
+                                  labelText: 'full name',
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelLarge
                                       .override(
-                                        fontFamily: 'Outfit',
+                                        fontFamily: 'Maruburi',
                                         letterSpacing: 0.0,
+                                        useGoogleFonts: false,
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -213,7 +212,7 @@ class _AProfileWidgetState extends State<AProfileWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyLarge
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       letterSpacing: 0.0,
                                     ),
                                 keyboardType: TextInputType.emailAddress,
@@ -237,15 +236,13 @@ class _AProfileWidgetState extends State<AProfileWidget>
                                 autofillHints: const [AutofillHints.email],
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText:
-                                      FFLocalizations.of(context).getText(
-                                    'qybnbry3' /* student id */,
-                                  ),
+                                  labelText: 'student id',
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelLarge
                                       .override(
-                                        fontFamily: 'Outfit',
+                                        fontFamily: 'Maruburi',
                                         letterSpacing: 0.0,
+                                        useGoogleFonts: false,
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -284,7 +281,7 @@ class _AProfileWidgetState extends State<AProfileWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyLarge
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       letterSpacing: 0.0,
                                     ),
                                 keyboardType: TextInputType.emailAddress,
@@ -308,15 +305,13 @@ class _AProfileWidgetState extends State<AProfileWidget>
                                 autofillHints: const [AutofillHints.email],
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText:
-                                      FFLocalizations.of(context).getText(
-                                    'mek0nln3' /* Major */,
-                                  ),
+                                  labelText: 'Major',
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelLarge
                                       .override(
-                                        fontFamily: 'Outfit',
+                                        fontFamily: 'Maruburi',
                                         letterSpacing: 0.0,
+                                        useGoogleFonts: false,
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -355,7 +350,7 @@ class _AProfileWidgetState extends State<AProfileWidget>
                                 style: FlutterFlowTheme.of(context)
                                     .bodyLarge
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       letterSpacing: 0.0,
                                     ),
                                 keyboardType: TextInputType.emailAddress,
@@ -372,11 +367,7 @@ class _AProfileWidgetState extends State<AProfileWidget>
                             child: FlutterFlowDropDown<String>(
                               controller: _model.dropDownValueController ??=
                                   FormFieldController<String>(null),
-                              options: [
-                                FFLocalizations.of(context).getText(
-                                  'v0wbh573' /* Enrolled */,
-                                )
-                              ],
+                              options: const ['Enrolled'],
                               onChanged: (val) => safeSetState(
                                   () => _model.dropDownValue = val),
                               width: MediaQuery.sizeOf(context).width * 1.0,
@@ -384,12 +375,10 @@ class _AProfileWidgetState extends State<AProfileWidget>
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     letterSpacing: 0.0,
                                   ),
-                              hintText: FFLocalizations.of(context).getText(
-                                'm7r5zbq9' /* Status */,
-                              ),
+                              hintText: 'Status',
                               icon: Icon(
                                 Icons.keyboard_arrow_down_rounded,
                                 color:
@@ -436,9 +425,7 @@ class _AProfileWidgetState extends State<AProfileWidget>
 
                                 safeSetState(() {});
                               },
-                              text: FFLocalizations.of(context).getText(
-                                '9nwxj8jp' /* next */,
-                              ),
+                              text: 'next',
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: 44.0,
@@ -450,7 +437,7 @@ class _AProfileWidgetState extends State<AProfileWidget>
                                 textStyle: FlutterFlowTheme.of(context)
                                     .titleSmall
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       color: Colors.white,
                                       letterSpacing: 0.0,
                                     ),

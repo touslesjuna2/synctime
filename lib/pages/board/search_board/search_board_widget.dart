@@ -42,7 +42,10 @@ class _SearchBoardWidgetState extends State<SearchBoardWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -130,24 +133,22 @@ class _SearchBoardWidgetState extends State<SearchBoardWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
                                                       .override(
-                                                        fontFamily: 'Outfit',
+                                                        fontFamily: 'Maruburi',
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts: false,
                                                       ),
-                                              hintText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                'b1ud8hld' /* Board name  */,
-                                              ),
+                                              hintText: 'Board name ',
                                               hintStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium
                                                       .override(
-                                                        fontFamily: 'Outfit',
+                                                        fontFamily: 'Maruburi',
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
                                                         letterSpacing: 0.0,
+                                                        useGoogleFonts: false,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: const BorderSide(
@@ -206,8 +207,7 @@ class _SearchBoardWidgetState extends State<SearchBoardWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily:
-                                                      'Plus Jakarta Sans',
+                                                  fontFamily: 'Roboto',
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w500,
                                                 ),
@@ -289,18 +289,14 @@ class _SearchBoardWidgetState extends State<SearchBoardWidget> {
                                               alignment: const AlignmentDirectional(
                                                   -1.0, 0.0),
                                               child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '00i7zgwl' /* 유학생 정보 게시판 */,
-                                                ),
+                                                '유학생 정보 게시판',
                                                 textAlign: TextAlign.start,
                                                 maxLines: 1,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                          fontFamily: 'Roboto',
                                                           fontSize: 15.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -328,18 +324,14 @@ class _SearchBoardWidgetState extends State<SearchBoardWidget> {
                                               alignment: const AlignmentDirectional(
                                                   -1.0, -1.0),
                                               child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'cm03o93l' /* 비자 발급 등 한국 대학을 다니는 유학생들이 밟아야 하... */,
-                                                ),
+                                                '비자 발급 등 한국 대학을 다니는 유학생들이 밟아야 하는 절차에 대한 정보를 공유합니다.',
                                                 textAlign: TextAlign.start,
                                                 maxLines: 2,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
+                                                          fontFamily: 'Roboto',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .secondaryText,
@@ -422,17 +414,13 @@ class _SearchBoardWidgetState extends State<SearchBoardWidget> {
                                                       Opacity(
                                                         opacity: 0.5,
                                                         child: Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getText(
-                                                            'mtblf94j' /* Try to search other boards */,
-                                                          ),
+                                                          'Try to search other boards',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Plus Jakarta Sans',
+                                                                    'Roboto',
                                                                 letterSpacing:
                                                                     0.0,
                                                                 fontWeight:
@@ -467,11 +455,7 @@ class _SearchBoardWidgetState extends State<SearchBoardWidget> {
                                                         print(
                                                             'Button pressed ...');
                                                       },
-                                                      text: FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        'pgybo6jn' /* Make new board */,
-                                                      ),
+                                                      text: 'Make new board',
                                                       options: FFButtonOptions(
                                                         height: 40.0,
                                                         padding:
@@ -498,7 +482,7 @@ class _SearchBoardWidgetState extends State<SearchBoardWidget> {
                                                                 .titleSmall
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Plus Jakarta Sans',
+                                                                      'Roboto',
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
@@ -575,25 +559,21 @@ class _SearchBoardWidgetState extends State<SearchBoardWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                FFLocalizations.of(context).getText(
-                                  '3qo1g9di' /* Search Board */,
-                                ),
+                                'Search Board',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
                                     ),
                               ),
                               Text(
-                                FFLocalizations.of(context).getText(
-                                  'g6a13q9z' /* 연세대 신촌캠 */,
-                                ),
+                                '연세대 신촌캠',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryText,
                                       fontSize: 12.0,

@@ -218,8 +218,9 @@ class ReadRecentPostsInBoardIdStruct extends BaseStruct {
         id: castToType<int>(data['id']),
         univId: castToType<int>(data['univ_id']),
         boardId: castToType<int>(data['board_id']),
-        userBoardProfile:
-            UserBoardProfileStruct.maybeFromMap(data['user_board_profile']),
+        userBoardProfile: data['user_board_profile'] is UserBoardProfileStruct
+            ? data['user_board_profile']
+            : UserBoardProfileStruct.maybeFromMap(data['user_board_profile']),
         title: data['title'] as String?,
         content: data['content'] as String?,
         anonym: data['anonym'] as bool?,

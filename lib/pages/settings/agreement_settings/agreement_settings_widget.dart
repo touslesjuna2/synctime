@@ -39,7 +39,10 @@ class _AgreementSettingsWidgetState extends State<AgreementSettingsWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -67,15 +70,14 @@ class _AgreementSettingsWidgetState extends State<AgreementSettingsWidget> {
           title: Align(
             alignment: const AlignmentDirectional(-0.3, 0.0),
             child: Text(
-              FFLocalizations.of(context).getText(
-                'gp86mkwq' /* Agreement settings */,
-              ),
+              'Agreement settings',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Outfit',
+                    fontFamily: 'Maruburi',
                     color: FlutterFlowTheme.of(context).primaryText,
                     fontSize: 22.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.w600,
+                    useGoogleFonts: false,
                   ),
             ),
           ),
@@ -109,13 +111,11 @@ class _AgreementSettingsWidgetState extends State<AgreementSettingsWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 20.0, 0.0, 0.0),
                             child: Text(
-                              FFLocalizations.of(context).getText(
-                                'g2jb19xx' /* Consent to Receive Advertising... */,
-                              ),
+                              'Consent to Receive Advertising Information',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     fontSize: 15.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
@@ -149,12 +149,10 @@ class _AgreementSettingsWidgetState extends State<AgreementSettingsWidget> {
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: Text(
-                          FFLocalizations.of(context).getText(
-                            'ki6skhu9' /* Various personalized advertisi... */,
-                          ),
+                          'Various personalized advertising information will be sent until consent is withdrawn or the membership is canceled.',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     letterSpacing: 0.0,
                                     decoration: TextDecoration.underline,
                                   ),

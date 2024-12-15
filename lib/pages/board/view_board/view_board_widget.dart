@@ -6,6 +6,7 @@ import '/components/likes_count_row_component_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -50,7 +51,10 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -63,7 +67,15 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                 logFirebaseEvent('VIEW_BOARD_FloatingActionButton_gsbvk3xx');
                 logFirebaseEvent('FloatingActionButton_navigate_to');
 
-                context.pushNamed('createPost');
+                context.pushNamed(
+                  'createPost',
+                  queryParameters: {
+                    'board': serializeParam(
+                      widget.boardid,
+                      ParamType.int,
+                    ),
+                  }.withoutNulls,
+                );
               },
               backgroundColor: const Color(0xFFE1E1E7),
               icon: FaIcon(
@@ -76,9 +88,7 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Text(
-                    FFLocalizations.of(context).getText(
-                      'gs739x4k' /* Create Post */,
-                    ),
+                    'Create Post',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Outfit',
                           color: FlutterFlowTheme.of(context).secondaryText,
@@ -90,6 +100,75 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
               ),
             ),
           ),
+        ),
+        appBar: AppBar(
+          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          automaticallyImplyLeading: false,
+          leading: FlutterFlowIconButton(
+            borderColor: Colors.transparent,
+            borderRadius: 8.0,
+            buttonSize: 40.0,
+            fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+              size: 30.0,
+            ),
+            onPressed: () async {
+              logFirebaseEvent('VIEW_BOARD_PAGE_arrow_back_ICN_ON_TAP');
+              logFirebaseEvent('IconButton_navigate_back');
+              context.safePop();
+            },
+          ),
+          title: Text(
+            'Board Name',
+            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                  fontFamily: 'Roboto',
+                  letterSpacing: 0.0,
+                  fontWeight: FontWeight.w600,
+                ),
+          ),
+          actions: [
+            FlutterFlowIconButton(
+              borderRadius: 8.0,
+              buttonSize: 40.0,
+              fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+              icon: const FaIcon(
+                FontAwesomeIcons.search,
+                color: Colors.black,
+                size: 24.0,
+              ),
+              onPressed: () {
+                print('IconButton pressed ...');
+              },
+            ),
+            Container(
+              width: MediaQuery.sizeOf(context).width * 0.14,
+              height: 100.0,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).secondaryBackground,
+              ),
+              child: Align(
+                alignment: const AlignmentDirectional(-1.0, 0.0),
+                child: FlutterFlowIconButton(
+                  borderColor: Colors.transparent,
+                  borderRadius: 8.0,
+                  buttonSize: 40.0,
+                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                  icon: const Icon(
+                    Icons.more_vert,
+                    color: Colors.black,
+                    size: 30.0,
+                  ),
+                  onPressed: () {
+                    print('IconButton pressed ...');
+                  },
+                ),
+              ),
+            ),
+          ],
+          centerTitle: false,
+          elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
@@ -107,16 +186,6 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      SafeArea(
-                        child: Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          height: MediaQuery.sizeOf(context).height * 0.08,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                        ),
-                      ),
                       wrapWithModel(
                         model: _model.adsBannerModel,
                         updateCallback: () => safeSetState(() {}),
@@ -212,11 +281,7 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                                                                 const EdgeInsets.all(
                                                                     10.0),
                                                             child: Text(
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                                '5dgcr974' /* 전전 용어 정리 */,
-                                                              ),
+                                                              '전전 용어 정리',
                                                               textAlign:
                                                                   TextAlign
                                                                       .center,
@@ -225,7 +290,7 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Plus Jakarta Sans',
+                                                                        'Roboto',
                                                                     letterSpacing:
                                                                         0.0,
                                                                   ),
@@ -339,11 +404,7 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                                                                 const EdgeInsets.all(
                                                                     10.0),
                                                             child: Text(
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getText(
-                                                                '7omork5l' /* 어제 출첵했나요? */,
-                                                              ),
+                                                              '어제 출첵했나요?',
                                                               textAlign:
                                                                   TextAlign
                                                                       .center,
@@ -352,7 +413,7 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
-                                                                        'Plus Jakarta Sans',
+                                                                        'Roboto',
                                                                     letterSpacing:
                                                                         0.0,
                                                                   ),
@@ -472,11 +533,7 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                                                                         .all(
                                                                             10.0),
                                                                 child: Text(
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                    'vthdxhez' /* 시험 꿀팁 */,
-                                                                  ),
+                                                                  '시험 꿀팁',
                                                                   textAlign:
                                                                       TextAlign
                                                                           .center,
@@ -485,7 +542,7 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Plus Jakarta Sans',
+                                                                            'Roboto',
                                                                         letterSpacing:
                                                                             0.0,
                                                                       ),
@@ -534,11 +591,11 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                         ),
                         child: FutureBuilder<ApiCallResponse>(
                           future: CommuniyUnivIDGroup
-                              .unividBoardsBoardIdREADCall
+                              .unividRecentPostsBoardidCall
                               .call(
-                            boardId: '1',
+                            boardId: widget.boardid?.toString(),
                             accessToken: currentAuthenticationToken,
-                            univId: FFAppState().id,
+                            univId: FFAppState().univid,
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
@@ -555,14 +612,15 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                                 ),
                               );
                             }
-                            final postsListViewUnividBoardsBoardIdREADResponse =
+                            final postsListViewUnividRecentPostsBoardidResponse =
                                 snapshot.data!;
 
                             return Builder(
                               builder: (context) {
-                                final recentPosts = FFAppState()
-                                    .ppReadPostsListInBoardId
-                                    .toList();
+                                final recentPosts =
+                                    postsListViewUnividRecentPostsBoardidResponse
+                                        .jsonBody
+                                        .toList();
 
                                 return ListView.builder(
                                   padding: EdgeInsets.zero,
@@ -634,14 +692,20 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                                                                       0.0,
                                                                       4.0),
                                                           child: Text(
-                                                            recentPostsItem
-                                                                .title,
+                                                            valueOrDefault<
+                                                                String>(
+                                                              RecentPostStruct
+                                                                      .maybeFromMap(
+                                                                          recentPostsItem)
+                                                                  ?.title,
+                                                              'title',
+                                                            ),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
-                                                                      'Plus Jakarta Sans',
+                                                                      'Roboto',
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight:
@@ -671,15 +735,21 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                                                                     0.0,
                                                                     0.0),
                                                         child: Text(
-                                                          recentPostsItem
-                                                              .content,
+                                                          valueOrDefault<
+                                                              String>(
+                                                            RecentPostStruct
+                                                                    .maybeFromMap(
+                                                                        recentPostsItem)
+                                                                ?.content,
+                                                            'Content',
+                                                          ),
                                                           maxLines: 2,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
                                                               .override(
                                                                 fontFamily:
-                                                                    'Plus Jakarta Sans',
+                                                                    'Roboto',
                                                                 fontSize: 14.0,
                                                                 letterSpacing:
                                                                     0.0,
@@ -750,17 +820,11 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                                                                               color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                             ),
                                                                             child:
-                                                                                wrapWithModel(
-                                                                              model: _model.likesCountRowComponentModels.getModel(
-                                                                                recentPostsItem.id.toString(),
-                                                                                recentPostsIndex,
-                                                                              ),
-                                                                              updateCallback: () => safeSetState(() {}),
-                                                                              child: LikesCountRowComponentWidget(
-                                                                                key: Key(
-                                                                                  'Keyqn2_${recentPostsItem.id.toString()}',
-                                                                                ),
-                                                                                likeCountsInteger: recentPostsItem.likeCount,
+                                                                                LikesCountRowComponentWidget(
+                                                                              key: Key('Keyqn2_${recentPostsIndex}_of_${recentPosts.length}'),
+                                                                              likeCountsInteger: valueOrDefault<int>(
+                                                                                RecentPostStruct.maybeFromMap(recentPostsItem)?.likeCount,
+                                                                                0,
                                                                               ),
                                                                             ),
                                                                           );
@@ -794,20 +858,11 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                                                                               decoration: BoxDecoration(
                                                                                 color: FlutterFlowTheme.of(context).secondaryBackground,
                                                                               ),
-                                                                              child: wrapWithModel(
-                                                                                model: _model.commentsCountRowComponentModels.getModel(
-                                                                                  recentPostsItem.id.toString(),
-                                                                                  recentPostsIndex,
-                                                                                ),
-                                                                                updateCallback: () => safeSetState(() {}),
-                                                                                child: CommentsCountRowComponentWidget(
-                                                                                  key: Key(
-                                                                                    'Key2qj_${recentPostsItem.id.toString()}',
-                                                                                  ),
-                                                                                  commentsCountsInteger: valueOrDefault<int>(
-                                                                                    recentPostsItem.commentCount,
-                                                                                    0,
-                                                                                  ),
+                                                                              child: CommentsCountRowComponentWidget(
+                                                                                key: Key('Key2qj_${recentPostsIndex}_of_${recentPosts.length}'),
+                                                                                commentsCountsInteger: valueOrDefault<int>(
+                                                                                  RecentPostStruct.maybeFromMap(recentPostsItem)?.commentCount,
+                                                                                  0,
                                                                                 ),
                                                                               ),
                                                                             ),
@@ -856,17 +911,19 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                                                                           .max,
                                                                   children: [
                                                                     Text(
-                                                                      FFLocalizations.of(
-                                                                              context)
-                                                                          .getText(
-                                                                        'bizahudi' /* 1130 */,
+                                                                      valueOrDefault<
+                                                                          String>(
+                                                                        RecentPostStruct.maybeFromMap(recentPostsItem)
+                                                                            ?.createdAt
+                                                                            .toString(),
+                                                                        'Date',
                                                                       ),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
-                                                                                'Plus Jakarta Sans',
+                                                                                'Roboto',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).secondaryText,
                                                                             fontSize:
@@ -902,15 +959,20 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                                                                       .secondaryBackground,
                                                                 ),
                                                                 child: Text(
-                                                                  recentPostsItem
-                                                                      .userBoardProfile
-                                                                      .nickname,
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                    RecentPostStruct.maybeFromMap(
+                                                                            recentPostsItem)
+                                                                        ?.anonym
+                                                                        .toString(),
+                                                                    'Anony',
+                                                                  ),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
-                                                                            'Plus Jakarta Sans',
+                                                                            'Roboto',
                                                                         fontSize:
                                                                             12.0,
                                                                         letterSpacing:
@@ -947,9 +1009,9 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                                                 borderRadius:
                                                     BorderRadius.circular(14.0),
                                                 child: Image.network(
-                                                  recentPostsItem
-                                                      .userBoardProfile
-                                                      .imageUrl,
+                                                  MediaStruct.maybeFromMap(
+                                                          recentPostsItem)!
+                                                      .mediaUrl,
                                                   width: 200.0,
                                                   height: 200.0,
                                                   fit: BoxFit.cover,
@@ -965,154 +1027,6 @@ class _ViewBoardWidgetState extends State<ViewBoardWidget> {
                               },
                             );
                           },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              SafeArea(
-                child: Container(
-                  width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: MediaQuery.sizeOf(context).height * 0.08,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Container(
-                        width: MediaQuery.sizeOf(context).width * 0.17,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: FlutterFlowIconButton(
-                          borderColor: Colors.transparent,
-                          borderRadius: 8.0,
-                          buttonSize: 40.0,
-                          fillColor:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          icon: const Icon(
-                            Icons.arrow_back,
-                            color: Colors.black,
-                            size: 30.0,
-                          ),
-                          onPressed: () {
-                            print('IconButton pressed ...');
-                          },
-                        ),
-                      ),
-                      Container(
-                        width: MediaQuery.sizeOf(context).width * 0.55,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  'gpa6tcds' /* Board Name */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Plus Jakarta Sans',
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                              ),
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  '3wwcvn6n' /* 연세대 신촌캠 */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Plus Jakarta Sans',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      fontSize: 12.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: MediaQuery.sizeOf(context).width * 0.28,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 10.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
-                                width: MediaQuery.sizeOf(context).width * 0.14,
-                                height: 100.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                child: FlutterFlowIconButton(
-                                  borderRadius: 8.0,
-                                  buttonSize: 40.0,
-                                  fillColor: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  icon: const FaIcon(
-                                    FontAwesomeIcons.search,
-                                    color: Colors.black,
-                                    size: 24.0,
-                                  ),
-                                  onPressed: () {
-                                    print('IconButton pressed ...');
-                                  },
-                                ),
-                              ),
-                              Container(
-                                width: MediaQuery.sizeOf(context).width * 0.14,
-                                height: 100.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                child: Align(
-                                  alignment: const AlignmentDirectional(-1.0, 0.0),
-                                  child: FlutterFlowIconButton(
-                                    borderColor: Colors.transparent,
-                                    borderRadius: 8.0,
-                                    buttonSize: 40.0,
-                                    fillColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    icon: const Icon(
-                                      Icons.more_vert,
-                                      color: Colors.black,
-                                      size: 30.0,
-                                    ),
-                                    onPressed: () {
-                                      print('IconButton pressed ...');
-                                    },
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
                         ),
                       ),
                     ],

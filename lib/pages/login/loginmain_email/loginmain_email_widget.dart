@@ -54,7 +54,10 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: Colors.white,
@@ -85,9 +88,7 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
                           logFirebaseEvent('Button_navigate_back');
                           context.safePop();
                         },
-                        text: FFLocalizations.of(context).getText(
-                          'rbne13yj' /* back */,
-                        ),
+                        text: 'back',
                         options: FFButtonOptions(
                           height: 40.0,
                           padding: const EdgeInsetsDirectional.fromSTEB(
@@ -97,7 +98,7 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     color: Colors.white,
                                     letterSpacing: 0.0,
                                   ),
@@ -108,38 +109,35 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
                     ],
                   ),
                   Text(
-                    FFLocalizations.of(context).getText(
-                      'l6jao0uu' /* Sync */,
-                    ),
+                    'Sync',
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).displaySmall.override(
-                          fontFamily: 'Outfit',
+                          fontFamily: 'Maruburi',
                           letterSpacing: 0.0,
+                          useGoogleFonts: false,
                         ),
                   ),
                   Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
                     child: Text(
-                      FFLocalizations.of(context).getText(
-                        'irc5vual' /* Create an account by using the... */,
-                      ),
+                      'Create an account by using the form below.',
                       textAlign: TextAlign.start,
                       style: FlutterFlowTheme.of(context).labelLarge.override(
-                            fontFamily: 'Outfit',
+                            fontFamily: 'Maruburi',
                             letterSpacing: 0.0,
+                            useGoogleFonts: false,
                           ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 8.0),
                     child: Text(
-                      FFLocalizations.of(context).getText(
-                        'sa1ivay1' /* Tip: 학교 아이디로 Email을 가입할 경우 추가 ... */,
-                      ),
+                      'Tip: 학교 아이디로 Email을 가입할 경우 추가 학교 인증절차가 생략됩니다.',
                       textAlign: TextAlign.start,
                       style: FlutterFlowTheme.of(context).labelLarge.override(
-                            fontFamily: 'Outfit',
+                            fontFamily: 'Maruburi',
                             letterSpacing: 0.0,
+                            useGoogleFonts: false,
                           ),
                     ),
                   ),
@@ -160,14 +158,13 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
                               autofillHints: const [AutofillHints.email],
                               obscureText: false,
                               decoration: InputDecoration(
-                                labelText: FFLocalizations.of(context).getText(
-                                  'ou6ivjwz' /* Email */,
-                                ),
+                                labelText: 'Email',
                                 labelStyle: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
-                                      fontFamily: 'Outfit',
+                                      fontFamily: 'Maruburi',
                                       letterSpacing: 0.0,
+                                      useGoogleFonts: false,
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -205,7 +202,7 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     letterSpacing: 0.0,
                                   ),
                               keyboardType: TextInputType.emailAddress,
@@ -233,9 +230,7 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
 
                               safeSetState(() {});
                             },
-                            text: FFLocalizations.of(context).getText(
-                              'nhbnnjz9' /* Send */,
-                            ),
+                            text: 'Send',
                             options: FFButtonOptions(
                               width: MediaQuery.sizeOf(context).width * 0.44,
                               height: 44.0,
@@ -247,7 +242,7 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     color: Colors.white,
                                     letterSpacing: 0.0,
                                   ),
@@ -281,15 +276,13 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
                                 autofillHints: const [AutofillHints.password],
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelText:
-                                      FFLocalizations.of(context).getText(
-                                    'spqwntg8' /* Verification Code */,
-                                  ),
+                                  labelText: 'Verification Code',
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelLarge
                                       .override(
-                                        fontFamily: 'Outfit',
+                                        fontFamily: 'Maruburi',
                                         letterSpacing: 0.0,
+                                        useGoogleFonts: false,
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -328,7 +321,7 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .bodyLarge
                                     .override(
-                                      fontFamily: 'Plus Jakarta Sans',
+                                      fontFamily: 'Roboto',
                                       letterSpacing: 0.0,
                                     ),
                                 keyboardType: TextInputType.emailAddress,
@@ -374,9 +367,13 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
                                                   Directionality.of(context)),
                                           child: WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () =>
-                                                  FocusScope.of(dialogContext)
-                                                      .unfocus(),
+                                              onTap: () {
+                                                FocusScope.of(dialogContext)
+                                                    .unfocus();
+                                                FocusManager
+                                                    .instance.primaryFocus
+                                                    ?.unfocus();
+                                              },
                                               child: const AlertCheckCMPWidget(),
                                             ),
                                           ),
@@ -390,9 +387,7 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
 
                                   if (shouldSetState) safeSetState(() {});
                                 },
-                                text: FFLocalizations.of(context).getText(
-                                  'wbnl7l70' /* Check */,
-                                ),
+                                text: 'Check',
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 44.0,
@@ -404,7 +399,7 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        fontFamily: 'Roboto',
                                         color: Colors.white,
                                         letterSpacing: 0.0,
                                       ),
@@ -434,14 +429,13 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
                           autofillHints: const [AutofillHints.password],
                           obscureText: !_model.pwVisibility,
                           decoration: InputDecoration(
-                            labelText: FFLocalizations.of(context).getText(
-                              'gb7olyb3' /* Password */,
-                            ),
+                            labelText: 'Password',
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelLarge
                                 .override(
-                                  fontFamily: 'Outfit',
+                                  fontFamily: 'Maruburi',
                                   letterSpacing: 0.0,
+                                  useGoogleFonts: false,
                                 ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -491,7 +485,7 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyLarge.override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     letterSpacing: 0.0,
                                   ),
                           keyboardType: TextInputType.emailAddress,
@@ -514,14 +508,13 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
                           autofillHints: const [AutofillHints.email],
                           obscureText: !_model.pWCheckVisibility,
                           decoration: InputDecoration(
-                            labelText: FFLocalizations.of(context).getText(
-                              'zpbyff9l' /* Password Check */,
-                            ),
+                            labelText: 'Password Check',
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelLarge
                                 .override(
-                                  fontFamily: 'Outfit',
+                                  fontFamily: 'Maruburi',
                                   letterSpacing: 0.0,
+                                  useGoogleFonts: false,
                                 ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -571,7 +564,7 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyLarge.override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     letterSpacing: 0.0,
                                   ),
                           keyboardType: TextInputType.emailAddress,
@@ -615,13 +608,11 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 0.0, 0.0),
                           child: Text(
-                            FFLocalizations.of(context).getText(
-                              '6769vget' /* [필수] 이용약관 동의 */,
-                            ),
+                            '[필수] 이용약관 동의',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: 'Roboto',
                                   letterSpacing: 0.0,
                                 ),
                           ),
@@ -676,13 +667,11 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 0.0, 0.0),
                           child: Text(
-                            FFLocalizations.of(context).getText(
-                              'j6axzosk' /* [필수] 이용약관 동의 */,
-                            ),
+                            '[필수] 이용약관 동의',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Plus Jakarta Sans',
+                                  fontFamily: 'Roboto',
                                   letterSpacing: 0.0,
                                 ),
                           ),
@@ -755,9 +744,12 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
                                           .resolve(Directionality.of(context)),
                                       child: WebViewAware(
                                         child: GestureDetector(
-                                          onTap: () =>
-                                              FocusScope.of(dialogContext)
-                                                  .unfocus(),
+                                          onTap: () {
+                                            FocusScope.of(dialogContext)
+                                                .unfocus();
+                                            FocusManager.instance.primaryFocus
+                                                ?.unfocus();
+                                          },
                                           child: const AlertGeneralCMPWidget(
                                             alertmessage: 'failure',
                                           ),
@@ -770,9 +762,7 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
 
                               safeSetState(() {});
                             },
-                            text: FFLocalizations.of(context).getText(
-                              'tbbtc8m9' /* Continue with ID */,
-                            ),
+                            text: 'Continue with ID',
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: 44.0,
@@ -784,7 +774,7 @@ class _LoginmainEmailWidgetState extends State<LoginmainEmailWidget> {
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
-                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontFamily: 'Roboto',
                                     color: Colors.white,
                                     letterSpacing: 0.0,
                                   ),

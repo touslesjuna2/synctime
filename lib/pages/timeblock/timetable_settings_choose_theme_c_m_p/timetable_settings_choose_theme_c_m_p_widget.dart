@@ -81,9 +81,7 @@ class _TimetableSettingsChooseThemeCMPWidgetState
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Text(
-                    FFLocalizations.of(context).getText(
-                      '1oxwkn3n' /* Choose Theme */,
-                    ),
+                    'Choose Theme',
                     style: FlutterFlowTheme.of(context).headlineSmall.override(
                           fontFamily: 'Outfit',
                           color: const Color(0xFF14181B),
@@ -124,9 +122,7 @@ class _TimetableSettingsChooseThemeCMPWidgetState
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              FFLocalizations.of(context).getText(
-                                'jc0gtsme' /* Theme 1 */,
-                              ),
+                              'Theme 1',
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(
@@ -168,9 +164,7 @@ class _TimetableSettingsChooseThemeCMPWidgetState
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              FFLocalizations.of(context).getText(
-                                'dguwl505' /* Theme 2 */,
-                              ),
+                              'Theme 2',
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(
@@ -212,9 +206,7 @@ class _TimetableSettingsChooseThemeCMPWidgetState
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              FFLocalizations.of(context).getText(
-                                'mbayl056' /* Theme 3 */,
-                              ),
+                              'Theme 3',
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(

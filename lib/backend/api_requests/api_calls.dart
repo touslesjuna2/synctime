@@ -25,7 +25,7 @@ class AuthGroup {
       RegisterCheckLoginIDCall();
   static VerifyLoginIDCall verifyLoginIDCall = VerifyLoginIDCall();
   static RegisterCall registerCall = RegisterCall();
-  static GoogleTokenCall googleTokenCall = GoogleTokenCall();
+  static GoogleAppleTokenCall googleAppleTokenCall = GoogleAppleTokenCall();
   static TokenCall tokenCall = TokenCall();
   static LogoutCall logoutCall = LogoutCall();
   static RefreshCall refreshCall = RefreshCall();
@@ -262,15 +262,16 @@ class RegisterCall {
   }
 }
 
-class GoogleTokenCall {
+class GoogleAppleTokenCall {
   Future<ApiCallResponse> call({
     String? code = '',
+    String? type = '',
   }) async {
     final baseUrl = AuthGroup.getBaseUrl();
 
     return ApiManager.instance.makeApiCall(
-      callName: 'Google Token',
-      apiUrl: '${baseUrl}google/token?code=$code',
+      callName: 'Google Apple Token',
+      apiUrl: '$baseUrl$type/token?code=$code',
       callType: ApiCallType.GET,
       headers: {
         'accept': 'application/json',
@@ -447,11 +448,22 @@ class CommuniyUnivIDGroup {
   static UnividBoardsBoardIdNoticeDELETECall
       unividBoardsBoardIdNoticeDELETECall =
       UnividBoardsBoardIdNoticeDELETECall();
-  static UnividNoticePostsBoardidCall unividNoticePostsBoardidCall =
-      UnividNoticePostsBoardidCall();
+  static UnividRecentPostsBoardidCall unividRecentPostsBoardidCall =
+      UnividRecentPostsBoardidCall();
+  static UnividNoticePostsBoardidCopyCall unividNoticePostsBoardidCopyCall =
+      UnividNoticePostsBoardidCopyCall();
   static UnividHotPostBoardIDCall unividHotPostBoardIDCall =
       UnividHotPostBoardIDCall();
   static UnividHotPostCall unividHotPostCall = UnividHotPostCall();
+  static UnividQnAPostsBoardIDCall unividQnAPostsBoardIDCall =
+      UnividQnAPostsBoardIDCall();
+  static UnividPostsUPDATECall unividPostsUPDATECall = UnividPostsUPDATECall();
+  static UnividPostsUPDATEDELETECall unividPostsUPDATEDELETECall =
+      UnividPostsUPDATEDELETECall();
+  static UnividPostsCREATECall unividPostsCREATECall = UnividPostsCREATECall();
+  static UnividPostsDETAILSCall unividPostsDETAILSCall =
+      UnividPostsDETAILSCall();
+  static UnividPostsLIKECall unividPostsLIKECall = UnividPostsLIKECall();
 }
 
 class UnividBoardsREADCall {
@@ -481,6 +493,16 @@ class UnividBoardsREADCall {
       alwaysAllowBody: false,
     );
   }
+
+  List<int>? id(dynamic response) => (getJsonField(
+        response,
+        r'''$[:].id''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
 }
 
 class UnividBoardsCREATECall {
@@ -747,7 +769,7 @@ class UnividBoardsBoardIdNoticeDELETECall {
   }
 }
 
-class UnividNoticePostsBoardidCall {
+class UnividRecentPostsBoardidCall {
   Future<ApiCallResponse> call({
     String? boardId = '',
     String? accessToken = '',
@@ -759,7 +781,37 @@ class UnividNoticePostsBoardidCall {
     );
 
     return ApiManager.instance.makeApiCall(
-      callName: 'univid NoticePosts Boardid',
+      callName: 'univid RecentPosts Boardid',
+      apiUrl: '${baseUrl}recent-posts/$boardId',
+      callType: ApiCallType.GET,
+      headers: {
+        'accept': 'application/json',
+        'Authorization': 'Bearer $accessToken',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class UnividNoticePostsBoardidCopyCall {
+  Future<ApiCallResponse> call({
+    String? boardId = '',
+    String? accessToken = '',
+    int? univId,
+  }) async {
+    final baseUrl = CommuniyUnivIDGroup.getBaseUrl(
+      accessToken: accessToken,
+      univId: univId,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'univid NoticePosts Boardid Copy',
       apiUrl: '${baseUrl}notice-posts/$boardId',
       callType: ApiCallType.GET,
       headers: {
@@ -827,6 +879,223 @@ class UnividHotPostCall {
         'Authorization': 'Bearer $accessToken',
       },
       params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class UnividQnAPostsBoardIDCall {
+  Future<ApiCallResponse> call({
+    int? boardId,
+    String? accessToken = '',
+    int? univId,
+  }) async {
+    final baseUrl = CommuniyUnivIDGroup.getBaseUrl(
+      accessToken: accessToken,
+      univId: univId,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'univid QnAPosts BoardID',
+      apiUrl: '${baseUrl}qna-posts/$boardId',
+      callType: ApiCallType.GET,
+      headers: {
+        'accept': 'application/json',
+        'Authorization': 'Bearer $accessToken',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class UnividPostsUPDATECall {
+  Future<ApiCallResponse> call({
+    String? title = '',
+    String? content = '',
+    bool? anonym,
+    List<String>? tagsList,
+    List<int>? imageIdsToDeleteList,
+    int? postId,
+    String? accessToken = '',
+    int? univId,
+  }) async {
+    final baseUrl = CommuniyUnivIDGroup.getBaseUrl(
+      accessToken: accessToken,
+      univId: univId,
+    );
+    final tags = _serializeList(tagsList);
+    final imageIdsToDelete = _serializeList(imageIdsToDeleteList);
+
+    final ffApiRequestBody = '''
+{
+  "title": "${escapeStringForJson(title)}",
+  "content": "${escapeStringForJson(content)}",
+  "anonym": $anonym,
+  "tags": $tags,
+  "image_ids_to_delete": $imageIdsToDelete
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'univid Posts UPDATE',
+      apiUrl: '${baseUrl}posts/$postId',
+      callType: ApiCallType.PUT,
+      headers: {
+        'accept': 'application/json',
+        'Authorization': 'Bearer $accessToken',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class UnividPostsUPDATEDELETECall {
+  Future<ApiCallResponse> call({
+    int? postId,
+    String? accessToken = '',
+    int? univId,
+  }) async {
+    final baseUrl = CommuniyUnivIDGroup.getBaseUrl(
+      accessToken: accessToken,
+      univId: univId,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'univid Posts UPDATE DELETE',
+      apiUrl: '${baseUrl}posts/$postId',
+      callType: ApiCallType.DELETE,
+      headers: {
+        'accept': 'application/json',
+        'Authorization': 'Bearer $accessToken',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class UnividPostsCREATECall {
+  Future<ApiCallResponse> call({
+    dynamic postJson,
+    List<FFUploadedFile>? filesList,
+    String? accessToken = '',
+    int? univId,
+  }) async {
+    final baseUrl = CommuniyUnivIDGroup.getBaseUrl(
+      accessToken: accessToken,
+      univId: univId,
+    );
+    final files = filesList ?? [];
+    final post = _serializeJson(postJson);
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'univid Posts CREATE',
+      apiUrl: '${baseUrl}posts',
+      callType: ApiCallType.POST,
+      headers: {
+        'accept': 'application/json',
+        'Authorization': 'Bearer $accessToken',
+        'Content-Type': 'multipart/form-data',
+      },
+      params: {
+        'post': post,
+        'files': files,
+      },
+      bodyType: BodyType.MULTIPART,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class UnividPostsDETAILSCall {
+  Future<ApiCallResponse> call({
+    int? postId,
+    String? accessToken = '',
+    int? univId,
+  }) async {
+    final baseUrl = CommuniyUnivIDGroup.getBaseUrl(
+      accessToken: accessToken,
+      univId: univId,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'univid Posts DETAILS',
+      apiUrl: '${baseUrl}posts/$postId/details',
+      callType: ApiCallType.GET,
+      headers: {
+        'accept': 'application/json',
+        'Authorization': 'Bearer $accessToken',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class UnividPostsLIKECall {
+  Future<ApiCallResponse> call({
+    int? postId,
+    bool? isLike,
+    String? accessToken = '',
+    int? univId,
+  }) async {
+    final baseUrl = CommuniyUnivIDGroup.getBaseUrl(
+      accessToken: accessToken,
+      univId: univId,
+    );
+
+    const ffApiRequestBody = '''
+{
+  "board_id": <board_id>,
+  "title": "<title>",
+  "content":"<content>",
+  "anonym": <anonym>,
+  "tags": <tags>,
+  "qna": <qna>
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'univid Posts LIKE',
+      apiUrl: '${baseUrl}posts/$postId/like?is_like=$isLike',
+      callType: ApiCallType.POST,
+      headers: {
+        'accept': 'application/json',
+        'Authorization': 'Bearer $accessToken',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,

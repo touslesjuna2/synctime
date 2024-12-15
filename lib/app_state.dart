@@ -371,6 +371,35 @@ class FFAppState extends ChangeNotifier {
   set access(String value) {
     _access = value;
   }
+
+  List<String> _myImages = [];
+  List<String> get myImages => _myImages;
+  set myImages(List<String> value) {
+    _myImages = value;
+  }
+
+  void addToMyImages(String value) {
+    myImages.add(value);
+  }
+
+  void removeFromMyImages(String value) {
+    myImages.remove(value);
+  }
+
+  void removeAtIndexFromMyImages(int index) {
+    myImages.removeAt(index);
+  }
+
+  void updateMyImagesAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    myImages[index] = updateFn(_myImages[index]);
+  }
+
+  void insertAtIndexInMyImages(int index, String value) {
+    myImages.insert(index, value);
+  }
 }
 
 void _safeInit(Function() initializeField) {

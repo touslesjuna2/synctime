@@ -80,7 +80,10 @@ class _C2VerificationProgressWidgetState
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -143,15 +146,14 @@ class _C2VerificationProgressWidgetState
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 20.0, 0.0, 20.0),
                                     child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        '5uhwe437' /* Verifing... */,
-                                      ),
+                                      'Verifing...',
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
                                           .displaySmall
                                           .override(
-                                            fontFamily: 'Outfit',
+                                            fontFamily: 'Maruburi',
                                             letterSpacing: 0.0,
+                                            useGoogleFonts: false,
                                           ),
                                     ),
                                   ),
@@ -175,18 +177,12 @@ class _C2VerificationProgressWidgetState
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 10.0),
                                             child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'eobu10e4' /* 귀하의 계정은 본교재학생인지 확인중에 있습니다.
-1~2... */
-                                                ,
-                                              ),
+                                              '귀하의 계정은 본교재학생인지 확인중에 있습니다.\n1~2영업일 내에 가급적 빠른 시일내에 확인해드리겠습니다.',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily:
-                                                            'Plus Jakarta Sans',
+                                                        fontFamily: 'Roboto',
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
@@ -205,15 +201,11 @@ class _C2VerificationProgressWidgetState
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 0.0, 10.0),
                                 child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    'welnodfq' /* 과정에 문제가 있거나 오랜 기간동안 인증중인 경우
-아래... */
-                                    ,
-                                  ),
+                                  '과정에 문제가 있거나 오랜 기간동안 인증중인 경우\n아래의 문의하기를 통해 연락주세요.\n해결해드리겠습니다.',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Plus Jakarta Sans',
+                                        fontFamily: 'Roboto',
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -229,9 +221,7 @@ class _C2VerificationProgressWidgetState
 
                                     context.pushNamed('f_Verification_inquiry');
                                   },
-                                  text: FFLocalizations.of(context).getText(
-                                    'z28byvoa' /* 문의하기 */,
-                                  ),
+                                  text: '문의하기',
                                   options: FFButtonOptions(
                                     width: double.infinity,
                                     height: 44.0,
@@ -243,7 +233,7 @@ class _C2VerificationProgressWidgetState
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontFamily: 'Roboto',
                                           color: Colors.black,
                                           letterSpacing: 0.0,
                                         ),
